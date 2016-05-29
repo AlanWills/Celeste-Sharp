@@ -19,7 +19,7 @@ namespace TestCeleste
         private CelesteObject CelesteObjectString { get; set; }
         private CelesteObject CelesteObjectStringList { get; set; }
         private CelesteObject CelesteObjectCelesteObjectList { get; set; }
-        private CelesteTable CelesteTable { get; set; }
+        private CelesteObject CelesteTable { get; set; }
 
         #endregion
 
@@ -77,7 +77,7 @@ namespace TestCeleste
             };
 
             CelesteObjectCelesteObjectList = new CelesteObject(objects);
-            CelesteTable = new CelesteTable();
+            CelesteTable = new CelesteObject(new Dictionary<object, object>());
         }
         //
         // Use TestCleanup to run code after each test has run

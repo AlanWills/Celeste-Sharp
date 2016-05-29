@@ -60,7 +60,6 @@
     <Compile Include="TestCelesteStack.cs" />
     <Compile Include="TestCelesteScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestObjects\TestCelesteTable.cs" />
     <Compile Include="TestOperators\TestDivideOperator.cs" />
     <Compile Include="TestOperators\TestEqualityOperator.cs" />
     <Compile Include="TestOperators\TestMultiplyOperator.cs" />

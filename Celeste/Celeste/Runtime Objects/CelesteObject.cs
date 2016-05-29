@@ -140,7 +140,7 @@ namespace Celeste
             }
 
             // Check to see if our stored object is a table or dictionary of object, object
-            return (Value is CelesteTable) || (Value is Dictionary<object, object>);
+            return Value is Dictionary<object, object>;
         }
 
         #endregion
