@@ -1,0 +1,13 @@
+{ "Test" = 5.0 10.0 = true }
+{
+	"Test" = 5.0
+	10.0 = true
+}
+{
+	"Test" = 5.0
+	10.0 = true
+	"Table" = {
+		"Embedded Test" = 10.0
+		20.0 = false
+	}
+}

@@ -80,9 +80,9 @@ namespace Celeste
         /// Return our stored object as a table of CelesteObjects
         /// </summary>
         /// <returns></returns>
-        public List<CelesteObject> AsTable()
+        public Dictionary<object, object> AsTable()
         {
-            return Value as List<CelesteObject>;
+            return Value as Dictionary<object, object>;
         }
 
         /// <summary>

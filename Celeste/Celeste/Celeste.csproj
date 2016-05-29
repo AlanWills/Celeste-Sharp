@@ -59,6 +59,7 @@
     <Compile Include="Compilation Objects\Values\Number.cs" />
     <Compile Include="Compilation Objects\Values\Reference.cs" />
     <Compile Include="Compilation Objects\Values\String.cs" />
+    <Compile Include="Compilation Objects\Values\Table.cs" />
     <Compile Include="Compilation Objects\Values\Value.cs" />
     <Compile Include="Compilation Objects\Values\Variable.cs" />
     <Compile Include="Runtime Objects\CelesteObject.cs" />

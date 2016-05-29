@@ -17,6 +17,17 @@ namespace Celeste
 
         }
 
+        /// <summary>
+        /// Attempts to parse the inputted token as a string value
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static bool IsString(string token)
+        {
+            // If our token starts with our string indicator we have a string value type
+            return token.StartsWith("\"");
+        }
+
         #region Virtual Functions
 
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)

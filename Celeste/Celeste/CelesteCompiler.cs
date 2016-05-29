@@ -17,10 +17,11 @@ namespace Celeste
         /// </summary>
         private static Dictionary<Func<string, bool>, Type> RegisteredValues = new Dictionary<Func<string, bool>, Type>()
         {
-            { IsNumber, typeof(Number) },
-            { IsString, typeof(String) },
-            { IsBool, typeof(Bool) },
-            { IsList, typeof(List) },
+            { Number.IsNumber, typeof(Number) },
+            { String.IsString, typeof(String) },
+            { Bool.IsBool, typeof(Bool) },
+            { List.IsList, typeof(List) },
+            { Table.IsTable, typeof(Table) },
         };
 
         /// <summary>
@@ -53,12 +54,12 @@ namespace Celeste
         /// <summary>
         /// An list of the current line's string split tokens
         /// </summary>
-        private static LinkedList<string> Tokens { get; set; }
+        private static LinkedList<string> Tokens = new LinkedList<string>();
 
         /// <summary>
         /// A list of the lines left to parse
         /// </summary>
-        private static LinkedList<string> Lines { get; set; }
+        private static LinkedList<string> Lines = new LinkedList<string>();
 
         #endregion
 
@@ -96,6 +97,23 @@ namespace Celeste
         #region Utility Functions
 
         /// <summary>
+        /// Takes the next line and tokenizes it, populating the Tokens linked list
+        /// </summary>
+        /// <returns></returns>
+        public static void TokenizeNextLine()
+        {
+            Debug.Assert(Lines.Count > 0, "No lines left to tokenize");
+
+            Tokens.Clear();
+            foreach (string splitString in Lines.First.Value.Split(' '))
+            {
+                Tokens.AddLast(splitString);
+            }
+            
+            Lines.RemoveFirst();
+        }
+
+        /// <summary>
         /// Extracts and removes from the Tokens list the token at the front
         /// </summary>
         /// <returns></returns>
@@ -106,52 +124,6 @@ namespace Celeste
             Tokens.RemoveFirst();
 
             return token;
-        }
-
-        /// <summary>
-        /// Attempt to parse the inputted token as a number
-        /// </summary>
-        /// <param name="token"></param>
-        /// <param name="result"></param>
-        /// <returns></returns>
-        private static bool IsNumber(string token)
-        {
-            float result;
-            return float.TryParse(token, out result);
-        }
-
-        /// <summary>
-        /// Attempts to parse the inputted token as a string value
-        /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        private static bool IsString(string token)
-        {
-            // If our token starts with our string indicator we have a string value type
-            return token.StartsWith("\"");
-        }
-
-        /// <summary>
-        /// Attempt to parse the inputted token as a bool
-        /// </summary>
-        /// <param name="token"></param>
-        /// <param name="result"></param>
-        /// <returns></returns>
-        private static bool IsBool(string token)
-        {
-            bool result;
-            return bool.TryParse(token, out result);
-        }
-
-        /// <summary>
-        /// Attempts to parse the inputted token as a list value
-        /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        private static bool IsList(string token)
-        {
-            // If our token starts with our list indicator we have a list value type
-            return token.StartsWith("[");
         }
 
         /// <summary>
@@ -183,7 +155,7 @@ namespace Celeste
 
             while (Lines.Count > 0)
             {
-                Debug.Assert(CompileLine(Lines.First.Value));
+                Debug.Assert(CompileLine());
             }
 
             return RootStatement;
@@ -194,12 +166,10 @@ namespace Celeste
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        public static bool CompileLine(string line)
+        public static bool CompileLine()
         {
             // Tokenize the line
-            Tokens.Clear();
-            Tokens = new LinkedList<string>(line.Split(' '));
-            Lines.RemoveFirst();
+            TokenizeNextLine();
 
             bool result = true;
 

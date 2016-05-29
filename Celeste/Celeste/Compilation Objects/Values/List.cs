@@ -12,6 +12,7 @@ namespace Celeste
 
         private List<object> ListRef { get; set; }
 
+        private static string startDelimiter = "[";
         private static string endDelimiter = "]";
 
         #endregion
@@ -20,6 +21,17 @@ namespace Celeste
             base(new List<object>())
         {
             ListRef = _Value as List<object>;
+        }
+
+        /// <summary>
+        /// Attempts to parse the inputted token as a list value
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static bool IsList(string token)
+        {
+            // If our token starts with our list indicator we have a list value type
+            return token.StartsWith(startDelimiter);
         }
 
         #region Virtual Functions
@@ -32,13 +44,12 @@ namespace Celeste
             bool foundClosing = false;
             while (!foundClosing)
             {
-                Debug.Assert(tokens.Count > 0 || lines.Count > 0, "List requires a closing ']'");
+                Debug.Assert(tokens.Count > 0 || lines.Count > 0, "List requires a closing " + endDelimiter);
 
                 // Create a new set of tokens if we have run out for this line
                 if (tokens.Count == 0)
                 {
-                    tokens = new LinkedList<string>(lines.First.Value.Split(' '));
-                    lines.RemoveFirst();
+                    CelesteCompiler.TokenizeNextLine();
                 }
 
                 string nextToken = CelesteCompiler.PopToken();

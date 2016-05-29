@@ -72,6 +72,7 @@
     <Compile Include="TestTypes\TestListType.cs" />
     <Compile Include="TestTypes\TestNumberType.cs" />
     <Compile Include="TestTypes\TestStringType.cs" />
+    <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TestScripts\Keywords\Global\TestGlobalParsing.cel">
@@ -117,6 +118,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Types\Number\TestNumberParsing.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Types\Table\TestTableParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

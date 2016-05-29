@@ -16,6 +16,18 @@ namespace Celeste
 
         }
 
+        /// <summary>
+        /// Attempt to parse the inputted token as a bool
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool IsBool(string token)
+        {
+            bool result;
+            return bool.TryParse(token, out result);
+        }
+
         #region Virtual Functions
 
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
