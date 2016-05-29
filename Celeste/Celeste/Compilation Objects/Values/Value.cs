@@ -12,7 +12,7 @@ namespace Celeste
         /// <summary>
         /// The object we will push onto the stack
         /// </summary>
-        protected object _Value { get; set; }
+        internal object _Value { get; set; }
 
         #endregion
 

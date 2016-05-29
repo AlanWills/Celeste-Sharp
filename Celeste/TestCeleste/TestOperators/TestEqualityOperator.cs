@@ -13,6 +13,8 @@ namespace TestCeleste.TestOperators
             script.Run();
             
             TestOperatorUtils.CheckStackSize(0);
+            TestOperatorUtils.CheckLocalVariable(script, "number", 5.0f);
+            TestOperatorUtils.CheckLocalVariable(script, "string", "Test");
         }
 
         [TestMethod]
@@ -22,6 +24,7 @@ namespace TestCeleste.TestOperators
             script.Run();
 
             TestOperatorUtils.CheckStackSize(0);
+            TestOperatorUtils.CheckLocalVariable(script, "number", "Test");
         }
     }
 }

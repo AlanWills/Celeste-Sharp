@@ -51,7 +51,6 @@
     <Compile Include="Compilation Objects\Operators\EqualityOperator.cs" />
     <Compile Include="Compilation Objects\Operators\MultiplyOperator.cs" />
     <Compile Include="Compilation Objects\Operators\SubtractOperator.cs" />
-    <Compile Include="Compilation Objects\Scoping\GlobalScope.cs" />
     <Compile Include="Compilation Objects\Scoping\Scope.cs" />
     <Compile Include="Compilation Objects\Values\Number.cs" />
     <Compile Include="Compilation Objects\Values\Reference.cs" />

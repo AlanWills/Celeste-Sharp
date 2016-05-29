@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace Celeste
 {
@@ -20,7 +21,7 @@ namespace Celeste
         /// Our scopes will all be nested inside each other and we need to store them in a tree for variable look up.
         /// This reference to a parent scope will allow us to create this structure
         /// </summary>
-        internal Scope ParentScope { get; set; }
+        internal Scope ParentScope { get; private set; }
 
         /// <summary>
         /// A list of the variables contained within this scope.
@@ -30,9 +31,21 @@ namespace Celeste
 
         #endregion
 
+        public Scope() :
+            this(null)
+        {
+            
+        }
+
         public Scope(Scope parentScope)
         {
             LocalVariables = new Dictionary<string, Variable>();
+
+            // Add the scope to the scoping tree by setting the parent and adding to our list
+            // For the global scope, the current scope will be null
+            ParentScope = parentScope;
+            CelesteStack.Scopes.Add(this);
+            CelesteStack.CurrentScope = this;
         }
 
         #region Utility Functions

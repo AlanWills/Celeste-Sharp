@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("TestCeleste")]
 
 namespace Celeste
 {
@@ -23,17 +26,17 @@ namespace Celeste
         /// </summary>
         public static int StackSize { get { return CelStack.Count; } }
 
-        /// <summary>
-        /// The global variables declared from all scripts
-        /// </summary>
-        internal static GlobalScope GlobalScope = new GlobalScope();
+        internal static List<Scope> Scopes = new List<Scope>();
 
         /// <summary>
         /// The current scope that any local variables we have parsed will be added to
         /// </summary>
-        internal static Scope CurrentScope = GlobalScope;
+        internal static Scope CurrentScope = new Scope(null);
 
-        private static List<Scope> Scopes = new List<Scope>() { GlobalScope };  // Add our global scope
+        /// <summary>
+        /// The global variables declared from all scripts
+        /// </summary>
+        internal static Scope GlobalScope = CurrentScope;
 
         #region Push Functions
 

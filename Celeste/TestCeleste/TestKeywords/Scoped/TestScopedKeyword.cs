@@ -13,6 +13,7 @@ namespace TestCeleste
             script.Run();
 
             Assert.AreEqual(0, CelesteStack.StackSize);
+            TestOperatorUtils.CheckLocalVariable(script, "variable", null);
         }
     }
 }

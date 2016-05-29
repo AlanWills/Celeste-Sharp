@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 
 namespace Celeste
@@ -16,11 +15,17 @@ namespace Celeste
         /// </summary>
         private string ScriptPath { get; set; }
 
+        /// <summary>
+        /// The scope created for all the scoped variables declared within this script
+        /// </summary>
+        internal Scope ScriptScope { get; private set; }
+
         #endregion
 
         public CelesteScript(string scriptPath)
         {
             ScriptPath = scriptPath;
+            ScriptScope = new Scope();
         }
 
         #region Utility Functions
@@ -34,6 +39,8 @@ namespace Celeste
             {
                 CompiledStatement rootStatement = CelesteCompiler.CompileScript(File.OpenText(Directory.GetCurrentDirectory() + "\\" + ScriptPath));
                 rootStatement.PerformOperation();
+
+                CelesteStack.Scopes.Remove(ScriptScope);
             }
             else
             {
