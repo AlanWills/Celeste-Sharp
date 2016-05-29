@@ -8,9 +8,9 @@ namespace Celeste
     /// </summary>
     internal class NullKeyword : Keyword
     {
-        public override void Compile(CompiledStatement parent, string token, List<string> tokens)
+        public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {
-            base.Compile(parent, token, tokens);
+            base.Compile(parent, token, tokens, lines);
 
             // The previous statement that was compiled HAS to be the equality operator
             // The expression HAS to be of the form x = null
@@ -22,10 +22,10 @@ namespace Celeste
             // Check that there are no other elements after our keyword
             Debug.Assert(tokens.Count == 0, "No other values should exist after keyword: " + token);
 
-            // Add a value object underneath the equality operator object who's value is null
+            // Create a value object with null as the stored value - it will be moved under the equality operator when this function is called
             // This will push null onto the stack when run and the local variable on the lhs of the equality operator will be set to null
             Value nullValue = new Value(null);
-            nullValue.Compile(parent, token, tokens);
+            nullValue.Compile(parent, token, tokens, lines);
         }
     }
 }

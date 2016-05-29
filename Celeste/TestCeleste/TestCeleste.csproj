@@ -68,6 +68,8 @@
     <Compile Include="CelesteTestUtils.cs" />
     <Compile Include="TestOperators\TestSubtractOperator.cs" />
     <Compile Include="TestReferencing.cs" />
+    <Compile Include="TestTypes\TestBoolType.cs" />
+    <Compile Include="TestTypes\TestListType.cs" />
     <Compile Include="TestTypes\TestNumberType.cs" />
     <Compile Include="TestTypes\TestStringType.cs" />
   </ItemGroup>
@@ -103,6 +105,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\TestEmptyScript.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Types\Bool\TestBoolParsing.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Types\List\TestListParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Types\String\TestStringParsing.cel">

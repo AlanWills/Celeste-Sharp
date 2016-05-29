@@ -71,9 +71,9 @@ namespace Celeste
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public List<T> AsList<T>()
+        public List<object> AsList()
         {
-            return Value as List<T>;
+            return Value as List<object>;
         }
 
         /// <summary>
@@ -92,6 +92,15 @@ namespace Celeste
         public bool IsNumber()
         {
             return Value is int || Value is float;
+        }
+
+        /// <summary>
+        /// Returns whether our stored object is convertable to a bool
+        /// </summary>
+        /// <returns></returns>
+        public bool IsBool()
+        {
+            return Value is bool;
         }
 
         /// <summary>
@@ -118,21 +127,7 @@ namespace Celeste
                    Value.GetType().IsGenericType &&
                    Value.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>));
         }
-
-        /// <summary>
-        /// Returns whether our stored object is convertable to a list of the inputted type
-        /// </summary>
-        /// <returns></returns>
-        public bool IsList<T>()
-        {
-            if (Type == null || Type.IsPrimitive)
-            {
-                return false;
-            }
-
-            return Value is List<T>;
-        }
-
+        
         /// <summary>
         /// Returns whether our stored object is convertable to a table of objects
         /// </summary>

@@ -40,7 +40,7 @@ namespace Celeste
         /// </summary>
         /// <param name="rootStatement"></param>
         /// <param name="strings"></param>
-        public virtual void Compile(CompiledStatement parent, string token, List<string> tokens) { }
+        public virtual void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines) { }
 
         /// <summary>
         /// The function which will be overriden in inherited operator classes which acts on our stack.

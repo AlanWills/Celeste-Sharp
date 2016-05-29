@@ -131,13 +131,13 @@ namespace TestCeleste
             Assert.IsTrue(CelesteObjectCelesteObjectList.IsList());
             Assert.IsFalse(CelesteTable.IsList());
 
-            Assert.IsFalse(CelesteObjectNumber.IsList<float>());
-            Assert.IsFalse(CelesteObjectBool.IsList<bool>());
-            Assert.IsFalse(CelesteObjectChar.IsList<char>());
-            Assert.IsFalse(CelesteObjectString.IsList<string>());
-            Assert.IsTrue(CelesteObjectStringList.IsList<string>());
-            Assert.IsTrue(CelesteObjectCelesteObjectList.IsList<CelesteObject>());
-            Assert.IsFalse(CelesteTable.IsList<object>());
+            Assert.IsFalse(CelesteObjectNumber.IsList());
+            Assert.IsFalse(CelesteObjectBool.IsList());
+            Assert.IsFalse(CelesteObjectChar.IsList());
+            Assert.IsFalse(CelesteObjectString.IsList());
+            Assert.IsTrue(CelesteObjectStringList.IsList());
+            Assert.IsTrue(CelesteObjectCelesteObjectList.IsList());
+            Assert.IsFalse(CelesteTable.IsList());
         }
 
         [TestMethod]

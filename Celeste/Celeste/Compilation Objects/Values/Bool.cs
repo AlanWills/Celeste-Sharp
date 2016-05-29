@@ -3,15 +3,15 @@
 namespace Celeste
 {
     /// <summary>
-    /// Represents a number within our program
+    /// Represents a boolean value
     /// </summary>
-    internal class Number : Value
+    internal class Bool : Value
     {
         /// <summary>
         /// This must remain public for use in the Compiler
         /// </summary>
-        public Number() :
-            base(0)
+        public Bool() :
+            base(false)
         {
 
         }
@@ -22,8 +22,8 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
-            float result;
-            float.TryParse(token, out result);
+            bool result;
+            bool.TryParse(token, out result);
             _Value = result;
         }
 

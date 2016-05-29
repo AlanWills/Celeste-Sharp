@@ -22,9 +22,9 @@ namespace Celeste
         /// <param name="parent"></param>
         /// <param name="token"></param>
         /// <param name="tokens"></param>
-        public override void Compile(CompiledStatement parent, string token, List<string> tokens)
+        public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {
-            base.Compile(parent, token, tokens);
+            base.Compile(parent, token, tokens, lines);
 
             _Value = CelesteStack.CurrentScope.GetLocalVariable(token)._Value;
         }

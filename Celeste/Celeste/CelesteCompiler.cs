@@ -19,6 +19,8 @@ namespace Celeste
         {
             { IsNumber, typeof(Number) },
             { IsString, typeof(String) },
+            { IsBool, typeof(Bool) },
+            { IsList, typeof(List) },
         };
 
         /// <summary>
@@ -49,9 +51,14 @@ namespace Celeste
         private static CompiledStatement RootStatement { get; set; }
 
         /// <summary>
-        /// An array of the current line's string split tokens
+        /// An list of the current line's string split tokens
         /// </summary>
-        private static List<string> Tokens { get; set; }
+        private static LinkedList<string> Tokens { get; set; }
+
+        /// <summary>
+        /// A list of the lines left to parse
+        /// </summary>
+        private static LinkedList<string> Lines { get; set; }
 
         #endregion
 
@@ -95,8 +102,8 @@ namespace Celeste
         public static string PopToken()
         {
             Debug.Assert(Tokens.Count > 0, "No tokens left to pop");
-            string token = Tokens[0];
-            Tokens.RemoveAt(0);
+            string token = Tokens.First.Value;
+            Tokens.RemoveFirst();
 
             return token;
         }
@@ -125,6 +132,29 @@ namespace Celeste
         }
 
         /// <summary>
+        /// Attempt to parse the inputted token as a bool
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        private static bool IsBool(string token)
+        {
+            bool result;
+            return bool.TryParse(token, out result);
+        }
+
+        /// <summary>
+        /// Attempts to parse the inputted token as a list value
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        private static bool IsList(string token)
+        {
+            // If our token starts with our list indicator we have a list value type
+            return token.StartsWith("[");
+        }
+
+        /// <summary>
         /// Create an instance of the inputted compiled statement
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -134,7 +164,7 @@ namespace Celeste
         {
             // Create an instance of our keyword
             T statement = (T)Activator.CreateInstance(type);
-            statement.Compile(parent, token, Tokens);
+            statement.Compile(parent, token, Tokens, Lines);
         }
 
         #endregion
@@ -148,11 +178,12 @@ namespace Celeste
         private static CompiledStatement CompileScript(List<string> parsedFile)
         {
             RootStatement = new CompiledStatement();
-            Tokens = new List<string>();
+            Tokens = new LinkedList<string>();
+            Lines = new LinkedList<string>(parsedFile);
 
-            foreach (string line in parsedFile)
+            while (Lines.Count > 0)
             {
-                Debug.Assert(CompileLine(line));
+                Debug.Assert(CompileLine(Lines.First.Value));
             }
 
             return RootStatement;
@@ -167,7 +198,8 @@ namespace Celeste
         {
             // Tokenize the line
             Tokens.Clear();
-            Tokens.AddRange(line.Split(' '));
+            Tokens = new LinkedList<string>(line.Split(' '));
+            Lines.RemoveFirst();
 
             bool result = true;
 
@@ -176,7 +208,7 @@ namespace Celeste
                 string token = PopToken();
 
                 bool tokenResult = CompileToken(token);
-                Debug.Assert(tokenResult, "Compiling token " + token + " failed");
+                Debug.Assert(tokenResult, "Compiling token: " + token + " failed");
 
                 result = tokenResult && result;
             }

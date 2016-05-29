@@ -23,9 +23,9 @@ namespace Celeste
 
         #region Virtual Functions
 
-        public override void Compile(CompiledStatement parent, string token, List<string> tokens)
+        public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {
-            base.Compile(parent, token, tokens);
+            base.Compile(parent, token, tokens, lines);
 
             parent.Add(this);
         }
