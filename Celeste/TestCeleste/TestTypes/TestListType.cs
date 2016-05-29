@@ -1,6 +1,7 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using UnitTestGameFramework;
 
 namespace TestCeleste
 {
@@ -70,7 +71,75 @@ namespace TestCeleste
             }
         }
 
-        // Do lists of numbers, string and bools only
-        // Do list within list
+        [TestMethod]
+        public void TestListTypeAssignment()
+        {
+            CelesteScript script = new CelesteScript("TestScripts\\Types\\List\\TestListAssignment.cel");
+            script.Run();
+
+            CelesteTestUtils.CheckStackSize(0);
+
+            {
+                Assert.IsTrue(script.ScriptScope.VariableExists("firstList"));
+                Variable variable = script.ScriptScope.GetLocalVariable("firstList");
+                List<object> expected = new List<object>()
+                {
+                    5.0f,
+                    "Test",
+                    true
+                };
+
+                TestListHelperFunctions.CheckOrderedListsEqual(expected, (variable._Value as Reference).Value as List<object>);
+            }
+            {
+                Assert.IsTrue(script.ScriptScope.VariableExists("secondList"));
+                Variable variable = script.ScriptScope.GetLocalVariable("secondList");
+                List<object> expected = new List<object>()
+                {
+                    5.0f,
+                    5.0f,
+                    5.0f
+                };
+
+                TestListHelperFunctions.CheckOrderedListsEqual(expected, (variable._Value as Reference).Value as List<object>);
+            }
+            {
+                Assert.IsTrue(script.ScriptScope.VariableExists("thirdList"));
+                Variable variable = script.ScriptScope.GetLocalVariable("thirdList");
+                List<object> expected = new List<object>()
+                {
+                    "Test",
+                    "Test",
+                    "Test"
+                };
+
+                TestListHelperFunctions.CheckOrderedListsEqual(expected, (variable._Value as Reference).Value as List<object>);
+            }
+            {
+                Assert.IsTrue(script.ScriptScope.VariableExists("fourthList"));
+                Variable variable = script.ScriptScope.GetLocalVariable("fourthList");
+                List<object> expected = new List<object>()
+                {
+                    true,
+                    true,
+                    true
+                };
+
+                TestListHelperFunctions.CheckOrderedListsEqual(expected, (variable._Value as Reference).Value as List<object>);
+            }
+            {
+                Assert.IsTrue(script.ScriptScope.VariableExists("fifthList"));
+                Variable variable = script.ScriptScope.GetLocalVariable("fifthList");
+                List<object> expected = new List<object>()
+                {
+                    5.0f,
+                    "Test",
+                    true
+                };
+
+                List<object> actualList = ((variable._Value as Reference).Value as List<object>)[0] as List<object>;
+                TestListHelperFunctions.CheckOrderedListsEqual(expected, actualList);
+            }
+        }
     }
 }

@@ -1,0 +1,21 @@
+scoped firstList = [ 5 "Test" true ]
+
+scoped secondList = [
+  5
+  5
+  5 
+]
+
+scoped thirdList = [ "Test" 
+   "Test" "Test" ]
+
+scoped fourthList = [ true true true 
+]
+
+scoped fifthList = [
+  [
+    5
+    "Test"
+    true
+  ] 
+]

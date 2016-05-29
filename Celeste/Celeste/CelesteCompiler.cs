@@ -84,7 +84,11 @@ namespace Celeste
             List<string> parsedScript = new List<string>();
             while (!celesteScriptStream.EndOfStream)
             {
-                parsedScript.Add(celesteScriptStream.ReadLine().Trim());
+                string line = celesteScriptStream.ReadLine().Trim();
+                if (!string.IsNullOrEmpty(line))
+                {
+                    parsedScript.Add(line);
+                }
             }
 
             celesteScriptStream.Close();
