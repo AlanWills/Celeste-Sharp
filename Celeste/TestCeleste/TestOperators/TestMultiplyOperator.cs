@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestCeleste
 {
     [TestClass]
-    public class TestMultiplyOperator
+    public class TestMultiplyOperator : CelesteUnitTest
     {
         [TestMethod]
         public void TestMultiplyOperatorAddNumbers()
@@ -12,10 +12,10 @@ namespace TestCeleste
             CelesteScript script = new CelesteScript("TestScripts\\Operators\\Multiply\\TestMultiplyOperatorNumbers.cel");
             script.Run();
 
-            TestOperatorUtils.CheckStackSize(3);
-            TestOperatorUtils.CheckStackResult(0);
-            TestOperatorUtils.CheckStackResult(2.0);
-            TestOperatorUtils.CheckStackResult(20.0);
+            CelesteTestUtils.CheckStackSize(3);
+            CelesteTestUtils.CheckStackResult(0);
+            CelesteTestUtils.CheckStackResult(2.0);
+            CelesteTestUtils.CheckStackResult(20.0);
         }
     }
 }

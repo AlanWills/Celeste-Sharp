@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace TestCeleste
 {
     [TestClass]
-    public class TestCelesteTable
+    public class TestCelesteTable : CelesteUnitTest
     {
         [TestMethod]
         public void TestCelesteTableConstructor()

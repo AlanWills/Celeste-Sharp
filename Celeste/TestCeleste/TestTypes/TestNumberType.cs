@@ -1,10 +1,10 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestCeleste.TestTypes.Number
+namespace TestCeleste
 {
     [TestClass]
-    public class TestNumberType
+    public class TestNumberType : CelesteUnitTest
     {
         [TestMethod]
         public void TestNumberTypeParsing()

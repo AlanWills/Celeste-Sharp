@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="CelesteStack.cs" />
     <Compile Include="CelesteCompiler.cs" />
+    <Compile Include="Compilation Objects\Keywords\GlobalKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\Keyword.cs" />
+    <Compile Include="Compilation Objects\Keywords\NullKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\ScopedKeyword.cs" />
     <Compile Include="Compilation Objects\Operators\AddOperator.cs" />
     <Compile Include="Compilation Objects\CompiledStatement.cs" />

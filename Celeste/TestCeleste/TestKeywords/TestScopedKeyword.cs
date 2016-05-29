@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestCeleste
 {
     [TestClass]
-    public class TestScopedKeyword
+    public class TestScopedKeyword : CelesteUnitTest
     {
         [TestMethod]
         public void TestScopedKeywordParsing()
@@ -13,7 +13,7 @@ namespace TestCeleste
             script.Run();
 
             Assert.AreEqual(0, CelesteStack.StackSize);
-            TestOperatorUtils.CheckLocalVariable(script, "variable", null);
+            CelesteTestUtils.CheckLocalVariable(script, "variable", null);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Celeste
         private static Dictionary<Func<string, bool>, Type> RegisteredValues = new Dictionary<Func<string, bool>, Type>()
         {
             { IsNumber, typeof(Number) },
-            { IsString, typeof(String) }
+            { IsString, typeof(String) },
         };
 
         /// <summary>
@@ -39,6 +39,8 @@ namespace Celeste
         private static Dictionary<string, Type> RegisteredKeywords = new Dictionary<string, Type>()
         {
             { "scoped", typeof(ScopedKeyword) },
+            { "global", typeof(GlobalKeyword) },
+            { "null", typeof(NullKeyword) },
         };
 
         /// <summary>

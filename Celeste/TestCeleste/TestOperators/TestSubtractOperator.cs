@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestCeleste
 {
     [TestClass]
-    public class TestSubtractOperator
+    public class TestSubtractOperator : CelesteUnitTest
     {
         [TestMethod]
         public void TestSubtractOperatorAddNumbers()
@@ -12,9 +12,9 @@ namespace TestCeleste
             CelesteScript script = new CelesteScript("TestScripts\\Operators\\Subtract\\TestSubtractOperatorNumbers.cel");
             script.Run();
 
-            TestOperatorUtils.CheckStackSize(2);
-            TestOperatorUtils.CheckStackResult(10.0f);
-            TestOperatorUtils.CheckStackResult(15.0f);
+            CelesteTestUtils.CheckStackSize(2);
+            CelesteTestUtils.CheckStackResult(10.0f);
+            CelesteTestUtils.CheckStackResult(15.0f);
         }
 
         [TestMethod]
@@ -23,9 +23,9 @@ namespace TestCeleste
             CelesteScript script = new CelesteScript("TestScripts\\Operators\\Subtract\\TestSubtractOperatorStrings.cel");
             script.Run();
 
-            TestOperatorUtils.CheckStackSize(2);
-            TestOperatorUtils.CheckStackResult("testsubtracting");
-            TestOperatorUtils.CheckStackResult("test");
+            CelesteTestUtils.CheckStackSize(2);
+            CelesteTestUtils.CheckStackResult("testsubtracting");
+            CelesteTestUtils.CheckStackResult("test");
         }
     }
 }

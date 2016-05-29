@@ -6,7 +6,7 @@ using UnitTestGameFramework;
 namespace TestCeleste
 {
     [TestClass]
-    public class TestCelesteStack
+    public class TestCelesteStack : CelesteUnitTest
     {
         [TestMethod]
         public void TestCelesteStackPopNumbers()

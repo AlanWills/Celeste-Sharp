@@ -74,5 +74,10 @@ namespace Celeste
         }
 
         #endregion
+
+        public static void Clear()
+        {
+            CelStack.Clear();
+        }
     }
 }

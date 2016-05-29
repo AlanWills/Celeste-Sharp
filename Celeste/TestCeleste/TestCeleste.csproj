@@ -52,7 +52,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestKeywords\Scoped\TestScopedKeyword.cs" />
+    <Compile Include="CelesteUnitTest.cs" />
+    <Compile Include="TestKeywords\TestGlobalKeyword.cs" />
+    <Compile Include="TestKeywords\TestNullKeyword.cs" />
+    <Compile Include="TestKeywords\TestScopedKeyword.cs" />
     <Compile Include="TestObjects\TestCelesteObject.cs" />
     <Compile Include="TestCelesteStack.cs" />
     <Compile Include="TestCelesteScript.cs" />
@@ -62,13 +65,19 @@
     <Compile Include="TestOperators\TestEqualityOperator.cs" />
     <Compile Include="TestOperators\TestMultiplyOperator.cs" />
     <Compile Include="TestOperators\TestAddOperator.cs" />
-    <Compile Include="TestOperators\TestOperatorUtils.cs" />
+    <Compile Include="CelesteTestUtils.cs" />
     <Compile Include="TestOperators\TestSubtractOperator.cs" />
     <Compile Include="TestReferencing.cs" />
-    <Compile Include="TestTypes\Number\TestNumberType.cs" />
-    <Compile Include="TestTypes\String\TestStringType.cs" />
+    <Compile Include="TestTypes\TestNumberType.cs" />
+    <Compile Include="TestTypes\TestStringType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestScripts\Keywords\Global\TestGlobalParsing.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Null\TestNullParsing.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Scoped\TestScopedParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -91,6 +100,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Add\TestAddOperatorStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\TestEmptyScript.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Types\String\TestStringParsing.cel">

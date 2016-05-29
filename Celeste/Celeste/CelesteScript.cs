@@ -41,6 +41,7 @@ namespace Celeste
                 rootStatement.PerformOperation();
 
                 CelesteStack.Scopes.Remove(ScriptScope);
+                CelesteStack.CurrentScope = CelesteStack.GlobalScope;
             }
             else
             {

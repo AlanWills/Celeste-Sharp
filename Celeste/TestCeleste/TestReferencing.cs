@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestCeleste
 {
     [TestClass]
-    public class TestReferencing
+    public class TestReferencing : CelesteUnitTest
     {
         [TestMethod]
         public void TestReferencingCelesteObjectAffectsNumberVariable()
@@ -29,5 +29,7 @@ namespace TestCeleste
             obj.Value = "Test Change";
             Assert.AreEqual("Test Change", celesteObject.Value);
         }
+
+        // Do unit tests with different local variables referencing each other
     }
 }

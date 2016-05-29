@@ -5,7 +5,7 @@ namespace Celeste
     /// <summary>
     /// A class representing a hard coded compiled value in our script
     /// </summary>
-    abstract internal class Value : CompiledStatement
+    internal class Value : CompiledStatement
     {
         #region Properties and Fields
 
