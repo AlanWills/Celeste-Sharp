@@ -17,7 +17,8 @@ namespace Celeste
         #region Virtual Functions
 
         /// <summary>
-        /// Sets this variable's Value to be that of the stored local variable in the CelesteStack
+        /// Sets this variable's Value to be that of the stored local variable in the CelesteStack.
+        /// This function should be used not when creating a variable, but rather when the variable that has been created has been referenced elsewhere by name
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="token"></param>

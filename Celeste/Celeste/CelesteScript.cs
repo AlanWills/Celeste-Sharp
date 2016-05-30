@@ -25,7 +25,7 @@ namespace Celeste
         public CelesteScript(string scriptPath)
         {
             ScriptPath = scriptPath;
-            ScriptScope = new Scope();
+            ScriptScope = new Scope(ScriptPath);
         }
 
         #region Utility Functions
@@ -40,7 +40,7 @@ namespace Celeste
                 CompiledStatement rootStatement = CelesteCompiler.CompileScript(File.OpenText(Directory.GetCurrentDirectory() + "\\" + ScriptPath));
                 rootStatement.PerformOperation();
 
-                CelesteStack.Scopes.Remove(ScriptScope);
+                CelesteStack.Scopes.Remove(CelesteStack.CurrentScope);
                 CelesteStack.CurrentScope = CelesteStack.GlobalScope;
             }
             else

@@ -30,6 +30,7 @@ namespace Celeste
 
             // Creates a new function, but does not call Compile - Compile for function assigns a reference from the stored function in CelesteStack
             Function function = CelesteStack.CurrentScope.AddLocalVariable<Function>(rhsOfKeyword);
+            function.Name = rhsOfKeyword;
 
             // Work our parameters here
 
@@ -68,6 +69,8 @@ namespace Celeste
             }
 
             // Do not add the function - it will be looked up to and called rather than pushed onto the stack (much like a variable)
+            // Close the function's scope now - we have added all the appropriate variables to it
+            CelesteStack.CurrentScope = function.FunctionScope.ParentScope;
         }
     }
 }

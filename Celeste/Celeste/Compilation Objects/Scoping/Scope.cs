@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 
 namespace Celeste
 {
@@ -30,16 +29,19 @@ namespace Celeste
         /// </summary>
         protected Dictionary<string, Variable> LocalVariables { get; private set; }
 
+        public string Name { private get; set; }
+
         #endregion
 
-        public Scope() :
-            this(null)
+        public Scope(string name = "") :
+            this(CelesteStack.CurrentScope, name)
         {
             
         }
 
-        public Scope(Scope parentScope)
+        public Scope(Scope parentScope, string name = "")
         {
+            Name = name;
             LocalVariables = new Dictionary<string, Variable>();
 
             // Add the scope to the scoping tree by setting the parent and adding to our list
@@ -61,7 +63,7 @@ namespace Celeste
         {
             bool result = LocalVariables.ContainsKey(variableName);
             
-            if (searchOption == ScopeSearchOption.kThisScope || ParentScope == null)
+            if (result || searchOption == ScopeSearchOption.kThisScope || ParentScope == null)
             {
                 return result;
             }

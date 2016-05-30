@@ -24,7 +24,7 @@ namespace TestCeleste
 
             Assert.AreEqual(0, CelesteStack.StackSize);
             Assert.IsTrue(script.ScriptScope.VariableExists("testFunction()"));
-            CelesteTestUtils.CheckLocalVariable(script, "functionResult", 5.0f);
+            Assert.IsFalse(script.ScriptScope.VariableExists("functionResult"));
         }
     }
 }

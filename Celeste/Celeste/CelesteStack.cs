@@ -26,12 +26,12 @@ namespace Celeste
         /// </summary>
         public static int StackSize { get { return CelStack.Count; } }
 
-        internal static List<Scope> Scopes = new List<Scope>();
+        internal static ScopeManager Scopes = new ScopeManager();
 
         /// <summary>
         /// The current scope that any local variables we have parsed will be added to
         /// </summary>
-        internal static Scope CurrentScope = new Scope(null);
+        internal static Scope CurrentScope = new Scope(null, "Global");
 
         /// <summary>
         /// The global variables declared from all scripts
