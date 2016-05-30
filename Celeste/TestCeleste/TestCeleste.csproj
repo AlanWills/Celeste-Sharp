@@ -78,6 +78,9 @@
     <None Include="TestScripts\Keywords\Function\TestFunctionSimpleExecution.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionVariableScoping.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Function\TestFunctionParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

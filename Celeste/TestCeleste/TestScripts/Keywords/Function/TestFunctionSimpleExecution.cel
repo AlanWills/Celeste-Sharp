@@ -2,4 +2,5 @@ function testFunction()
 	scoped functionResult = 5
 end
 
+scoped functionResult = "Same variable name outside of function scope"
 testFunction()
