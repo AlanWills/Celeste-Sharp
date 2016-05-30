@@ -17,10 +17,20 @@ namespace Celeste
             // If we have fewer than 2 objects on the stack we cannot perform this operator
             Debug.Assert(CelesteStack.StackSize >= 2, "Not enough elements on the stack for equality operator");
 
+            Scope scope = CelesteStack.CurrentScope;
+
             CelesteObject rhs = CelesteStack.Pop();
             CelesteObject lhs = CelesteStack.Pop();
 
-            lhs.Value = rhs.Value;
+            Debug.Assert(lhs.IsReference());
+            if (rhs.IsReference())
+            {
+                lhs.Value = rhs.Value;
+            }
+            else
+            {
+                lhs.AsReference().Value = rhs.Value;
+            }
         }
     }
 }

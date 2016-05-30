@@ -81,7 +81,7 @@ namespace TestCeleste.TestTypes
                     { 10.0f, true }
                 };
 
-                Dictionary<object, object> actual = (variable._Value as Reference).Value as Dictionary<object, object>;
+                Dictionary<object, object> actual = variable.GetReferencedValue<Dictionary<object, object>>();
                 Assert.AreEqual(expected["Test"], actual["Test"]);
                 Assert.AreEqual(expected[10.0f], actual[10.0f]);
             }
@@ -94,7 +94,7 @@ namespace TestCeleste.TestTypes
                     { 10.0f, true }
                 };
 
-                Dictionary<object, object> actual = (variable._Value as Reference).Value as Dictionary<object, object>;
+                Dictionary<object, object> actual = variable.GetReferencedValue<Dictionary<object, object>>();
                 Assert.AreEqual(expected["Test"], actual["Test"]);
                 Assert.AreEqual(expected[10.0f], actual[10.0f]);
             }
@@ -107,7 +107,7 @@ namespace TestCeleste.TestTypes
                     { 10.0f, true }
                 };
 
-                Dictionary<object, object> actual = (variable._Value as Reference).Value as Dictionary<object, object>;
+                Dictionary<object, object> actual = variable.GetReferencedValue<Dictionary<object, object>>();
                 Assert.AreEqual(expected["Test"], actual["Test"]);
                 Assert.AreEqual(expected[10.0f], actual[10.0f]);
 

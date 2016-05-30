@@ -9,9 +9,8 @@ namespace Celeste
     {
         // Don't make the constructor less than public - it's needed in the CelesteCompiler
         public Variable() :
-            base(new Reference(null))
+            base(new Reference(new Reference(null)))
         {
-
         }
 
         #region Virtual Functions
@@ -42,5 +41,10 @@ namespace Celeste
         }
 
         #endregion
+
+        public T GetReferencedValue<T>()
+        {
+            return (T)((_Value as Reference).Value as Reference).Value;
+        }
     }
 }

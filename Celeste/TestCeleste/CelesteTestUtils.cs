@@ -28,29 +28,19 @@ namespace TestCeleste
         public static void CheckLocalVariable(CelesteScript script, string variableName, object expected)
         {
             Assert.IsTrue(script.ScriptScope.VariableExists(variableName));
-
-            Reference varRef = script.ScriptScope.GetLocalVariable(variableName)._Value as Reference;
-            Assert.IsNotNull(varRef);
-            Assert.AreEqual(expected, varRef.Value);
+            Assert.AreEqual(expected, script.ScriptScope.GetLocalVariable(variableName).GetReferencedValue<object>());
         }
 
         public static void CheckLocalVariableList(CelesteScript script, string variableName, List<object> expected)
         {
             Assert.IsTrue(script.ScriptScope.VariableExists(variableName));
-
-            Reference varRef = script.ScriptScope.GetLocalVariable(variableName)._Value as Reference;
-            Assert.IsNotNull(varRef);
-            Assert.IsTrue(varRef.Value is List<object>);
-            TestListHelperFunctions.CheckOrderedListsEqual(expected, varRef.Value as List<object>);
+            TestListHelperFunctions.CheckOrderedListsEqual(expected, script.ScriptScope.GetLocalVariable(variableName).GetReferencedValue<List<object>>());
         }
 
         public static void CheckGlobalVariable(string variableName, object expected)
         {
             Assert.IsTrue(CelesteStack.GlobalScope.VariableExists(variableName));
-
-            Reference varRef = CelesteStack.GlobalScope.GetLocalVariable(variableName)._Value as Reference;
-            Assert.IsNotNull(varRef);
-            Assert.AreEqual(expected, varRef.Value);
+            Assert.AreEqual(expected, CelesteStack.GlobalScope.GetLocalVariable(variableName).GetReferencedValue<object>());
         }
     }
 }

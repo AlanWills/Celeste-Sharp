@@ -42,9 +42,9 @@ namespace Celeste
             Type = value != null ? value.GetType() : null;
         }
 
-        public CelesteObject(Reference value)
+        public CelesteObject(Reference reference)
         {
-            ValueImpl = value;
+            ValueImpl = reference;
         }
 
         #region Utility Functions
@@ -83,6 +83,15 @@ namespace Celeste
         public Dictionary<object, object> AsTable()
         {
             return Value as Dictionary<object, object>;
+        }
+
+        /// <summary>
+        /// Return our stored object as a reference
+        /// </summary>
+        /// <returns></returns>
+        public Reference AsReference()
+        {
+            return Value as Reference;
         }
 
         /// <summary>
@@ -144,14 +153,14 @@ namespace Celeste
         }
 
         /// <summary>
-        /// Sets this object's reference to be the same as the inputted object so they both reference the same object in memory
+        /// Returns whether our stored object is actually a reference to another object
         /// </summary>
-        /// <param name="celObject"></param>
-        public void SetReference(CelesteObject celObject)
+        /// <returns></returns>
+        public bool IsReference()
         {
-            ValueImpl = celObject.ValueImpl;
+            return Value is Reference;
         }
-
+            
         #endregion
     }
 }
