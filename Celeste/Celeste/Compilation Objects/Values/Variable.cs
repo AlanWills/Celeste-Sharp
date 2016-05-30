@@ -7,7 +7,7 @@ namespace Celeste
     /// </summary>
     internal class Variable : Value
     {
-        // Don't make the constructor less than public - it's need in the CelesteCompiler
+        // Don't make the constructor less than public - it's needed in the CelesteCompiler
         public Variable() :
             base(new Reference(null))
         {

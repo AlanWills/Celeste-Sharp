@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CelesteStack.cs" />
     <Compile Include="CelesteCompiler.cs" />
+    <Compile Include="Compilation Objects\Keywords\FunctionKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\GlobalKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\Keyword.cs" />
     <Compile Include="Compilation Objects\Keywords\NullKeyword.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Compilation Objects\Operators\SubtractOperator.cs" />
     <Compile Include="Compilation Objects\Scoping\Scope.cs" />
     <Compile Include="Compilation Objects\Values\Bool.cs" />
+    <Compile Include="Compilation Objects\Values\Function.cs" />
     <Compile Include="Compilation Objects\Values\List.cs" />
     <Compile Include="Compilation Objects\Values\Number.cs" />
     <Compile Include="Compilation Objects\Values\Reference.cs" />

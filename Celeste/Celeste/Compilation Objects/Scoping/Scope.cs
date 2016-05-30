@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
@@ -69,11 +70,11 @@ namespace Celeste
             return ParentScope.VariableExists(variableName, searchOption);
         }
 
-        internal Variable AddLocalVariable(string variableName)
+        internal T AddLocalVariable<T>(string variableName) where T: Variable
         {
             Debug.Assert(!VariableExists(variableName));
 
-            Variable variable = new Variable();
+            T variable = (T)Activator.CreateInstance(typeof(T));
             LocalVariables.Add(variableName, variable);
 
             return variable;

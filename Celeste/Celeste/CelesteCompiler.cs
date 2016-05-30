@@ -44,6 +44,7 @@ namespace Celeste
             { "scoped", typeof(ScopedKeyword) },
             { "global", typeof(GlobalKeyword) },
             { "null", typeof(NullKeyword) },
+            { "function", typeof(FunctionKeyword) },
         };
 
         /// <summary>
@@ -252,7 +253,7 @@ namespace Celeste
                 return false;
             }
 
-            Create<Variable>(parent, token, typeof(Variable));
+            Create<Variable>(parent, token, CelesteStack.CurrentScope.GetLocalVariable(token).GetType());
 
             return true;
         }

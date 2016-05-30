@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CelesteUnitTest.cs" />
+    <Compile Include="TestKeywords\TestFunctionKeyword.cs" />
     <Compile Include="TestKeywords\TestGlobalKeyword.cs" />
     <Compile Include="TestKeywords\TestNullKeyword.cs" />
     <Compile Include="TestKeywords\TestScopedKeyword.cs" />
@@ -74,6 +75,12 @@
     <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestScripts\Keywords\Function\TestFunctionSimpleExecution.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionParsing.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Global\TestGlobalParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
