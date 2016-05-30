@@ -112,6 +112,12 @@
     <None Include="TestScripts\Operators\Equality\TestEqualityOperator.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestScripts\Operators\Subtract\TestSubtractOperatorTables.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Subtract\TestSubtractOperatorLists.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Operators\Subtract\TestSubtractOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

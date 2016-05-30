@@ -9,33 +9,6 @@ namespace Celeste
     /// </summary>
     internal class AddOperator : BinaryOperator
     {
-        private class Comparer<T> : IEqualityComparer<KeyValuePair<object, object>>
-        {
-            public bool Equals(KeyValuePair<object, object> x, KeyValuePair<object, object> y)
-            {
-                return ((T)x.Key).Equals((T)y.Key);
-            }
-
-            public int GetHashCode(KeyValuePair<object, object> obj)
-            {
-                int val = ((T)obj.Key).GetHashCode();
-                return val;
-            }
-        }
-
-        private class StringComparer : IEqualityComparer<object>
-        {
-            public new bool Equals(object x, object y)
-            {
-                return (string)x == (string)y;
-            }
-
-            public int GetHashCode(object obj)
-            {
-                return obj.GetHashCode();
-            }
-        }
-
         #region Virtual Functions
 
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
@@ -149,7 +122,7 @@ namespace Celeste
                     if (rhsTable.Keys.Count(x => x is float) == rhsTable.Keys.Count)
                     {
                         // We now go through and see if any keys overlap in the two tables
-                        if (lhsTable.Intersect(rhsTable, new Comparer<float>()).Count() == 0)
+                        if (lhsTable.Intersect(rhsTable, new TableKeyComparer()).Count() == 0)
                         {
                             foreach (KeyValuePair<object, object> pair in rhsTable)
                             {
@@ -173,7 +146,7 @@ namespace Celeste
                     if (rhsTable.Keys.Count(x => x is string) == rhsTable.Keys.Count)
                     {
                         // We now go through and see if any keys overlap in the two tables
-                        if (lhsTable.Intersect(rhsTable, new Comparer<string>()).Count() == 0)
+                        if (lhsTable.Intersect(rhsTable, new TableKeyComparer()).Count() == 0)
                         {
                             foreach (KeyValuePair<object, object> pair in rhsTable)
                             {

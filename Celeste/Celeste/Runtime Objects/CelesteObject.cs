@@ -100,7 +100,7 @@ namespace Celeste
         /// <returns></returns>
         public bool IsNumber()
         {
-            return Value is int || Value is float;
+            return Value.IsNumber();
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Celeste
         /// <returns></returns>
         public bool IsBool()
         {
-            return Value is bool;
+            return Value.IsBool();
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Celeste
         /// <returns></returns>
         public bool IsString()
         {
-            return Value is char || Value is string;
+            return Value.IsString();
         }
 
         /// <summary>

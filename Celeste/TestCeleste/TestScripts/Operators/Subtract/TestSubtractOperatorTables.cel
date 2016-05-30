@@ -1,0 +1,5 @@
+{ 1 = true 2 = false } - [ 2 ]
+{ "key" = "value" "secondKey" = "secondValue" } - [ "secondKey" ]
+
+scoped subtractTable = { 1 = true 2 = false } - [ 2 ]
+scoped subtractTable2 = { "key" = "value" "secondKey" = "secondValue" } - [ "secondKey" ]

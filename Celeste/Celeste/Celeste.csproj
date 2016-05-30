@@ -66,6 +66,9 @@
     <Compile Include="Compilation Objects\Values\Table.cs" />
     <Compile Include="Compilation Objects\Values\Value.cs" />
     <Compile Include="Compilation Objects\Values\Variable.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Extensions\ObjectComparer.cs" />
+    <Compile Include="Extensions\TableKeyComparer.cs" />
     <Compile Include="Runtime Objects\CelesteObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CelesteScript.cs" />

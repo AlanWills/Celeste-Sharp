@@ -1,0 +1,3 @@
+[ 5 "Test" true 10 "List Adding" false ] - [ 10 "List Adding" false ]
+
+scoped subtractedList = [ 5 "Test" true 10 "List Adding" false ] - [ 10 "List Adding" false ]
