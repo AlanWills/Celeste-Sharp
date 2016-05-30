@@ -1,0 +1,7 @@
+scoped firstVariable = 5
+scoped secondVariable = firstVariable
+secondVariable = 10
+
+scoped firstList = [ 5 ]
+scoped secondList = firstList
+secondList = [ 10 ]

@@ -93,6 +93,9 @@
     <None Include="TestScripts\Keywords\Scoped\TestScopedParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestScripts\Operators\Add\TestAddOperatorLists.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Operators\Equality\TestEqualityOperatorReassignment.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -112,6 +115,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Add\TestAddOperatorStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\TestReferencingScopedVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\TestEmptyScript.cel">

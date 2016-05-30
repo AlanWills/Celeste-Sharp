@@ -1,5 +1,6 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace TestCeleste
 {
@@ -30,6 +31,17 @@ namespace TestCeleste
             Assert.AreEqual("Test Change", celesteObject.Value);
         }
 
-        // Do unit tests with different local variables referencing each other
+        [TestMethod]
+        public void TestReferencingScopedVariables()
+        {
+            CelesteScript script = new CelesteScript("TestScripts\\TestReferencingScopedVariables.cel");
+            script.Run();
+
+            CelesteTestUtils.CheckLocalVariable(script, "firstVariable", 10.0f);
+            CelesteTestUtils.CheckLocalVariable(script, "secondVariable", 10.0f);
+
+            CelesteTestUtils.CheckLocalVariableList(script, "firstList", new List<object>() { 10.0f });
+            CelesteTestUtils.CheckLocalVariableList(script, "secondList", new List<object>() { 10.0f });
+        }
     }
 }

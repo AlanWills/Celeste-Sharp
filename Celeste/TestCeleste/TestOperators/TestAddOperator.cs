@@ -1,5 +1,6 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace TestCeleste
 {
@@ -25,6 +26,28 @@ namespace TestCeleste
 
             CelesteTestUtils.CheckStackSize(1);
             CelesteTestUtils.CheckStackResult("testadding");
+        }
+
+        [TestMethod]
+        public void TestAddOperatorAddLists()
+        {
+            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Add\\TestAddOperatorLists.cel");
+            script.Run();
+
+            CelesteTestUtils.CheckStackSize(0);
+
+            List<object> expected = new List<object>()
+            {
+                5.0f,
+                "Test",
+                true,
+                10.0f,
+                "List Adding",
+                false
+            };
+
+            CelesteTestUtils.CheckStackResultList(expected);
+            CelesteTestUtils.CheckLocalVariableList(script, "addedList", expected);
         }
     }
 }

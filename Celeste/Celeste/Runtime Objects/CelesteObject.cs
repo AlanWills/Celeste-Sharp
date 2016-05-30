@@ -143,6 +143,15 @@ namespace Celeste
             return Value is Dictionary<object, object>;
         }
 
+        /// <summary>
+        /// Sets this object's reference to be the same as the inputted object so they both reference the same object in memory
+        /// </summary>
+        /// <param name="celObject"></param>
+        public void SetReference(CelesteObject celObject)
+        {
+            ValueImpl = celObject.ValueImpl;
+        }
+
         #endregion
     }
 }

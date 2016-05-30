@@ -3,7 +3,7 @@
 namespace Celeste
 {
     /// <summary>
-    /// The equality operator - assigns a value to variable
+    /// The equality operator - assigns the reference to a value from one variable to another so they both reference the same value
     /// </summary>
     internal class EqualityOperator : BinaryOperator
     {

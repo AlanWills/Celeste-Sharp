@@ -39,7 +39,7 @@ namespace Celeste
             {
                 CompiledStatement rootStatement = CelesteCompiler.CompileScript(File.OpenText(Directory.GetCurrentDirectory() + "\\" + ScriptPath));
                 rootStatement.PerformOperation();
-
+                
                 CelesteStack.Scopes.Remove(CelesteStack.CurrentScope);
                 CelesteStack.CurrentScope = CelesteStack.GlobalScope;
             }

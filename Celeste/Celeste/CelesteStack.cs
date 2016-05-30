@@ -54,10 +54,19 @@ namespace Celeste
         /// <summary>
         /// Pushes a reference object onto the stacl
         /// </summary>
-        /// <param name="value"></param>
-        public static void Push(Reference value)
+        /// <param name="reference"></param>
+        public static void Push(Reference reference)
         {
-            CelStack.Push(new CelesteObject(value));
+            CelStack.Push(new CelesteObject(reference));
+        }
+
+        /// <summary>
+        /// Pushes an already created Celeste object onto the stack
+        /// </summary>
+        /// <param name="celObject"></param>
+        public static void Push(CelesteObject celObject)
+        {
+            CelStack.Push(celObject);
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Celeste
 {
@@ -31,6 +32,14 @@ namespace Celeste
             else if (lhs.IsString() && rhs.IsString())
             {
                 CelesteStack.Push(lhs.As<string>() + rhs.As<string>());
+            }
+            else if (lhs.IsList() && rhs.IsList())
+            {
+                lhs.AsList().AddRange(rhs.AsList());
+            }
+            else if (lhs.IsTable() && rhs.IsTable())
+            {
+
             }
             else
             {
