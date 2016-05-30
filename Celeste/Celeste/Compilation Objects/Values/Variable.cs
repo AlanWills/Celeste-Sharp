@@ -46,5 +46,10 @@ namespace Celeste
         {
             return (T)((_Value as Reference).Value as Reference).Value;
         }
+
+        public void SetReferencedValue(object newValue)
+        {
+            ((_Value as Reference).Value as Reference).Value = newValue;
+        }
     }
 }

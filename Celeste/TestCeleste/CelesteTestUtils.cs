@@ -22,7 +22,7 @@ namespace TestCeleste
         {
             CelesteObject actual = CelesteStack.Pop();
             Assert.IsTrue(actual.IsList());
-            TestListHelperFunctions.CheckOrderedListsEqual(expected, actual.AsList());
+            TestHelperFunctions.CheckOrderedListsEqual(expected, actual.AsList());
         }
 
         public static void CheckLocalVariable(CelesteScript script, string variableName, object expected)
@@ -34,7 +34,7 @@ namespace TestCeleste
         public static void CheckLocalVariableList(CelesteScript script, string variableName, List<object> expected)
         {
             Assert.IsTrue(script.ScriptScope.VariableExists(variableName));
-            TestListHelperFunctions.CheckOrderedListsEqual(expected, script.ScriptScope.GetLocalVariable(variableName).GetReferencedValue<List<object>>());
+            TestHelperFunctions.CheckOrderedListsEqual(expected, script.ScriptScope.GetLocalVariable(variableName).GetReferencedValue<List<object>>());
         }
 
         public static void CheckGlobalVariable(string variableName, object expected)

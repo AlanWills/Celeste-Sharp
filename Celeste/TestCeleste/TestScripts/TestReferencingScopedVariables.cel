@@ -5,3 +5,7 @@ firstVariable = 10
 scoped firstList = [ 5 ]
 scoped secondList = firstList
 firstList = [ 10 ]
+
+scoped firstTable = { "key" = true }
+scoped secondTable = firstTable
+firstTable = { "key" = false }

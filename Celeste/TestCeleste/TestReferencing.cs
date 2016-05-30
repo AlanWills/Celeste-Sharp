@@ -37,11 +37,38 @@ namespace TestCeleste
             CelesteScript script = new CelesteScript("TestScripts\\TestReferencingScopedVariables.cel");
             script.Run();
 
-            CelesteTestUtils.CheckLocalVariable(script, "firstVariable", 10.0f);
-            CelesteTestUtils.CheckLocalVariable(script, "secondVariable", 10.0f);
+            float expected = 10.0f;
+            CelesteTestUtils.CheckLocalVariable(script, "firstVariable", expected);
+            CelesteTestUtils.CheckLocalVariable(script, "secondVariable", expected);
 
-            CelesteTestUtils.CheckLocalVariableList(script, "firstList", new List<object>() { 10.0f });
-            CelesteTestUtils.CheckLocalVariableList(script, "secondList", new List<object>() { 10.0f });
+            expected = 5.0f;
+            script.ScriptScope.GetLocalVariable("firstVariable").SetReferencedValue(expected);
+            CelesteTestUtils.CheckLocalVariable(script, "firstVariable", expected);
+            CelesteTestUtils.CheckLocalVariable(script, "secondVariable", expected);
+
+            List<object> expectedList = new List<object>() { 10.0f };
+            CelesteTestUtils.CheckLocalVariableList(script, "firstList", expectedList);
+            CelesteTestUtils.CheckLocalVariableList(script, "secondList", expectedList);
+
+            expectedList.Add(20.0f);
+            script.ScriptScope.GetLocalVariable("firstList").SetReferencedValue(expectedList);
+            CelesteTestUtils.CheckLocalVariableList(script, "firstList", expectedList);
+            CelesteTestUtils.CheckLocalVariableList(script, "secondList", expectedList);
+
+            Dictionary<object, object> expectedTable = new Dictionary<object, object> { { "key", false } };
+            Assert.IsTrue(script.ScriptScope.VariableExists("firstTable"));
+            Assert.IsTrue(script.ScriptScope.VariableExists("secondTable"));
+
+            Variable first = script.ScriptScope.GetLocalVariable("firstTable");
+            Dictionary<object, object> firstTable = first.GetReferencedValue<Dictionary<object, object>>();
+            Dictionary<object, object> secondTable = script.ScriptScope.GetLocalVariable("secondTable").GetReferencedValue<Dictionary<object, object>>();
+            Assert.AreEqual(firstTable, secondTable);
+            Assert.AreEqual(false, firstTable["key"]);
+
+            firstTable.Add(10.0f, "value");
+            Assert.AreEqual(firstTable, secondTable);
+            Assert.AreEqual(false, firstTable["key"]);
+            Assert.AreEqual("value", firstTable[10.0f]);
         }
     }
 }

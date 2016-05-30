@@ -89,7 +89,7 @@ namespace TestCeleste
                     true
                 };
 
-                TestListHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
+                TestHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
             }
             {
                 Assert.IsTrue(script.ScriptScope.VariableExists("secondList"));
@@ -101,7 +101,7 @@ namespace TestCeleste
                     5.0f
                 };
 
-                TestListHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
+                TestHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
             }
             {
                 Assert.IsTrue(script.ScriptScope.VariableExists("thirdList"));
@@ -113,7 +113,7 @@ namespace TestCeleste
                     "Test"
                 };
 
-                TestListHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
+                TestHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
             }
             {
                 Assert.IsTrue(script.ScriptScope.VariableExists("fourthList"));
@@ -125,7 +125,7 @@ namespace TestCeleste
                     true
                 };
 
-                TestListHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
+                TestHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
             }
             {
                 Assert.IsTrue(script.ScriptScope.VariableExists("fifthList"));
@@ -138,7 +138,7 @@ namespace TestCeleste
                 };
 
                 List<object> actualList = variable.GetReferencedValue<List<object>>()[0] as List<object>;
-                TestListHelperFunctions.CheckOrderedListsEqual(expected, actualList);
+                TestHelperFunctions.CheckOrderedListsEqual(expected, actualList);
             }
         }
     }

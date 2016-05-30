@@ -160,7 +160,7 @@ namespace TestCeleste
             Assert.AreEqual('[', CelesteObjectChar.As<char>());
             Assert.AreEqual("[", CelesteObjectChar.As<string>());
             Assert.AreEqual("Test", CelesteObjectString.As<string>());
-            TestListHelperFunctions.CheckOrderedListsEqual(new List<string>() { "1", "2" }, CelesteObjectStringList.As<List<string>>());
+            TestHelperFunctions.CheckOrderedListsEqual(new List<string>() { "1", "2" }, CelesteObjectStringList.As<List<string>>());
 
             List<CelesteObject> objects = new List<CelesteObject>()
             {
@@ -169,7 +169,7 @@ namespace TestCeleste
                 CelesteObjectString,
                 CelesteObjectStringList,
             };
-            TestListHelperFunctions.CheckOrderedListsEqual(objects, CelesteObjectCelesteObjectList.As<List<CelesteObject>>());
+            TestHelperFunctions.CheckOrderedListsEqual(objects, CelesteObjectCelesteObjectList.As<List<CelesteObject>>());
         }
     }
 }
