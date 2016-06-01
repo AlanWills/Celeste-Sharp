@@ -42,5 +42,77 @@ namespace Celeste
         }
 
         #endregion
+
+        #region Utility Functions
+
+        /// <summary>
+        /// If our first child is a binary operator, we swap it with this binary operator.
+        /// This has the effect of evaluating this before the child operator.
+        /// Useful when you wish to evaluate this operator before an assignment operator for example.
+        /// </summary>
+        protected void SwapWithChildBinaryOperator(CompiledStatement parent)
+        {
+            Debug.Assert(ChildCount > 0);
+            Debug.Assert(ChildCompiledStatements[0] is AssignmentOperator);
+
+            CompiledStatement child = ChildCompiledStatements[0];
+
+            // We start with:
+            //
+            //              parent
+            //             /    
+            //          this      
+            //         /    \
+            //      child    C
+            //     /     \
+            //    A       B
+
+            MoveChildAtIndex(0, parent);
+            // Move the child to the parent - we now have:
+            //
+            //         parent
+            //        /    \
+            //     this      child
+            //    /         /     \
+            //   C         A       B
+
+            Debug.Assert(parent.ChildCompiledStatements[parent.ChildCount - 2] == this);
+            parent.MoveChildAtIndex(parent.ChildCount - 2, child);
+            // Move this to be underneath the child operator - we now have:
+            //
+            //         parent
+            //             \
+            //              child
+            //             /  |   \
+            //            A   B    this
+            //                         \
+            //                           C
+
+            Debug.Assert(child.ChildCount == 3);
+            child.MoveChildAtIndex(1, this);
+            // Move the B to under this - we now have:
+            //
+            //         parent
+            //             \
+            //              child
+            //             /     \
+            //            A       this
+            //                   /    \
+            //                  C      B
+
+            Debug.Assert(ChildCount == 2);
+            MoveChildAtIndex(0, this);
+            // Extract and then reinsert C into this - this swaps C and B to give:
+            //
+            //         parent
+            //             \
+            //              child
+            //             /     \
+            //            A       this
+            //                   /    \
+            //                  B      C
+        }
+
+        #endregion
     }
 }

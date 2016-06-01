@@ -9,13 +9,11 @@ namespace TestCeleste
         [TestMethod]
         public void TestMultiplyOperatorAddNumbers()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Multiply\\TestMultiplyOperatorNumbers.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Operators\\Multiply\\TestMultiplyOperatorNumbers.cel");
 
-            CelesteTestUtils.CheckStackSize(3);
-            CelesteTestUtils.CheckStackResult(0);
-            CelesteTestUtils.CheckStackResult(2.0);
-            CelesteTestUtils.CheckStackResult(20.0);
+            script.CheckLocalVariable("intMultiply", 20.0f);
+            script.CheckLocalVariable("multiMultiply", 2.0f);
+            script.CheckLocalVariable("zeroMultiply", 0.0f);
         }
     }
 }

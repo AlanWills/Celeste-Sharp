@@ -9,33 +9,27 @@ namespace TestCeleste
         [TestMethod]
         public void TestFunctionKeywordParsing()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Keywords\\Function\\TestFunctionParsing.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Function\\TestFunctionParsing.cel");
 
-            Assert.AreEqual(0, CelesteStack.StackSize);
             Assert.IsTrue(script.ScriptScope.VariableExists("testFunction()"));
         }
 
         [TestMethod]
         public void TestFunctionKeywordSimpleExecution()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Keywords\\Function\\TestFunctionSimpleExecution.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Function\\TestFunctionSimpleExecution.cel");
 
-            Assert.AreEqual(0, CelesteStack.StackSize);
             Assert.IsTrue(script.ScriptScope.VariableExists("testFunction()"));
-            CelesteTestUtils.CheckLocalVariable(script, "functionResult", "Same variable name outside of function scope");
+            script.CheckLocalVariable("functionResult", "Same variable name outside of function scope");
         }
 
         [TestMethod]
         public void TestFunctionKeywordVariableScoping()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Keywords\\Function\\TestFunctionVariableScoping.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Function\\TestFunctionVariableScoping.cel");
 
-            Assert.AreEqual(0, CelesteStack.StackSize);
             Assert.IsTrue(script.ScriptScope.VariableExists("testFunction()"));
-            CelesteTestUtils.CheckLocalVariable(script, "functionResult", 5.0f);
+            script.CheckLocalVariable("functionResult", 5.0f);
         }
     }
 }

@@ -72,7 +72,7 @@ namespace Celeste
                     else if (!gotEquality)
                     {
                         // The statement we created after our key MUST be the equality operator
-                        Debug.Assert(compiledStatement is EqualityOperator, "Equality expected after key");
+                        Debug.Assert(compiledStatement is AssignmentOperator, "Equality expected after key");
                         gotEquality = true;
                         gotValue = compiledStatement.ChildCount == 2;
                     }
@@ -83,9 +83,9 @@ namespace Celeste
                         // We insert the key and value into our dictionary, discard the equals statement and adjust our flags
                         Debug.Assert(parent.ChildCount >= 2);
                         Debug.Assert(parent.ChildCompiledStatements[parent.ChildCount - 1].ChildCount == 2);
-                        Debug.Assert(parent.ChildCompiledStatements[parent.ChildCount - 1] is EqualityOperator);
+                        Debug.Assert(parent.ChildCompiledStatements[parent.ChildCount - 1] is AssignmentOperator);
 
-                        EqualityOperator equals = parent.ChildCompiledStatements[parent.ChildCount - 1] as EqualityOperator;
+                        AssignmentOperator equals = parent.ChildCompiledStatements[parent.ChildCount - 1] as AssignmentOperator;
                         Debug.Assert(equals.ChildCompiledStatements[0] is Value);
                         Debug.Assert(equals.ChildCompiledStatements[1] is Value);
 

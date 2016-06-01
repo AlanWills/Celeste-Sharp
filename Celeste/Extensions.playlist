@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="Celeste.TestExtensions.TestExtensionsValueEquals" /><Add Test="Celeste.TestExtensions.TestExtensionsIsNumber" /><Add Test="Celeste.TestExtensions.TestExtensionsIsString" /><Add Test="Celeste.TestExtensions.TestExtensionsIsBool" /></Playlist>

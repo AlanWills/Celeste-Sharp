@@ -52,6 +52,7 @@
     <Compile Include="Compilation Objects\CompiledStatement.cs" />
     <Compile Include="Compilation Objects\Operators\BinaryOperator.cs" />
     <Compile Include="Compilation Objects\Operators\DivideOperator.cs" />
+    <Compile Include="Compilation Objects\Operators\AssignmentOperator.cs" />
     <Compile Include="Compilation Objects\Operators\EqualityOperator.cs" />
     <Compile Include="Compilation Objects\Operators\MultiplyOperator.cs" />
     <Compile Include="Compilation Objects\Operators\SubtractOperator.cs" />

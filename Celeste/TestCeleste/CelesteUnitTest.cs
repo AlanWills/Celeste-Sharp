@@ -1,5 +1,7 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using UnitTestGameFramework;
 
 namespace TestCeleste
 {
@@ -48,7 +50,7 @@ namespace TestCeleste
         [TestInitialize()]
         public void MyTestInitialize()
         {
-            CelesteTestUtils.CheckStackSize(0);
+            CheckStackSize(0);
             Assert.IsTrue(CelesteStack.Scopes.Count == 1);
             Assert.IsTrue(CelesteStack.CurrentScope == CelesteStack.GlobalScope);
 
@@ -63,7 +65,7 @@ namespace TestCeleste
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            CelesteTestUtils.CheckStackSize(0);
+            CheckStackSize(0);
             Assert.IsTrue(CelesteStack.Scopes.Count == 1);
             Assert.IsTrue(CelesteStack.CurrentScope == CelesteStack.GlobalScope);
 
@@ -74,5 +76,48 @@ namespace TestCeleste
         }
 
         #endregion
+
+        #region Utility Functions
+
+        /// <summary>
+        /// Runs an returns the script at the inputted file path
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        protected CelesteScript RunScript(string filePath)
+        {
+            CelesteScript script = new CelesteScript(filePath);
+            script.Run();
+
+            return script;
+        }
+
+        private void CheckStackSize(int expected)
+        {
+            Assert.AreEqual(expected, CelesteStack.StackSize);
+        }
+
+        protected void CheckGlobalVariable(string variableName, object expected)
+        {
+            Assert.IsTrue(CelesteStack.GlobalScope.VariableExists(variableName));
+            Assert.AreEqual(expected, CelesteStack.GlobalScope.GetLocalVariable(variableName).GetReferencedValue<object>());
+        }
+
+        #endregion
+    }
+
+    public static class TestExtensions
+    {
+        internal static void CheckLocalVariable(this CelesteScript script, string variableName, object expected)
+        {
+            Assert.IsTrue(script.ScriptScope.VariableExists(variableName));
+            Assert.AreEqual(expected, script.ScriptScope.GetLocalVariable(variableName).GetReferencedValue<object>());
+        }
+
+        internal static void CheckLocalVariableList(this CelesteScript script, string variableName, List<object> expected)
+        {
+            Assert.IsTrue(script.ScriptScope.VariableExists(variableName));
+            TestHelperFunctions.CheckOrderedListsEqual(expected, script.ScriptScope.GetLocalVariable(variableName).GetReferencedValue<List<object>>());
+        }
     }
 }

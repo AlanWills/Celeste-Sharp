@@ -33,7 +33,8 @@ namespace Celeste
             { "-", typeof(SubtractOperator) },
             { "*", typeof(MultiplyOperator) },
             { "/", typeof(DivideOperator) },
-            { "=", typeof(EqualityOperator) },
+            { "=", typeof(AssignmentOperator) },
+            { "==", typeof(EqualityOperator) }
         };
 
         /// <summary>

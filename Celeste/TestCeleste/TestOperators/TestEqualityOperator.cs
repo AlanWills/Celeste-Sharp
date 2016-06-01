@@ -1,30 +1,31 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestCeleste.TestOperators
+namespace TestCeleste
 {
     [TestClass]
     public class TestEqualityOperator : CelesteUnitTest
     {
         [TestMethod]
-        public void TestEqualityOperatorInitialAssignment()
+        public void TestEqualityOperatorEquateNumbers()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Equality\\TestEqualityOperator.cel");
-            script.Run();
-            
-            CelesteTestUtils.CheckStackSize(0);
-            CelesteTestUtils.CheckLocalVariable(script, "number", 5.0f);
-            CelesteTestUtils.CheckLocalVariable(script, "string", "Test");
+            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateNumbers.cel");
+
+            script.CheckLocalVariable("floatEquality", true);
+            script.CheckLocalVariable("intEquality", true);
+            script.CheckLocalVariable("intInequality", false);
+            script.CheckLocalVariable("floatInequality", false);
         }
 
         [TestMethod]
-        public void TestEqualityOperatorReassignment()
+        public void TestEqualityOperatorEquateStrings()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorReassignment.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateStrings.cel");
 
-            CelesteTestUtils.CheckStackSize(0);
-            CelesteTestUtils.CheckLocalVariable(script, "number", "Test");
+            script.CheckLocalVariable("stringEquality", true);
+            script.CheckLocalVariable("stringInequality", false);
+            script.CheckLocalVariable("emptyInequality", false);
+            script.CheckLocalVariable("emptyEquality", true);
         }
     }
 }

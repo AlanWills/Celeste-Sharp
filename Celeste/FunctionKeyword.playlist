@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="TestCeleste.TestFunctionKeyword.TestFunctionKeywordSimpleExecution" /><Add Test="TestCeleste.TestFunctionKeyword.TestFunctionKeywordParsing" /><Add Test="TestCeleste.TestFunctionKeyword.TestFunctionKeywordVariableScoping" /></Playlist>

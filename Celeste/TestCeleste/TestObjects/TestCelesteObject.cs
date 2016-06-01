@@ -113,7 +113,7 @@ namespace TestCeleste
         {
             Assert.IsFalse(CelesteObjectNumber.IsString());
             Assert.IsFalse(CelesteObjectBool.IsString());
-            Assert.IsTrue(CelesteObjectChar.IsString());
+            Assert.IsFalse(CelesteObjectChar.IsString());
             Assert.IsTrue(CelesteObjectString.IsString());
             Assert.IsFalse(CelesteObjectStringList.IsString());
             Assert.IsFalse(CelesteObjectCelesteObjectList.IsString());

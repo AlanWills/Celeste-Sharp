@@ -9,11 +9,9 @@ namespace TestCeleste
         [TestMethod]
         public void TestGlobalKeywordParsing()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Keywords\\Global\\TestGlobalParsing.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Global\\TestGlobalParsing.cel");
 
-            Assert.AreEqual(0, CelesteStack.StackSize);
-            CelesteTestUtils.CheckGlobalVariable("variable", null);
+            CheckGlobalVariable("variable", null);
         }
     }
 }

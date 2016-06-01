@@ -1,2 +1,4 @@
-true
-false
+scoped trueObject = true
+scoped falseObject = false
+scoped true = true
+scoped false = false

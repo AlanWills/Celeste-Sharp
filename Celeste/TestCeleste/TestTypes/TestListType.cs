@@ -11,125 +11,53 @@ namespace TestCeleste
         [TestMethod]
         public void TestListTypeParsing()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Types\\List\\TestListParsing.cel");
-            script.Run();
-
-            Assert.AreEqual(5, CelesteStack.StackSize);
+            CelesteScript script = RunScript("TestScripts\\Types\\List\\TestListParsing.cel");
 
             {
-                CelesteObject celObject = CelesteStack.Pop();
-                Assert.IsTrue(celObject.IsList());
-
-                List<object> list = celObject.AsList();
-                Assert.AreEqual(1, list.Count);
-
-                List<object> embeddedList = (List<object>)list[0];
-                Assert.AreEqual(3, embeddedList.Count);
-                Assert.AreEqual(5.0f, (float)embeddedList[0]);
-                Assert.AreEqual("Test", (string)embeddedList[1]);
-                Assert.AreEqual(true, (bool)embeddedList[2]);
-            }
-            {
-                CelesteObject celObject = CelesteStack.Pop();
-                Assert.IsTrue(celObject.IsList());
-
-                List<object> list = celObject.AsList();
-                Assert.AreEqual(3, list.Count);
-                Assert.AreEqual(true, (bool)list[0]);
-                Assert.AreEqual(true, (bool)list[1]);
-                Assert.AreEqual(true, (bool)list[2]);
-            }
-            {
-                CelesteObject celObject = CelesteStack.Pop();
-                Assert.IsTrue(celObject.IsList());
-
-                List<object> list = celObject.AsList();
-                Assert.AreEqual(3, list.Count);
-                Assert.AreEqual("Test", list[0]);
-                Assert.AreEqual("Test", list[1]);
-                Assert.AreEqual("Test", list[2]);
-            }
-            {
-                CelesteObject celObject = CelesteStack.Pop();
-                Assert.IsTrue(celObject.IsList());
-
-                List<object> list = celObject.AsList();
-                Assert.AreEqual(3, list.Count);
-                Assert.AreEqual(5.0f, list[0]);
-                Assert.AreEqual(5.0f, list[1]);
-                Assert.AreEqual(5.0f, list[2]);
-            }
-            {
-                CelesteObject celObject = CelesteStack.Pop();
-                Assert.IsTrue(celObject.IsList());
-
-                List<object> list = celObject.AsList();
-                Assert.AreEqual(3, list.Count);
-                Assert.AreEqual(5.0f, (float)list[0]);
-                Assert.AreEqual("Test", (string)list[1]);
-                Assert.AreEqual(true, (bool)list[2]);
-            }
-        }
-
-        [TestMethod]
-        public void TestListTypeAssignment()
-        {
-            CelesteScript script = new CelesteScript("TestScripts\\Types\\List\\TestListAssignment.cel");
-            script.Run();
-
-            CelesteTestUtils.CheckStackSize(0);
-
-            {
-                Assert.IsTrue(script.ScriptScope.VariableExists("firstList"));
-                Variable variable = script.ScriptScope.GetLocalVariable("firstList");
                 List<object> expected = new List<object>()
                 {
                     5.0f,
                     "Test",
-                    true
+                    true,
                 };
 
-                TestHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
+                script.CheckLocalVariableList("oneLineList", expected);
             }
             {
-                Assert.IsTrue(script.ScriptScope.VariableExists("secondList"));
-                Variable variable = script.ScriptScope.GetLocalVariable("secondList");
                 List<object> expected = new List<object>()
                 {
                     5.0f,
                     5.0f,
-                    5.0f
+                    5.0f,
                 };
 
-                TestHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
+                script.CheckLocalVariableList("multiLineList", expected);
             }
             {
-                Assert.IsTrue(script.ScriptScope.VariableExists("thirdList"));
-                Variable variable = script.ScriptScope.GetLocalVariable("thirdList");
                 List<object> expected = new List<object>()
                 {
                     "Test",
                     "Test",
-                    "Test"
+                    "Test",
                 };
 
-                TestHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
+                script.CheckLocalVariableList("strangeFormatList", expected);
             }
             {
-                Assert.IsTrue(script.ScriptScope.VariableExists("fourthList"));
-                Variable variable = script.ScriptScope.GetLocalVariable("fourthList");
                 List<object> expected = new List<object>()
                 {
                     true,
                     true,
-                    true
+                    true,
                 };
 
-                TestHelperFunctions.CheckOrderedListsEqual(expected, variable.GetReferencedValue<List<object>>());
+                script.CheckLocalVariableList("strangeFormatList2", expected);
             }
             {
-                Assert.IsTrue(script.ScriptScope.VariableExists("fifthList"));
-                Variable variable = script.ScriptScope.GetLocalVariable("fifthList");
+                Assert.IsTrue(script.ScriptScope.VariableExists("indentedList"));
+                List<object> indentedList = script.ScriptScope.GetLocalVariable("indentedList").GetReferencedValue<List<object>>();
+                Assert.AreEqual(1, indentedList.Count);
+
                 List<object> expected = new List<object>()
                 {
                     5.0f,
@@ -137,8 +65,8 @@ namespace TestCeleste
                     true
                 };
 
-                List<object> actualList = variable.GetReferencedValue<List<object>>()[0] as List<object>;
-                TestHelperFunctions.CheckOrderedListsEqual(expected, actualList);
+                List<object> embeddedList = (List<object>)indentedList[0];
+                Assert.IsTrue(TestHelperFunctions.CheckOrderedListsEqual(expected, embeddedList));
             }
         }
     }

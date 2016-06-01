@@ -9,13 +9,11 @@ namespace TestCeleste
         [TestMethod]
         public void TestDivideOperatorAddNumbers()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Divide\\TestDivideOperatorNumbers.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Operators\\Divide\\TestDivideOperatorNumbers.cel");
 
-            CelesteTestUtils.CheckStackSize(3);
-            CelesteTestUtils.CheckStackResult(1.0f);
-            CelesteTestUtils.CheckStackResult(0.2f);
-            CelesteTestUtils.CheckStackResult(5.0f);
+            script.CheckLocalVariable("intDivide", 5.0f);
+            script.CheckLocalVariable("floatDivide", 0.2f);
+            script.CheckLocalVariable("multiDivide", 1.0f);
         }
     }
 }

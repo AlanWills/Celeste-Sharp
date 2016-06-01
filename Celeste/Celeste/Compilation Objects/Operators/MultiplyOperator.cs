@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Celeste
 {
@@ -8,6 +9,23 @@ namespace Celeste
     internal class MultiplyOperator : BinaryOperator
     {
         #region Virtual Functions
+
+        /// <summary>
+        /// Multiplication should take precendence over assignment
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="token"></param>
+        /// <param name="tokens"></param>
+        /// <param name="lines"></param>
+        public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
+        {
+            base.Compile(parent, token, tokens, lines);
+
+            if (ChildCompiledStatements[0] is AssignmentOperator)
+            {
+                SwapWithChildBinaryOperator(parent);
+            }
+        }
 
         /// <summary>
         /// Removes the two objects at the top of the stack and multiplies them together.

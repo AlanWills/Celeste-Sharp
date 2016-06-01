@@ -15,66 +15,11 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
-            // If we have a child equality operator (it can only be in the first position, we swap it with this operator - this should act first
+            // If we have a child assignment operator (it can only be in the first position, we swap it with this operator - this should act first
             // This means we have an expression of the form:    A = B + C
-            if (ChildCompiledStatements[0] is EqualityOperator)
+            if (ChildCompiledStatements[0] is AssignmentOperator)
             {
-                CompiledStatement equality = ChildCompiledStatements[0];
-
-                // We start with:
-                //
-                //              parent
-                //             /    
-                //          Add      
-                //         /    \
-                //      Equals   C
-                //     /      \
-                //    A        B
-
-                MoveChildAtIndex(0, parent);
-                // Move the equals to the parent - we now have:
-                //
-                //         parent
-                //        /    \
-                //     Add      Equals
-                //    /        /      \
-                //   C        A        B
-
-                Debug.Assert(parent.ChildCompiledStatements[parent.ChildCount - 2] == this);
-                parent.MoveChildAtIndex(parent.ChildCount - 2, equality);
-                // Move the add to the equality operator - we now have:
-                //
-                //         parent
-                //             \
-                //              Equals
-                //             /   |   \
-                //            A    B    Add
-                //                         \
-                //                          C
-
-                Debug.Assert(equality.ChildCount == 3);
-                equality.MoveChildAtIndex(1, this);
-                // Move the B to under this - we now have:
-                //
-                //         parent
-                //             \
-                //              Equals
-                //             /      \
-                //            A        Add
-                //                    /   \
-                //                   C     B
-
-                Debug.Assert(ChildCount == 2);
-                MoveChildAtIndex(0, this);
-                // Extract and then reinsert C into this - this swaps C and B to give:
-                //
-                //         parent
-                //             \
-                //              Equals
-                //             /      \
-                //            A        Add
-                //                    /   \
-                //                   B     C
+                SwapWithChildBinaryOperator(parent);
             }
         }
 

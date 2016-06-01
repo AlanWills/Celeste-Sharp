@@ -5,7 +5,7 @@ namespace Celeste
     /// <summary>
     /// Returns whether two elements from a table have the same key (either reference or value)
     /// </summary>
-    public class TableKeyComparer : IEqualityComparer<KeyValuePair<object, object>>
+    internal class TableKeyComparer : IEqualityComparer<KeyValuePair<object, object>>
     {
         public bool Equals(KeyValuePair<object, object> x, KeyValuePair<object, object> y)
         {

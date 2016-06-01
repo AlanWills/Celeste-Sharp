@@ -15,9 +15,9 @@ namespace Celeste
             // The previous statement that was compiled HAS to be the equality operator
             // The expression HAS to be of the form x = null
             // There can be no other valid syntax for this keyword
-            CompiledStatement equalityOperator = parent.ChildCompiledStatements.FindLast(x => x.GetType() == typeof(EqualityOperator));
+            CompiledStatement equalityOperator = parent.ChildCompiledStatements.FindLast(x => x.GetType() == typeof(AssignmentOperator));
             Debug.Assert(equalityOperator != null);
-            Debug.Assert(parent.ChildCompiledStatements.FindLastIndex(x => x.GetType() == typeof(EqualityOperator)) == parent.ChildCount - 1);
+            Debug.Assert(parent.ChildCompiledStatements.FindLastIndex(x => x.GetType() == typeof(AssignmentOperator)) == parent.ChildCount - 1);
 
             // Check that there are no other elements after our keyword
             Debug.Assert(tokens.Count == 0, "No other values should exist after keyword: " + token);

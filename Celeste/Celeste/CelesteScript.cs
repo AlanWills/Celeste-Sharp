@@ -40,8 +40,12 @@ namespace Celeste
                 CompiledStatement rootStatement = CelesteCompiler.CompileScript(File.OpenText(Directory.GetCurrentDirectory() + "\\" + ScriptPath));
                 rootStatement.PerformOperation();
                 
+                // Reset the current scope to the global scope
                 CelesteStack.Scopes.Remove(CelesteStack.CurrentScope);
                 CelesteStack.CurrentScope = CelesteStack.GlobalScope;
+
+                // Clear the stack - there should be no objects on the stack over different scripts
+                CelesteStack.Clear();
             }
             else
             {

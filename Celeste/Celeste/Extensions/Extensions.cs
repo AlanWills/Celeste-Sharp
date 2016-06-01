@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Celeste
+﻿namespace Celeste
 {
     /// <summary>
     /// A suite of extra extension functions which will come in handy
@@ -9,14 +7,19 @@ namespace Celeste
     {
         public static bool ValueEquals(this object obj, object otherObj)
         {
+            if (obj is string && otherObj is string)
+            {
+                return (string)obj == (string)otherObj;
+            }
+
             if (!obj.GetType().IsPrimitive || !otherObj.GetType().IsPrimitive)
             {
                 return false;
             }
 
-            if (obj is string && otherObj is string)
+            if (obj is char && otherObj is char)
             {
-                return (string)obj == (string)otherObj;
+                return (char)obj == (char)otherObj;
             }
 
             string s_result1 = obj.ToString(), s_result2 = otherObj.ToString();
@@ -44,7 +47,7 @@ namespace Celeste
 
         public static bool IsString(this object obj)
         {
-            return obj is string || obj is char;
+            return obj is string;
         }
 
         public static bool IsBool(this object obj)

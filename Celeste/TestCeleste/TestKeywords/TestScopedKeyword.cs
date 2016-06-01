@@ -9,11 +9,9 @@ namespace TestCeleste
         [TestMethod]
         public void TestScopedKeywordParsing()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Keywords\\Scoped\\TestScopedParsing.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Scoped\\TestScopedParsing.cel");
 
-            Assert.AreEqual(0, CelesteStack.StackSize);
-            CelesteTestUtils.CheckLocalVariable(script, "variable", null);
+            script.CheckLocalVariable("variable", null);
         }
     }
 }

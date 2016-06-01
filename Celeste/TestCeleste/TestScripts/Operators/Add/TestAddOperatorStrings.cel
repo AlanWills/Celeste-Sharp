@@ -1,1 +1,1 @@
-﻿"test" + "adding"
+﻿scoped stringAdding = "test" + "adding"

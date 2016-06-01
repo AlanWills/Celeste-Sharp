@@ -1,4 +1,6 @@
-10
-5
-               0
-			              -5
+scoped int = 10
+scoped anotherInt = 5
+scoped zero = 0
+scoped negative = -5
+scoped float = 10.0
+scoped negativeFloat = -5.0

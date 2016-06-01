@@ -1,6 +1,5 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 
 namespace TestCeleste
@@ -11,31 +10,24 @@ namespace TestCeleste
         [TestMethod]
         public void TestAddOperatorAddNumbers()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Add\\TestAddOperatorNumbers.cel");
-            script.Run();
-
-            CelesteTestUtils.CheckStackSize(2);
-            CelesteTestUtils.CheckStackResult(10.0f);
-            CelesteTestUtils.CheckStackResult(15.0f);
+            CelesteScript script = RunScript("TestScripts\\Operators\\Add\\TestAddOperatorNumbers.cel");
+            
+            script.CheckLocalVariable("addNumbers", 15.0f);
+            script.CheckLocalVariable("addMultipleNumbers", 10.0f);
         }
 
         [TestMethod]
         public void TestAddOperatorAddStrings()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Add\\TestAddOperatorStrings.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\Operators\\Add\\TestAddOperatorStrings.cel");
 
-            CelesteTestUtils.CheckStackSize(1);
-            CelesteTestUtils.CheckStackResult("testadding");
+            script.CheckLocalVariable("stringAdding", "testadding");
         }
 
         [TestMethod]
         public void TestAddOperatorAddLists()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Add\\TestAddOperatorLists.cel");
-            script.Run();
-
-            CelesteTestUtils.CheckStackSize(1);
+            CelesteScript script = RunScript("TestScripts\\Operators\\Add\\TestAddOperatorLists.cel");
 
             List<object> expected = new List<object>()
             {
@@ -47,17 +39,13 @@ namespace TestCeleste
                 false
             };
 
-            CelesteTestUtils.CheckStackResultList(expected);
-            CelesteTestUtils.CheckLocalVariableList(script, "addedList", expected);
+            script.CheckLocalVariableList("addedList", expected);
         }
 
         [TestMethod]
         public void TestAddOperatorAddTables()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\Operators\\Add\\TestAddOperatorTables.cel");
-            script.Run();
-
-            CelesteTestUtils.CheckStackSize(2);
+            CelesteScript script = RunScript("TestScripts\\Operators\\Add\\TestAddOperatorTables.cel");
 
             Dictionary<object, object> expected = new Dictionary<object, object>()
             {
@@ -65,15 +53,8 @@ namespace TestCeleste
                 { "secondKey", "secondValue" },
             };
 
-            CelesteObject celObject = CelesteStack.Pop();
-            Assert.IsTrue(celObject.IsTable());
-
-            Dictionary<object, object> actual = celObject.AsTable();
-            Assert.AreEqual(expected["key"], actual["key"]);
-            Assert.AreEqual(expected["secondKey"], actual["secondKey"]);
-
             Assert.IsTrue(script.ScriptScope.VariableExists("addTable2"));
-            actual = script.ScriptScope.GetLocalVariable("addTable2").GetReferencedValue<Dictionary<object, object>>();
+            Dictionary<object, object> actual = script.ScriptScope.GetLocalVariable("addTable2").GetReferencedValue<Dictionary<object, object>>();
             Assert.AreEqual(expected["key"], actual["key"]);
             Assert.AreEqual(expected["secondKey"], actual["secondKey"]);
 
@@ -84,13 +65,6 @@ namespace TestCeleste
                 { 1.0f, true },
                 { 2.0f, false },
             };
-
-            celObject = CelesteStack.Pop();
-            Assert.IsTrue(celObject.IsTable());
-
-            actual = celObject.AsTable();
-            Assert.AreEqual(expected[1.0f], actual[1.0f]);
-            Assert.AreEqual(expected[2.0f], actual[2.0f]);
 
             Assert.IsTrue(script.ScriptScope.VariableExists("addTable"));
             actual = script.ScriptScope.GetLocalVariable("addTable").GetReferencedValue<Dictionary<object, object>>();

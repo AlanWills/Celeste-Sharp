@@ -35,26 +35,25 @@ namespace TestCeleste
         [TestMethod]
         public void TestReferencingScopedVariables()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\TestReferencingScopedVariables.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\TestReferencingScopedVariables.cel");
 
             float expected = 10.0f;
-            CelesteTestUtils.CheckLocalVariable(script, "firstVariable", expected);
-            CelesteTestUtils.CheckLocalVariable(script, "secondVariable", expected);
+            script.CheckLocalVariable("firstVariable", expected);
+            script.CheckLocalVariable("secondVariable", expected);
 
             expected = 5.0f;
             script.ScriptScope.GetLocalVariable("firstVariable").SetReferencedValue(expected);
-            CelesteTestUtils.CheckLocalVariable(script, "firstVariable", expected);
-            CelesteTestUtils.CheckLocalVariable(script, "secondVariable", expected);
+            script.CheckLocalVariable("firstVariable", expected);
+            script.CheckLocalVariable("secondVariable", expected);
 
             List<object> expectedList = new List<object>() { 10.0f };
-            CelesteTestUtils.CheckLocalVariableList(script, "firstList", expectedList);
-            CelesteTestUtils.CheckLocalVariableList(script, "secondList", expectedList);
+            script.CheckLocalVariableList("firstList", expectedList);
+            script.CheckLocalVariableList("secondList", expectedList);
 
             expectedList.Add(20.0f);
             script.ScriptScope.GetLocalVariable("firstList").SetReferencedValue(expectedList);
-            CelesteTestUtils.CheckLocalVariableList(script, "firstList", expectedList);
-            CelesteTestUtils.CheckLocalVariableList(script, "secondList", expectedList);
+            script.CheckLocalVariable("firstList", expectedList);
+            script.CheckLocalVariable("secondList", expectedList);
 
             Dictionary<object, object> expectedTable = new Dictionary<object, object> { { "key", false } };
             Assert.IsTrue(script.ScriptScope.VariableExists("firstTable"));

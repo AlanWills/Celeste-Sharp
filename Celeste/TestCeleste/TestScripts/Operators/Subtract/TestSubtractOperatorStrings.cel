@@ -1,2 +1,2 @@
-﻿"testsubtracting" - "subtracting"
-"testsubtracting" - "adding"
+﻿scoped subtracting = "testsubtracting" - "subtracting"
+scoped noSubtracting = "testsubtracting" - "adding"

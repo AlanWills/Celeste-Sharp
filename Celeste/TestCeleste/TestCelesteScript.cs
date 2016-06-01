@@ -24,10 +24,18 @@ namespace TestCeleste
         [TestMethod]
         public void TestCelesteScriptScopeCleanup()
         {
-            CelesteScript script = new CelesteScript("TestScripts\\TestEmptyScript.cel");
-            script.Run();
+            CelesteScript script = RunScript("TestScripts\\TestEmptyScript.cel");
 
             Assert.IsFalse(CelesteStack.Scopes.Exists(x => x == script.ScriptScope));
+        }
+
+        [TestMethod]
+        public void TestCelesteScriptStackCleanup()
+        {
+            // We need to run a script which actually uses the stack rather than the empty one
+            CelesteScript script = RunScript("TestScripts\\TestReferencingScopedVariables.cel");
+
+            Assert.AreEqual(0, CelesteStack.StackSize);
         }
     }
 }

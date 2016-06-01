@@ -2,7 +2,7 @@
 
 namespace Celeste
 {
-    public class ObjectComparer : IEqualityComparer<object>
+    internal class ObjectComparer : IEqualityComparer<object>
     {
         public new bool Equals(object x, object y)
         {

@@ -1,14 +1,14 @@
-[ 5 "Test" true ]
-[
+scoped oneLineList = [ 5 "Test" true ]
+scoped multiLineList = [
   5
   5
   5 
 ]
-[ "Test" 
+scoped strangeFormatList = [ "Test" 
    "Test" "Test" ]
-[ true true true 
+scoped strangeFormatList2 = [ true true true 
 ]
-[
+scoped indentedList = [
   [
     5
     "Test"
