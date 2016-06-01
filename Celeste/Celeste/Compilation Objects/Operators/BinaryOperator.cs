@@ -37,7 +37,7 @@ namespace Celeste
             else
             {
                 // Error message if we cannot parse the next token
-                Debug.Fail("Operator invalid on token: " + token);
+                Debug.Fail("Could not compile token: " + token + " in operator " + token);
             }
         }
 

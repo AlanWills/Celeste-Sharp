@@ -1,0 +1,40 @@
+scoped number = 5
+scoped string = "test"
+scoped bool = true
+scoped list = [ ]
+scoped table = { }
+
+scoped numberReflexivity = number == number
+scoped stringReflexivity = string == string
+scoped boolReflexivity = bool == bool
+scoped listReflexivity = list == list
+scoped tableReflexivity = table == table
+
+scoped numberRef = number
+scoped numberEqualsNumberRef = number == numberRef
+
+scoped stringRef = string
+scoped stringEqualsStringRef = string == stringRef
+
+scoped boolRef = bool
+scoped boolEqualsBoolRef = bool == boolRef
+
+scoped listRef = list
+scoped listEqualsListRef = list == listRef
+
+scoped tableRef = table
+scoped tableEqualsTableRef = table == tableRef
+
+scoped numberNotEqualsString = number == string
+scoped numberNotEqualsBool = number == bool
+scoped numberNotEqualsList = number == list
+scoped numberNotEqualsTable = number == table
+
+scoped stringNotEqualsBool = string == bool
+scoped stringNotEqualsList = string == list
+scoped stringNotEqualsTable = string == table
+
+scoped boolNotEqualsList = bool == list
+scoped boolNotEqualsTable = bool == table
+
+scoped listNotEqualsTable = list == table

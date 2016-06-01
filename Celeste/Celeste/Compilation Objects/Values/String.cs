@@ -8,6 +8,13 @@ namespace Celeste
     /// </summary>
     internal class String : Value
     {
+        #region Properties and Fields
+
+        private static string startDelimiter = "\"";
+        private static string endDelimiter = "\"";
+
+        #endregion
+
         /// <summary>
         /// This must remain public for use in the Compiler
         /// </summary>
@@ -25,7 +32,7 @@ namespace Celeste
         public static bool IsString(string token)
         {
             // If our token starts with our string indicator we have a string value type
-            return token.StartsWith("\"");
+            return token.StartsWith(startDelimiter);
         }
 
         #region Virtual Functions
@@ -37,7 +44,7 @@ namespace Celeste
             string fullString = "";
 
             // If our token is of the form "something" we have our full string
-            if (token.EndsWith("\""))
+            if (token.EndsWith(endDelimiter))
             {
                 // Remove the '"' from the start and the end
                 fullString = token.Substring(1, token.Length - 2);

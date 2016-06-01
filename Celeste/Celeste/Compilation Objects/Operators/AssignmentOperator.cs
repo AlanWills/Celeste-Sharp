@@ -7,6 +7,10 @@ namespace Celeste
     /// </summary>
     internal class AssignmentOperator : BinaryOperator
     {
+        internal static string scriptToken = "=";
+
+        #region Virtual Functions
+
         /// <summary>
         /// Assigns the expression on the right to the local variable on the left
         /// </summary>
@@ -32,5 +36,7 @@ namespace Celeste
                 lhs.AsReference().Value = rhs.Value;
             }
         }
+
+        #endregion
     }
 }

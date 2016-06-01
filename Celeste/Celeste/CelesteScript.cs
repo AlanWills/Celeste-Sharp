@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Celeste
@@ -37,9 +38,18 @@ namespace Celeste
         {
             if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ScriptPath))
             {
-                CompiledStatement rootStatement = CelesteCompiler.CompileScript(File.OpenText(Directory.GetCurrentDirectory() + "\\" + ScriptPath));
-                rootStatement.PerformOperation();
-                
+                Tuple<bool, CompiledStatement> result = CelesteCompiler.CompileScript(File.OpenText(Directory.GetCurrentDirectory() + "\\" + ScriptPath));
+
+                if (result.Item1)
+                {
+                    // If we have successfully parsed the script, we execute the compile tree
+                    result.Item2.PerformOperation();
+                }
+                else
+                {
+                    Debug.Fail("Script " + ScriptPath + " will not run because there was an error during compiling");
+                }
+
                 // Reset the current scope to the global scope
                 CelesteStack.Scopes.Remove(CelesteStack.CurrentScope);
                 CelesteStack.CurrentScope = CelesteStack.GlobalScope;

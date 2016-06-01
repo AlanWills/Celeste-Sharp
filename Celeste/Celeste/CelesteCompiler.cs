@@ -29,12 +29,12 @@ namespace Celeste
         /// </summary>
         private static Dictionary<string, Type> RegisteredOperators = new Dictionary<string, Type>()
         {
-            { "+", typeof(AddOperator) },
-            { "-", typeof(SubtractOperator) },
-            { "*", typeof(MultiplyOperator) },
-            { "/", typeof(DivideOperator) },
-            { "=", typeof(AssignmentOperator) },
-            { "==", typeof(EqualityOperator) }
+            { AddOperator.scriptToken, typeof(AddOperator) },
+            { SubtractOperator.scriptToken, typeof(SubtractOperator) },
+            { MultiplyOperator.scriptToken, typeof(MultiplyOperator) },
+            { DivideOperator.scriptToken, typeof(DivideOperator) },
+            { AssignmentOperator.scriptToken, typeof(AssignmentOperator) },
+            { EqualityOperator.scriptToken, typeof(EqualityOperator) }
         };
 
         /// <summary>
@@ -42,10 +42,11 @@ namespace Celeste
         /// </summary>
         private static Dictionary<string, Type> RegisteredKeywords = new Dictionary<string, Type>()
         {
-            { "scoped", typeof(ScopedKeyword) },
-            { "global", typeof(GlobalKeyword) },
-            { "null", typeof(NullKeyword) },
-            { "function", typeof(FunctionKeyword) },
+            { ScopedKeyword.scriptToken, typeof(ScopedKeyword) },
+            { GlobalKeyword.scriptToken, typeof(GlobalKeyword) },
+            { NullKeyword.scriptToken, typeof(NullKeyword) },
+            { FunctionKeyword.scriptToken, typeof(FunctionKeyword) },
+            { EqualsKeyword.scriptToken, typeof(EqualsKeyword) },
         };
 
         /// <summary>
@@ -66,10 +67,11 @@ namespace Celeste
         #endregion
 
         /// <summary>
-        /// Compile the script in the inputted stream
+        /// Compile the script in the inputted stream.
+        /// Returns the result of the compilation and the compiled statement tree.
         /// </summary>
         /// <param name="celesteScriptStream"></param>
-        public static CompiledStatement CompileScript(StreamReader celesteScriptStream)
+        public static Tuple<bool, CompiledStatement> CompileScript(StreamReader celesteScriptStream)
         {
             return CompileScript(Parse(celesteScriptStream));
         }
@@ -153,7 +155,7 @@ namespace Celeste
         /// Compiles the parsed file down into a statement tree
         /// </summary>
         /// <param name="parsedFile"></param>
-        private static CompiledStatement CompileScript(List<string> parsedFile)
+        private static Tuple<bool, CompiledStatement> CompileScript(List<string> parsedFile)
         {
             RootStatement = new CompiledStatement();
             Tokens = new LinkedList<string>();
@@ -161,10 +163,15 @@ namespace Celeste
 
             while (Lines.Count > 0)
             {
-                Debug.Assert(CompileLine());
+                // As soon as we detect an error, we stop parsing the script and return a tuple with a false flag and a null compile tree
+                if (!CompileLine())
+                {
+                    Debug.Fail("Error compiling script");
+                    return new Tuple<bool, CompiledStatement>(false, null);
+                }
             }
 
-            return RootStatement;
+            return new Tuple<bool, CompiledStatement>(true, RootStatement);
         }
 
         /// <summary>

@@ -10,6 +10,7 @@ namespace Celeste
     {
         #region Properties and Fields
 
+        internal static string scriptToken = "function";
         private static string endDelimiter = "end";
 
         #endregion

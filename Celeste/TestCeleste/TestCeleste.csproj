@@ -57,6 +57,7 @@
     <Compile Include="TestExtensions\TestExtensions.cs" />
     <Compile Include="TestExtensions\TestObjectComparer.cs" />
     <Compile Include="TestExtensions\TestTableComparer.cs" />
+    <Compile Include="TestKeywords\TestEqualsKeyword.cs" />
     <Compile Include="TestKeywords\TestFunctionKeyword.cs" />
     <Compile Include="TestKeywords\TestGlobalKeyword.cs" />
     <Compile Include="TestKeywords\TestNullKeyword.cs" />
@@ -79,6 +80,18 @@
     <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateBools.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateReferences.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateNumbers.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Function\TestFunctionSimpleExecution.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -104,6 +117,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Assignment\TestAssignmentOperatorReassignment.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Equality\TestEqualityOperatorEquateBools.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Equality\TestEqualityOperatorEquateReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Equality\TestEqualityOperatorEquateStrings.cel">

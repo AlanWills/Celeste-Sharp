@@ -8,24 +8,22 @@ namespace Celeste
     /// </summary>
     internal class NullKeyword : Keyword
     {
+        internal static string scriptToken = "null";
+
+        #region Virtual Functions
+
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {
             base.Compile(parent, token, tokens, lines);
 
-            // The previous statement that was compiled HAS to be the equality operator
-            // The expression HAS to be of the form x = null
-            // There can be no other valid syntax for this keyword
-            CompiledStatement equalityOperator = parent.ChildCompiledStatements.FindLast(x => x.GetType() == typeof(AssignmentOperator));
-            Debug.Assert(equalityOperator != null);
-            Debug.Assert(parent.ChildCompiledStatements.FindLastIndex(x => x.GetType() == typeof(AssignmentOperator)) == parent.ChildCount - 1);
+            Debug.Assert(parent.ChildCount > 0, "No object on the left hand side of the 'null' keyword");
 
-            // Check that there are no other elements after our keyword
-            Debug.Assert(tokens.Count == 0, "No other values should exist after keyword: " + token);
-
-            // Create a value object with null as the stored value - it will be moved under the equality operator when this function is called
-            // This will push null onto the stack when run and the local variable on the lhs of the equality operator will be set to null
+            // Create a value object with null as the stored value - it will be moved under the equality operator when we call nullValue.Compile
+            // This will push null onto the stack when run
             Value nullValue = new Value(null);
             nullValue.Compile(parent, token, tokens, lines);
         }
+
+        #endregion
     }
 }

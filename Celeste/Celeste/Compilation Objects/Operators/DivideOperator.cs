@@ -8,6 +8,8 @@ namespace Celeste
     /// </summary>
     internal class DivideOperator : BinaryOperator
     {
+        internal static string scriptToken = "/";
+
         #region Virtual Functions
 
         /// <summary>

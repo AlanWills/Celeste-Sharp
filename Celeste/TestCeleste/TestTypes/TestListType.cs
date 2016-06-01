@@ -14,6 +14,11 @@ namespace TestCeleste
             CelesteScript script = RunScript("TestScripts\\Types\\List\\TestListParsing.cel");
 
             {
+                List<object> expected = new List<object>() { };
+
+                script.CheckLocalVariableList("emptyList", expected);
+            }
+            {
                 List<object> expected = new List<object>()
                 {
                     5.0f,

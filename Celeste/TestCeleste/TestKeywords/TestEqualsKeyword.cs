@@ -1,26 +1,26 @@
-﻿using Celeste;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Celeste;
 
-namespace TestCeleste
+namespace TestCeleste.TestKeywords
 {
     [TestClass]
-    public class TestEqualityOperator : CelesteUnitTest
+    public class TestEqualsKeyword : CelesteUnitTest
     {
         [TestMethod]
-        public void TestEqualityOperatorEquateNumbers()
+        public void TestEqualsKeywordEquateNumbers()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateNumbers.cel");
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateNumbers.cel");
 
             script.CheckLocalVariable("floatEquality", true);
             script.CheckLocalVariable("intEquality", true);
             script.CheckLocalVariable("intInequality", false);
             script.CheckLocalVariable("floatInequality", false);
         }
-
+        
         [TestMethod]
-        public void TestEqualityOperatorEquateStrings()
+        public void TestEqualsKeywordEquateStrings()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateStrings.cel");
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateStrings.cel");
 
             script.CheckLocalVariable("stringEquality", true);
             script.CheckLocalVariable("stringInequality", false);
@@ -31,7 +31,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestEqualityOperatorEquateBools()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateBools.cel");
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateBools.cel");
 
             script.CheckLocalVariable("trueEquality", true);
             script.CheckLocalVariable("falseEquality", true);
@@ -41,7 +41,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestEqualityOperatorEquateReferences()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateReferences.cel");
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateReferences.cel");
 
             // Check reflexivity of references - references should always be equal to themselves
             script.CheckLocalVariable("numberReflexivity", true);

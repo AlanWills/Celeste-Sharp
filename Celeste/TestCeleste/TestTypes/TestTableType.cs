@@ -13,6 +13,14 @@ namespace TestCeleste.TestTypes
             CelesteScript script = RunScript("TestScripts\\Types\\Table\\TestTableParsing.cel");
 
             {
+                Assert.IsTrue(script.ScriptScope.VariableExists("emptyTable"));
+                Variable variable = script.ScriptScope.GetLocalVariable("emptyTable");
+                Dictionary<object, object> expected = new Dictionary<object, object>() { };
+
+                Dictionary<object, object> actual = variable.GetReferencedValue<Dictionary<object, object>>();
+                Assert.AreEqual(0, actual.Count);
+            }
+            {
                 Assert.IsTrue(script.ScriptScope.VariableExists("firstTable"));
                 Variable variable = script.ScriptScope.GetLocalVariable("firstTable");
                 Dictionary<object, object> expected = new Dictionary<object, object>()

@@ -8,6 +8,8 @@ namespace Celeste
     /// </summary>
     internal class EqualityOperator : BinaryOperator
     {
+        internal static string scriptToken = "==";
+
         #region Virtual Functions
 
         /// <summary>

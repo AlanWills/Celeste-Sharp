@@ -1,0 +1,4 @@
+scoped stringEquality = "test" equals "test"
+scoped stringInequality = "Test" equals "test"
+scoped emptyInequality = "" equals "not empty"
+scoped emptyEquality = "" equals ""

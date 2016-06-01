@@ -8,6 +8,10 @@ namespace Celeste
     /// </summary>
     internal class ScopedKeyword : Keyword
     {
+        internal static string scriptToken = "scoped";
+
+        #region Virtual Functions
+
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {
             base.Compile(parent, token, tokens, lines);
@@ -31,5 +35,7 @@ namespace Celeste
                 parent.Add(variable);
             }
         }
+
+        #endregion
     }
 }

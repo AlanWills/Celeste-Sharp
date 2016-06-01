@@ -10,6 +10,8 @@ namespace Celeste
     /// </summary>
     internal class SubtractOperator : BinaryOperator
     {
+        internal static string scriptToken = "-";
+
         #region Virtual Functions
 
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
