@@ -59,6 +59,7 @@
     <Compile Include="Compilation Objects\Operators\Binary\DivideOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\AssignmentOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\EqualityOperator.cs" />
+    <Compile Include="Compilation Objects\Operators\Binary\LogicalBinaryOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\MultiplyOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\NonEqualityOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\OrOperator.cs" />

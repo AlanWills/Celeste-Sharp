@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
 
 namespace Celeste
@@ -8,81 +8,43 @@ namespace Celeste
     /// 1) true for Values
     /// 2) != null for References
     /// </summary>
-    internal class OrOperator : BinaryOperator
+    internal class OrOperator : LogicalBinaryOperator
     {
         internal static string scriptToken = "||";
 
         #region Virtual Functions
 
         /// <summary>
-        /// Or should take precedence over assignment
+        /// Returns whether either one of the references is not null.
         /// </summary>
-        /// <param name="parent"></param>
-        /// <param name="token"></param>
-        /// <param name="tokens"></param>
-        /// <param name="lines"></param>
-        public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
+        /// <param name="lhsRef"></param>
+        /// <param name="rhsRef"></param>
+        /// <returns></returns>
+        protected override bool ReferenceReferenceOperation(Reference lhsRef, Reference rhsRef)
         {
-            base.Compile(parent, token, tokens, lines);
-
-            // If we have a child assignment operator (it can only be in the first position), we swap it with this operator - this should act first
-            // This means we have an expression of the form:    A = B || C
-            if (ChildCompiledStatements[0] is AssignmentOperator)
-            {
-                SwapWithChildBinaryOperator(parent);
-            }
+            return lhsRef.Value != null || rhsRef.Value != null;
         }
 
         /// <summary>
-        /// Removes the two objects at the top of the stack and 'or's them.
-        /// Then, pushes the result of the or on to the top of the stack.
+        /// Returns whether the reference is null or the value is true.
         /// </summary>
-        public override void PerformOperation()
+        /// <param name="reference"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        protected override bool ReferenceValueOperation(Reference reference, object value)
         {
-            base.PerformOperation();
+            return reference.Value != null || (value is bool && (bool)value);
+        }
 
-            // If we have fewer than 2 objects on the stack we cannot perform this operation
-            Debug.Assert(CelesteStack.StackSize >= 2, "Not enough elements on the stack for the or operator");
-
-            CelesteObject rhs = CelesteStack.Pop();
-            CelesteObject lhs = CelesteStack.Pop();
-
-            // The stack will wrap our result in a CelesteObject, so just push the actual result of the equality
-            bool result = false;
-            Reference lhsRef = lhs.Value as Reference;
-            Reference rhsRef = rhs.Value as Reference;
-
-            // Check to see whether our lhs is a reference
-            if (lhsRef != null)
-            {
-                if (rhsRef != null)
-                {
-                    // If the rhs is a reference too, we check to see if one of the references is null
-                    result = lhsRef.Value != null || rhsRef.Value != null;
-                }
-                else
-                {
-                    // Otherwise we see if the lhs's reference is null or the rhs is true
-                    result = lhsRef.Value != null || (rhs.Value is bool && (bool)rhs.Value);
-                }
-            }
-            else
-            {
-                if (rhsRef != null)
-                {
-                    // If the rhs is a reference, we check whether it is not null and check whether the lhs is true
-                    // Do it in this order so we do not have to unbox the value unless necessary
-                    result = rhsRef.Value != null || (lhs.Value is bool && (bool)lhs.Value);
-                }
-                else
-                {
-                    // Otherwise we check to see if one of the values is true
-                    result = (lhs.Value is bool && (bool)lhs.Value) || (rhs.Value is bool && (bool)rhs.Value);
-                }
-            }
-
-            // We then finally push the result of the equality test onto the stack
-            CelesteStack.Push(result);
+        /// <summary>
+        /// Returns whether one of the two values is 'true'.
+        /// </summary>
+        /// <param name="lhsVal"></param>
+        /// <param name="rhsVal"></param>
+        /// <returns></returns>
+        protected override bool ValueValueOperation(object lhsVal, object rhsVal)
+        {
+            return (lhsVal is bool && (bool)lhsVal) || (rhsVal is bool && (bool)rhsVal);
         }
 
         #endregion
