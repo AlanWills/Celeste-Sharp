@@ -62,6 +62,7 @@
     <Compile Include="TestKeywords\TestFunctionKeyword.cs" />
     <Compile Include="TestKeywords\TestGlobalKeyword.cs" />
     <Compile Include="TestKeywords\TestNullKeyword.cs" />
+    <Compile Include="TestKeywords\TestNotKeyword.cs" />
     <Compile Include="TestKeywords\TestOrKeyword.cs" />
     <Compile Include="TestKeywords\TestScopedKeyword.cs" />
     <Compile Include="TestObjects\TestCelesteObject.cs" />
@@ -119,6 +120,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Global\TestGlobalParsing.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Not\TestNotKeywordNotBools.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Not\TestNotKeywordNotNumbers.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Not\TestNotKeywordNotReferences.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Not\TestNotKeywordNotStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Null\TestNullParsing.cel">

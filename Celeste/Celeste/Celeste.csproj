@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CelesteStack.cs" />
     <Compile Include="CelesteCompiler.cs" />
+    <Compile Include="Compilation Objects\Keywords\NotKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\OrKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\AndKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\EqualsKeyword.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="Compilation Objects\Operators\Binary\NonEqualityOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\OrOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\SubtractOperator.cs" />
+    <Compile Include="Compilation Objects\Operators\Unary\NotOperator.cs" />
+    <Compile Include="Compilation Objects\Operators\Unary\UnaryOperator.cs" />
     <Compile Include="Compilation Objects\Scoping\Scope.cs" />
     <Compile Include="Compilation Objects\Scoping\ScopeManager.cs" />
     <Compile Include="Compilation Objects\Values\Bool.cs" />

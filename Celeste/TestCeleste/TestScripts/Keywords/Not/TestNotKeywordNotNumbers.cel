@@ -1,0 +1,2 @@
+scoped notInt = not 1
+scoped notFloat = not 1.5

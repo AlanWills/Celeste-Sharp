@@ -52,6 +52,7 @@ namespace Celeste
             { EqualsKeyword.scriptToken, typeof(EqualsKeyword) },
             { AndKeyword.scriptToken, typeof(AndKeyword) },
             { OrKeyword.scriptToken, typeof(OrKeyword) },
+            { NotKeyword.scriptToken, typeof(NotKeyword) },
         };
 
         /// <summary>
