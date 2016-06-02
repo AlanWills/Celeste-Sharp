@@ -68,6 +68,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestOperators\TestDivideOperator.cs" />
     <Compile Include="TestOperators\TestAssignmentOperator.cs" />
+    <Compile Include="TestOperators\TestOrOperator.cs" />
+    <Compile Include="TestOperators\TestNonEquality.cs" />
     <Compile Include="TestOperators\TestEqualityOperator.cs" />
     <Compile Include="TestOperators\TestMultiplyOperator.cs" />
     <Compile Include="TestOperators\TestAddOperator.cs" />
@@ -138,6 +140,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Assignment\TestAssignmentOperator.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateBools.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateNumbers.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateReferences.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Or\TestOrOperatorOrBools.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Or\TestOrOperatorOrNumbers.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Or\TestOrOperatorOrReferences.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Or\TestOrOperatorOrStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Subtract\TestSubtractOperatorTables.cel">

@@ -4,16 +4,18 @@ using System.Diagnostics;
 namespace Celeste
 {
     /// <summary>
-    /// The equality operator which tests whether two Values are equal for value types and reference for reference types.
+    /// The or operator, which tests whether at least one of the two objects it acts upon is:
+    /// 1) true for Values
+    /// 2) != null for References
     /// </summary>
-    internal class EqualityOperator : BinaryOperator
+    internal class OrOperator : BinaryOperator
     {
-        internal static string scriptToken = "==";
+        internal static string scriptToken = "||";
 
         #region Virtual Functions
 
         /// <summary>
-        /// Equality should take precedence over assignment
+        /// Or should take precedence over assignment
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="token"></param>
@@ -23,8 +25,8 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
-            // If we have a child assignment operator (it can only be in the first position, we swap it with this operator - this should act first
-            // This means we have an expression of the form:    A = B + C
+            // If we have a child assignment operator (it can only be in the first position), we swap it with this operator - this should act first
+            // This means we have an expression of the form:    A = B || C
             if (ChildCompiledStatements[0] is AssignmentOperator)
             {
                 SwapWithChildBinaryOperator(parent);
@@ -32,8 +34,8 @@ namespace Celeste
         }
 
         /// <summary>
-        /// Removes the two objects at the top of the stack and equates them.
-        /// Then, pushes the result of the equality on to the top of the stack.
+        /// Removes the two objects at the top of the stack and 'or's them.
+        /// Then, pushes the result of the or on to the top of the stack.
         /// </summary>
         public override void PerformOperation()
         {
@@ -45,7 +47,7 @@ namespace Celeste
             CelesteObject rhs = CelesteStack.Pop();
             CelesteObject lhs = CelesteStack.Pop();
 
-            // The stack will wrap our addition result in a CelesteObject, so just push the actual result of the equality
+            // The stack will wrap our result in a CelesteObject, so just push the actual result of the equality
             bool result = false;
             Reference lhsRef = lhs.Value as Reference;
             Reference rhsRef = rhs.Value as Reference;
@@ -55,29 +57,30 @@ namespace Celeste
             {
                 if (rhsRef != null)
                 {
-                    // If the rhs is a reference too, we compare references
-                    result = lhsRef == rhsRef;
+                    // If the rhs is a reference too, we check to see if one of the references is null
+                    result = lhsRef.Value != null || rhsRef.Value != null;
                 }
                 else
                 {
-                    // Otherwise we compare the value of the rhs with the value of the lhs' referenced object
-                    result = rhs.Value.ValueEquals(lhsRef.Value);
+                    // Otherwise we see if the lhs's reference is null or the rhs is true
+                    result = lhsRef.Value != null || (rhs.Value is bool && (bool)rhs.Value);
                 }
             }
             else
             {
                 if (rhsRef != null)
                 {
-                    // If the rhs is a reference, we compare the value of the rhs' referenced object with the value of the lhs
-                    result = lhs.Value.ValueEquals(rhsRef.Value);
+                    // If the rhs is a reference, we check whether it is not null and check whether the lhs is true
+                    // Do it in this order so we do not have to unbox the value unless necessary
+                    result = rhsRef.Value != null || (lhs.Value is bool && (bool)lhs.Value);
                 }
                 else
                 {
-                    // Otherwise we compare the value of the rhs with the value of the lhs - they are both values
-                    result = lhs.Value.ValueEquals(rhs.Value);
+                    // Otherwise we check to see if one of the values is true
+                    result = (lhs.Value is bool && (bool)lhs.Value) || (rhs.Value is bool && (bool)rhs.Value);
                 }
             }
-            
+
             // We then finally push the result of the equality test onto the stack
             CelesteStack.Push(result);
         }

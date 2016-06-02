@@ -34,7 +34,9 @@ namespace Celeste
             { MultiplyOperator.scriptToken, typeof(MultiplyOperator) },
             { DivideOperator.scriptToken, typeof(DivideOperator) },
             { AssignmentOperator.scriptToken, typeof(AssignmentOperator) },
-            { EqualityOperator.scriptToken, typeof(EqualityOperator) }
+            { EqualityOperator.scriptToken, typeof(EqualityOperator) },
+            { NonEqualityOperator.scriptToken, typeof(NonEqualityOperator) },
+            { OrOperator.scriptToken, typeof(OrOperator) },
         };
 
         /// <summary>
