@@ -7,7 +7,7 @@ namespace TestCeleste
     public class TestOrOperator : CelesteUnitTest
     {
         [TestMethod]
-        public void TestEqualityOperatorEquateNumbers()
+        public void TestOrOperatorOrNumbers()
         {
             CelesteScript script = RunScript("TestScripts\\Operators\\Or\\TestOrOperatorOrNumbers.cel");
 
@@ -18,7 +18,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestEqualityOperatorEquateStrings()
+        public void TestOrOperatorOrStrings()
         {
             CelesteScript script = RunScript("TestScripts\\Operators\\Or\\TestOrOperatorOrStrings.cel");
 
@@ -29,7 +29,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestEqualityOperatorEquateBools()
+        public void TestOrOperatorOrBools()
         {
             CelesteScript script = RunScript("TestScripts\\Operators\\Or\\TestOrOperatorOrBools.cel");
 
@@ -39,7 +39,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestEqualityOperatorEquateReferences()
+        public void TestOrOperatorOrReferences()
         {
             CelesteScript script = RunScript("TestScripts\\Operators\\Or\\TestOrOperatorOrReferences.cel");
 

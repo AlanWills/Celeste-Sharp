@@ -37,6 +37,7 @@ namespace Celeste
             { EqualityOperator.scriptToken, typeof(EqualityOperator) },
             { NonEqualityOperator.scriptToken, typeof(NonEqualityOperator) },
             { OrOperator.scriptToken, typeof(OrOperator) },
+            { AndOperator.scriptToken, typeof(AndOperator) },
         };
 
         /// <summary>

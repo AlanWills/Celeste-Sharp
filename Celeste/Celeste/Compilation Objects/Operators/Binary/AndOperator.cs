@@ -4,18 +4,16 @@ using System.Diagnostics;
 namespace Celeste
 {
     /// <summary>
-    /// The or operator, which tests whether at least one of the two objects it acts upon is:
-    /// 1) true for Values
-    /// 2) != null for References
+    /// Represents the 'binary' logical operator which checks for true for Values and equates to null for References
     /// </summary>
-    internal class OrOperator : BinaryOperator
+    internal class AndOperator : BinaryOperator
     {
-        internal static string scriptToken = "||";
+        internal static string scriptToken = "&&";
 
         #region Virtual Functions
 
         /// <summary>
-        /// Or should take precedence over assignment
+        /// And should take precedence over assignment
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="token"></param>
@@ -26,7 +24,7 @@ namespace Celeste
             base.Compile(parent, token, tokens, lines);
 
             // If we have a child assignment operator (it can only be in the first position), we swap it with this operator - this should act first
-            // This means we have an expression of the form:    A = B || C
+            // This means we have an expression of the form:    A = B && C
             if (ChildCompiledStatements[0] is AssignmentOperator)
             {
                 SwapWithChildBinaryOperator(parent);
@@ -42,7 +40,7 @@ namespace Celeste
             base.PerformOperation();
 
             // If we have fewer than 2 objects on the stack we cannot perform this operation
-            Debug.Assert(CelesteStack.StackSize >= 2, "Not enough elements on the stack for the or operator");
+            Debug.Assert(CelesteStack.StackSize >= 2, "Not enough elements on the stack for the and operator");
 
             CelesteObject rhs = CelesteStack.Pop();
             CelesteObject lhs = CelesteStack.Pop();
@@ -58,12 +56,12 @@ namespace Celeste
                 if (rhsRef != null)
                 {
                     // If the rhs is a reference too, we check to see if one of the references is null
-                    result = lhsRef.Value != null || rhsRef.Value != null;
+                    result = lhsRef.Value != null && rhsRef.Value != null;
                 }
                 else
                 {
                     // Otherwise we see if the lhs's reference is null or the rhs is true
-                    result = lhsRef.Value != null || (rhs.Value is bool && (bool)rhs.Value);
+                    result = lhsRef.Value != null && (rhs.Value is bool && (bool)rhs.Value);
                 }
             }
             else
@@ -72,12 +70,12 @@ namespace Celeste
                 {
                     // If the rhs is a reference, we check whether it is not null and check whether the lhs is true
                     // Do it in this order so we do not have to unbox the value unless necessary
-                    result = rhsRef.Value != null || (lhs.Value is bool && (bool)lhs.Value);
+                    result = rhsRef.Value != null && (lhs.Value is bool && (bool)lhs.Value);
                 }
                 else
                 {
                     // Otherwise we check to see if one of the values is true
-                    result = (lhs.Value is bool && (bool)lhs.Value) || (rhs.Value is bool && (bool)rhs.Value);
+                    result = (lhs.Value is bool && (bool)lhs.Value) && (rhs.Value is bool && (bool)rhs.Value);
                 }
             }
 

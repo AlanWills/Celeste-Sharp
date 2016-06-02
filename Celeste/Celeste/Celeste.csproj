@@ -51,6 +51,7 @@
     <Compile Include="Compilation Objects\Keywords\ScopedKeyword.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\AddOperator.cs" />
     <Compile Include="Compilation Objects\CompiledStatement.cs" />
+    <Compile Include="Compilation Objects\Operators\Binary\AndOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\BinaryOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\DivideOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\AssignmentOperator.cs" />

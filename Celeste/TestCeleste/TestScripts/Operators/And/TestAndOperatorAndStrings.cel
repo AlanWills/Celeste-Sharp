@@ -1,0 +1,4 @@
+scoped stringAnd = "test" && "test"
+scoped stringAnd2 = "Test" && "test"
+scoped emptyAnd = "" && "not empty"
+scoped emptyAnd2 = "" && ""

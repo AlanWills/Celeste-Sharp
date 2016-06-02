@@ -1,0 +1,3 @@
+scoped trueAnd = true && true
+scoped falseAnd = false && false
+scoped trueFalseAnd = true && false
