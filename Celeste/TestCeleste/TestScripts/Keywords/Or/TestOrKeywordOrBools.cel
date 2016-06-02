@@ -1,0 +1,3 @@
+scoped trueOr = true or true
+scoped falseOr = false or false
+scoped trueFalseOr = true or false

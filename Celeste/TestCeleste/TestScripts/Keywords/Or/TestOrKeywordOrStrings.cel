@@ -1,0 +1,4 @@
+scoped stringOr = "test" or "test"
+scoped stringOr2 = "Test" or "test"
+scoped emptyOr = "" or "not empty"
+scoped emptyOr2 = "" or ""

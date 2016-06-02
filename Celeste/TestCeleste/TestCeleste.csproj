@@ -57,10 +57,12 @@
     <Compile Include="TestExtensions\TestExtensions.cs" />
     <Compile Include="TestExtensions\TestObjectComparer.cs" />
     <Compile Include="TestExtensions\TestTableComparer.cs" />
+    <Compile Include="TestKeywords\TestAndKeyword.cs" />
     <Compile Include="TestKeywords\TestEqualsKeyword.cs" />
     <Compile Include="TestKeywords\TestFunctionKeyword.cs" />
     <Compile Include="TestKeywords\TestGlobalKeyword.cs" />
     <Compile Include="TestKeywords\TestNullKeyword.cs" />
+    <Compile Include="TestKeywords\TestOrKeyword.cs" />
     <Compile Include="TestKeywords\TestScopedKeyword.cs" />
     <Compile Include="TestObjects\TestCelesteObject.cs" />
     <Compile Include="TestCelesteStack.cs" />
@@ -83,6 +85,18 @@
     <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestScripts\Keywords\And\TestAndKeywordAndBools.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\And\TestAndKeywordAndNumbers.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\And\TestAndKeywordAndReferences.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\And\TestAndKeywordAndStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -108,6 +122,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Null\TestNullParsing.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Or\TestOrKeywordOrBools.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Or\TestOrKeywordOrNumbers.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Or\TestOrKeywordOrReferences.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Or\TestOrKeywordOrStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Scoped\TestScopedParsing.cel">

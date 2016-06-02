@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="CelesteStack.cs" />
     <Compile Include="CelesteCompiler.cs" />
+    <Compile Include="Compilation Objects\Keywords\OrKeyword.cs" />
+    <Compile Include="Compilation Objects\Keywords\AndKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\EqualsKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\FunctionKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\GlobalKeyword.cs" />
