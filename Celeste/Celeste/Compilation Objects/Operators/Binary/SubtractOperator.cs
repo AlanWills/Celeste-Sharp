@@ -64,8 +64,8 @@ namespace Celeste
             else if (lhs.IsList() && rhs.IsList())
             {
                 // The subtract operator for lists removes all elements in the first list who are equal to an element in the second, either by reference or value
-                List<object> lhsList = lhs.AsList();
-                List<object> rhsList = rhs.AsList();
+                List<object> lhsList = lhs.AsList<object>();
+                List<object> rhsList = rhs.AsList<object>();
 
                 // Remove ALL occurrences in the list of any object in the rhs list - otherwise there is non-deterministic behaviour in which instance to remove
                 lhsList.RemoveAll(x => rhsList.Exists(y => y.Equals(x) || y.ValueEquals(x)));
@@ -78,7 +78,7 @@ namespace Celeste
                 // Subtracting a list from a table will remove any elements in the table with a matching key as an element in our list
 
                 Dictionary<object, object> lhsTable = lhs.AsTable();
-                List<object> rhsList = rhs.AsList();
+                List<object> rhsList = rhs.AsList<object>();
 
                 foreach (object obj in rhsList)
                 {

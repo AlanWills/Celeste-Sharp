@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Celeste
 {
@@ -33,6 +34,21 @@ namespace Celeste
         /// A reference to our stored object's type
         /// </summary>
         protected Type Type { get; private set; }
+
+        /// <summary>
+        /// A shorthand for accessing values with the corresponding key if this object represents a table.
+        /// Will compare for reference equality of keys first and then try value equality.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public object this [object key]
+        {
+            get
+            {
+                Debug.Assert(IsTable());
+                return AsTable().GetValue(key);
+            }
+        }
 
         #endregion
 
@@ -71,9 +87,9 @@ namespace Celeste
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public List<object> AsList()
+        public List<T> AsList<T>()
         {
-            return Value as List<object>;
+            return Value as List<T>;
         }
 
         /// <summary>
@@ -82,7 +98,7 @@ namespace Celeste
         /// <returns></returns>
         public Dictionary<object, object> AsTable()
         {
-            return Value as Dictionary<object, object>;
+            return (Dictionary<object, object>)Value;
         }
 
         /// <summary>

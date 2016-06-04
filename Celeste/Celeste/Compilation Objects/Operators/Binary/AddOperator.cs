@@ -50,7 +50,7 @@ namespace Celeste
             }
             else if (lhs.IsList() && rhs.IsList())
             {
-                lhs.AsList().AddRange(rhs.AsList());
+                lhs.AsList<object>().AddRange(rhs.AsList<object>());
                 CelesteStack.Push(lhs);
             }
             else if (lhs.IsTable() && rhs.IsTable())

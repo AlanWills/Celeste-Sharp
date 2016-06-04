@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Celeste
 {
@@ -67,6 +68,29 @@ namespace Celeste
             Assert.IsTrue(boolObject.ValueEquals(boolObject));
             Assert.IsTrue(charObject.ValueEquals(charObject));
             Assert.IsTrue(stringObject.ValueEquals(stringObject));
+        }
+
+        [TestMethod]
+        public void TestExtensionsDictionaryGetValue()
+        {
+            List<object> list = new List<object>();
+
+            Dictionary<object, object> dict = new Dictionary<object, object>()
+            {
+                { "Test", 10.0f },
+                { true, false },
+                { list, "Key" },
+            };
+
+            // Test for the keys that exist
+            Assert.AreEqual(10.0f, dict.GetValue("Test"));
+            Assert.AreEqual(false, dict.GetValue(true));
+            Assert.AreEqual("Key", dict.GetValue(list));
+
+            // Test for the keys that do not exist
+            Assert.IsNull(dict.GetValue("NonExistentKey"));
+            Assert.IsNull(dict.GetValue(false));
+            Assert.IsNull(dict.GetValue(new List<object>()));
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace Celeste
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Celeste
 {
     /// <summary>
     /// A suite of extra extension functions which will come in handy
@@ -54,6 +57,25 @@
         {
             bool result;
             return bool.TryParse(obj.ToString(), out result);
+        }
+
+        public static object GetValue(this Dictionary<object, object> dictionary, object key)
+        {
+            object value = null;
+            if (dictionary.TryGetValue(key, out value))
+            {
+                return value;
+            }
+            
+            foreach (object dictKey in dictionary.Keys)
+            {
+                if (dictKey.ValueEquals(key))
+                {
+                    return dictionary[dictKey];
+                }
+            }
+
+            return null;
         }
     }
 }

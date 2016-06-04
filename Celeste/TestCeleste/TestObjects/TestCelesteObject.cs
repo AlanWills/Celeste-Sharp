@@ -77,7 +77,15 @@ namespace TestCeleste
             };
 
             CelesteObjectCelesteObjectList = new CelesteObject(objects);
-            CelesteTable = new CelesteObject(new Dictionary<object, object>());
+
+            Dictionary<object, object> dict = new Dictionary<object, object>()
+            {
+                { 10.0f, "Value" },
+                { "Key", 20.0f },
+                { true, false },
+            };
+
+            CelesteTable = new CelesteObject(dict);
         }
         //
         // Use TestCleanup to run code after each test has run
@@ -161,6 +169,7 @@ namespace TestCeleste
             Assert.AreEqual("[", CelesteObjectChar.As<string>());
             Assert.AreEqual("Test", CelesteObjectString.As<string>());
             TestHelperFunctions.CheckOrderedListsEqual(new List<string>() { "1", "2" }, CelesteObjectStringList.As<List<string>>());
+            TestHelperFunctions.CheckOrderedListsEqual(new List<string>() { "1", "2" }, CelesteObjectStringList.AsList<string>());
 
             List<CelesteObject> objects = new List<CelesteObject>()
             {
@@ -170,6 +179,20 @@ namespace TestCeleste
                 CelesteObjectStringList,
             };
             TestHelperFunctions.CheckOrderedListsEqual(objects, CelesteObjectCelesteObjectList.As<List<CelesteObject>>());
+        }
+
+        [TestMethod]
+        public void TestCelesteObjectKeyAccess()
+        {
+            // Check the keys that exist
+            Assert.AreEqual("Value", CelesteTable[10.0f]);
+            Assert.AreEqual(20.0f, CelesteTable["Key"]);
+            Assert.AreEqual(false, CelesteTable[true]);
+
+            // Check the keys that do not exist
+            Assert.IsNull(CelesteTable["NonExistentKey"]);
+            Assert.IsNull(CelesteTable[false]);
+            Assert.IsNull(CelesteTable[new List<object>()]);
         }
     }
 }
