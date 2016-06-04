@@ -36,6 +36,8 @@ namespace TestCeleste
             script.CheckLocalVariable("trueOr", true);
             script.CheckLocalVariable("falseOr", false);
             script.CheckLocalVariable("trueFalseOr", true);
+            script.CheckLocalVariable("notTrueFalseOr", false);
+            script.CheckLocalVariable("trueNotFalseOr", true);
         }
 
         [TestMethod]
@@ -75,6 +77,7 @@ namespace TestCeleste
             script.CheckLocalVariable("nullReflexivity", false);
             script.CheckLocalVariable("nullAndValue", false);
             script.CheckLocalVariable("nullAndNonNullVariable", true);
+            script.CheckLocalVariable("notNullAndNonNullVariable", true);
         }
     }
 }

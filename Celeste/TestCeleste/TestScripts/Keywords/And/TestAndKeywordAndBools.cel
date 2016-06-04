@@ -1,3 +1,5 @@
 scoped trueAnd = true and true
 scoped falseAnd = false and false
 scoped trueFalseAnd = true and false
+scoped notFalseAndTrue = not false and true
+scoped trueAndNotTrue = true and not true

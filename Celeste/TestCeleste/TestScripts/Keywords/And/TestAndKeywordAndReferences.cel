@@ -43,3 +43,4 @@ scoped listAndTable = list and table
 scoped nullReflexivity = nullVar and nullVar
 scoped nullAndValue = nullVar and 5
 scoped nullAndNonNullVariable = nullVar and number
+scoped notNullAndNonNullVariable = not nullVar and number

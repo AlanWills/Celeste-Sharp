@@ -29,13 +29,13 @@ namespace Celeste
 
             // The stack will wrap our result in a CelesteObject, so just push the actual result of the equality
             bool result = false;
-            Reference rhsRef = rhs.Value as Reference;
+            Reference rhsRef = rhs.AsReference();
 
             // Check to see whether our rhs is a reference
             if (rhsRef != null)
             {
                 // Returns the result of the reference being equal to null
-                result = rhsRef == null;
+                result = rhsRef.Value == null;
             }
             else
             {

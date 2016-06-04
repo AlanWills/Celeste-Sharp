@@ -69,8 +69,8 @@ namespace Celeste
 
             // The stack will wrap our result in a CelesteObject, so just push the actual result of the operation
             bool result = false;
-            Reference lhsRef = lhs.Value as Reference;
-            Reference rhsRef = rhs.Value as Reference;
+            Reference lhsRef = lhs.AsReference();
+            Reference rhsRef = rhs.AsReference();
 
             // Check to see whether our lhs is a reference
             if (lhsRef != null)

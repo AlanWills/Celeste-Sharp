@@ -43,3 +43,4 @@ scoped listOrTable = list or table
 scoped nullReflexivity = nullVar or nullVar
 scoped nullAndValue = nullVar or 5
 scoped nullAndNonNullVariable = nullVar or number
+scoped notNullAndNonNullVariable = not nullVar or number
