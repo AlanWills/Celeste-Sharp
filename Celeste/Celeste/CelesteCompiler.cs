@@ -267,7 +267,8 @@ namespace Celeste
                 return false;
             }
 
-            Create<Variable>(parent, token, CelesteStack.CurrentScope.GetLocalVariable(token).GetType());
+            // Call compile on our variable we created - this will push a reference to it onto the stack
+            CelesteStack.CurrentScope.GetLocalVariable(token).Compile(parent, token, Tokens, Lines);
 
             return true;
         }

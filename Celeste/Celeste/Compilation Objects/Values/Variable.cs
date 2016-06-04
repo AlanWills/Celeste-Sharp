@@ -7,10 +7,17 @@ namespace Celeste
     /// </summary>
     internal class Variable : Value
     {
+        #region Properties and Fields
+
+        public string Name { get; private set; }
+
+        #endregion
+
         // Don't make the constructor less than public - it's needed in the CelesteCompiler
-        public Variable() :
+        public Variable(string variableName) :
             base(new Reference(new Reference(null)))
         {
+            Name = variableName;
         }
 
         #region Virtual Functions

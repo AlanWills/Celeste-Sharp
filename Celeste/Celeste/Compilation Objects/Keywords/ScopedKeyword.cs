@@ -19,9 +19,15 @@ namespace Celeste
             // Now check that there is another element after our keyword that we can use as the variable name
             Debug.Assert(tokens.Count > 0, "No value found for the right hand side of keyword: " + token);
 
+            if (tokens.First.Value == FunctionKeyword.scriptToken)
+            {
+                // If we have a function after this, we do nothing - functions by default are added to the current local scope
+                return;
+            }
+
             // Get the next token that appears on the right hand side of this operator - this will be our variable name
             string rhsOfKeyword = CelesteCompiler.PopToken();
-            
+
             Debug.Assert(!CelesteStack.CurrentScope.VariableExists(rhsOfKeyword), "Variable with the same name already exists in this scope");
 
             // Creates a new variable, but does not call Compile - Compile for variable assigns a reference from the stored variable in CelesteStack

@@ -15,30 +15,15 @@
         /// </summary>
         internal Scope FunctionScope { get; private set; }
 
-        private string _name = "";
-        public string Name
-        {
-            set
-            {
-                _name = value;
-                FunctionScope.Name = _name + "Scope";
-            }
-        }
-
         #endregion
 
-        public Function() :
-            this("")
-        {
-        }
-
         public Function(string name) :
-            base()
+            base(name)
         {
             (_Value as Reference).Value = new CompiledStatement();
 
             FunctionScope = new Scope();
-            _name = name;
+            FunctionScope.Name = Name + "Scope";
         }
 
         #region Virtual Functions

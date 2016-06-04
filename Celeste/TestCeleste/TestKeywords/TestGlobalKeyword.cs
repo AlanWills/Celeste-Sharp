@@ -11,7 +11,9 @@ namespace TestCeleste
         {
             CelesteScript script = RunScript("TestScripts\\Keywords\\Global\\TestGlobalParsing.cel");
 
+            Assert.AreEqual(2, CelesteStack.GlobalScope.VariableCount);
             CheckGlobalVariable("variable", null);
+            Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("func()"));
         }
     }
 }

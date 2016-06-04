@@ -23,6 +23,26 @@ namespace Celeste
             // Get the next token that appears on the right hand side of this operator - this will be our variable name
             string rhsOfKeyword = CelesteCompiler.PopToken();
 
+            if (rhsOfKeyword == FunctionKeyword.scriptToken)
+            {
+                Debug.Assert(tokens.Count > 0, "Function name must exist");
+                string functionName = tokens.First.Value;
+
+                if (CelesteCompiler.CompileToken(rhsOfKeyword))
+                {
+                    // If we have compiled our global function, we need to remove it from the current scope and move it to the global scope
+                    Debug.Assert(CelesteStack.CurrentScope.VariableExists(functionName));
+                    Variable function = CelesteStack.CurrentScope.RemoveLocalVariable(functionName);
+                    CelesteStack.GlobalScope.AddLocalVariable(function);
+                }
+                else
+                {
+                    Debug.Fail("Error parsing global function");
+                }
+
+                return;
+            }
+
             Debug.Assert(!CelesteStack.GlobalScope.VariableExists(rhsOfKeyword), "Variable with the same name already exists in this scope");
 
             // Creates a new variable, but does not call Compile - Compile for variable assigns a reference from the stored variable in CelesteStack

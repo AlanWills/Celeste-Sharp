@@ -29,6 +29,11 @@ namespace Celeste
         /// </summary>
         protected Dictionary<string, Variable> LocalVariables { get; private set; }
 
+        /// <summary>
+        /// The number of local variables and functions defined in this scope
+        /// </summary>
+        internal int VariableCount { get { return LocalVariables.Count; } }
+
         public string Name { private get; set; }
 
         #endregion
@@ -76,10 +81,16 @@ namespace Celeste
         {
             Debug.Assert(!VariableExists(variableName));
 
-            T variable = (T)Activator.CreateInstance(typeof(T));
+            T variable = (T)Activator.CreateInstance(typeof(T), new object[1] { variableName });
             LocalVariables.Add(variableName, variable);
 
             return variable;
+        }
+
+        internal void AddLocalVariable(Variable variable)
+        {
+            Debug.Assert(!VariableExists(variable.Name));
+            LocalVariables.Add(variable.Name, variable);
         }
 
         internal Variable GetLocalVariable(string variableName)
@@ -99,6 +110,16 @@ namespace Celeste
             {
                 return null;
             }
+        }
+
+        internal Variable RemoveLocalVariable(string variableName)
+        {
+            Debug.Assert(VariableExists(variableName));
+
+            Variable variable = LocalVariables[variableName];
+            LocalVariables.Remove(variableName);
+
+            return variable;
         }
     }
 
