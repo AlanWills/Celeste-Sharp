@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Celeste
+﻿namespace Celeste
 {
     /// <summary>
     /// A class to represent a variable within our program

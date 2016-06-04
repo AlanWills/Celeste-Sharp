@@ -40,5 +40,15 @@ namespace TestCeleste
             Assert.IsTrue(script.ScriptScope.VariableExists("funcOneArg"));
             script.CheckLocalVariable("result", 2.0f);
         }
+
+        [TestMethod]
+        public void TestFunctionKeywordMultipleCalls()
+        {
+            CelesteScript script = RunScript("TestScripts\\Keywords\\Function\\TestFunctionKeywordMultipleCalls.cel");
+
+            Assert.IsTrue(script.ScriptScope.VariableExists("assignmentFunc"));
+            script.CheckLocalVariable("firstCall", 2.0f);
+            script.CheckLocalVariable("secondCall", true);
+        }
     }
 }

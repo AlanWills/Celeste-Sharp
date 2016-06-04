@@ -62,7 +62,7 @@ namespace Celeste
             if (ParameterNames.Count > 0)
             {
 
-                // The compiled statement we will child all of the parameter equality set up under
+                // The compiled statement we will child the input parameters under
                 CompiledStatement thisCallParameters = new CompiledStatement();
                 ParameterImpl.Add(thisCallParameters);
 
@@ -73,14 +73,8 @@ namespace Celeste
 
                 for (int i = 0, n = inputParameterNames.Length; i < Math.Min(n, ParameterNames.Count); i++)
                 {
-                    // Add a reference to our local variable for the lhs of the assigment
-                    FunctionScope.GetLocalVariable(ParameterNames[i], ScopeSearchOption.kThisScope).Compile(thisCallParameters, ParameterNames[i], tokens, lines);
-
-                    // Add the name of the input local variable to the tokens list so our assignment operator will extract it and add the variable underneath itself
-                    // Now we have an assignment operator, which will assign to our parameter local variable the value of the inputted local variable
-                    tokens.AddFirst(inputParameterNames[i]);
-                    AssignmentOperator equals = new AssignmentOperator();
-                    equals.Compile(thisCallParameters, AssignmentOperator.scriptToken, tokens, lines);
+                    CelesteCompiler.CompileToken(inputParameterNames[i], thisCallParameters);
+                    Debug.Assert(thisCallParameters.ChildCompiledStatements[i] is Value || thisCallParameters.ChildCompiledStatements[i] is Variable);
                 }
             }
 
@@ -93,7 +87,38 @@ namespace Celeste
             if (ParameterImpl.Count > 0)
             {
                 // Set up our parameters
-                ParameterImpl[0].PerformOperation();
+                for (int i = 0; i < ParameterNames.Count; i++)
+                {
+                    Variable functionParameter = FunctionScope.GetLocalVariable(ParameterNames[i], ScopeSearchOption.kThisScope);
+
+                    if (i < ParameterImpl[0].ChildCount)
+                    {
+                        if (ParameterImpl[0].ChildCompiledStatements[i] is Variable)
+                        {
+                            // Assign the function's local variable to reference the same object as the input variable
+                            Reference firstRef = (ParameterImpl[0].ChildCompiledStatements[i] as Variable)._Value as Reference;
+
+                            // firstRef.Value is a reference to the object we are passing in - this is the thing we want to set on the function's local variable
+                            (functionParameter._Value as Reference).Value = firstRef.Value;
+                        }
+                        else if (ParameterImpl[0].ChildCompiledStatements[i] is Value)
+                        {
+                            // Otherwise we have passed in a value
+                            // Set the object the local function variable references to be this value
+                            (functionParameter._Value as Reference).Value = (ParameterImpl[0].ChildCompiledStatements[i] as Value)._Value;
+                        }
+                        else
+                        {
+                            Debug.Fail("Invalid input value");
+                        }
+                    }
+                    else
+                    {
+                        // Set any excess parameters with no input value to null
+                        (functionParameter._Value as Reference).Value = null;
+                    }
+                }
+
                 ParameterImpl.RemoveAt(0);
             }
 
@@ -107,12 +132,6 @@ namespace Celeste
 
             CelesteStack.Scopes.Remove(FunctionScope);
             CelesteStack.CurrentScope = FunctionScope.ParentScope;
-
-            // Reset all of our parameter local variable actual references (not references values) to null
-            foreach (string parameterName in ParameterNames)
-            {
-                FunctionScope.GetLocalVariable(parameterName)._Value = null;
-            }
         }
 
         #endregion
