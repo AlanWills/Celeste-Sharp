@@ -13,7 +13,7 @@ namespace TestCeleste
 
             Assert.AreEqual(2, CelesteStack.GlobalScope.VariableCount);
             CheckGlobalVariable("variable", null);
-            Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("func()"));
+            Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("func"));
         }
     }
 }

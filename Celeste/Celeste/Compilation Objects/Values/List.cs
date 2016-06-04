@@ -74,7 +74,7 @@ namespace Celeste
                 {
                     foundClosing = true;
                 }
-                else if (CelesteCompiler.CompileToken(nextToken))
+                else if (CelesteCompiler.CompileToken(nextToken, parent))
                 {
                     // Take the value that has been created from compiling this token and add it to our list
                     // Then remove the compiled statement - we do not want objects in our list pushed onto the stack

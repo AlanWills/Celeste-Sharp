@@ -12,6 +12,9 @@ namespace Celeste
 
         internal static string scriptToken = "function";
         private static string endDelimiter = "end";
+        internal static char parameterStartDelimiter = '(';
+        private static string parameterEndDelimiter = ")";
+        internal static char parameterDelimiter = ',';
 
         #endregion
 
@@ -25,14 +28,19 @@ namespace Celeste
             // Get the next token that appears on the right hand side of this operator - this will be our function name
             string rhsOfKeyword = CelesteCompiler.PopToken();
 
-            Debug.Assert(!CelesteStack.CurrentScope.VariableExists(token), "Variable with the same name already exists in this scope");
+            int bracketOpening = rhsOfKeyword.IndexOf(parameterStartDelimiter);
+            Debug.Assert(bracketOpening >= 0, "No '(' token in function declaration");
+            Debug.Assert(rhsOfKeyword.EndsWith(parameterEndDelimiter));
 
+            string functionName = rhsOfKeyword.Substring(0, bracketOpening);
+            string parameters = rhsOfKeyword.Substring(bracketOpening + 1, rhsOfKeyword.Length - functionName.Length - 2);
+
+            Debug.Assert(!CelesteStack.CurrentScope.VariableExists(functionName), "Variable with the same name already exists in this scope");
             int currentIndex = parent.ChildCount;
 
             // Creates a new function, but does not call Compile - Compile for function assigns a reference from the stored function in CelesteStack
-            Function function = CelesteStack.CurrentScope.AddLocalVariable<Function>(rhsOfKeyword);
-
-            // Work our parameters here
+            Function function = CelesteStack.CurrentScope.AddLocalVariable<Function>(functionName);
+            function.SetParameters(parameters.Split(parameterDelimiter));
 
             // We keep parsing until we find the closing keyword for our function
             bool foundClosing = false;
@@ -51,7 +59,7 @@ namespace Celeste
                 {
                     foundClosing = true;
                 }
-                else if (CelesteCompiler.CompileToken(nextToken))
+                else if (CelesteCompiler.CompileToken(nextToken, parent))
                 {
                     
                 }

@@ -111,13 +111,16 @@
     <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionSimpleExecution.cel">
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordOneArgument.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionVariableScoping.cel">
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordSimpleExecution.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionParsing.cel">
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordVariableScoping.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Global\TestGlobalParsing.cel">

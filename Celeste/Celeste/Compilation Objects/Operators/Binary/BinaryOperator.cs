@@ -29,7 +29,7 @@ namespace Celeste
             string rhsOfOperatorToken = CelesteCompiler.PopToken();
 
             // Parse the next token which we will act on
-            if (CelesteCompiler.CompileToken(rhsOfOperatorToken))
+            if (CelesteCompiler.CompileToken(rhsOfOperatorToken, parent))
             {
                 // Take the value that has been added to the root and add it under this operator instead
                 parent.MoveChildAtIndex(parent.ChildCount - 1, this);

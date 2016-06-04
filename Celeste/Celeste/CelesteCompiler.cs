@@ -197,7 +197,7 @@ namespace Celeste
             {
                 string token = PopToken();
 
-                bool tokenResult = CompileToken(token);
+                bool tokenResult = CompileToken(token, RootStatement);
                 Debug.Assert(tokenResult, "Compiling token: " + token + " failed");
 
                 result = tokenResult && result;
@@ -210,21 +210,25 @@ namespace Celeste
         /// Compiles an individual token
         /// </summary>
         /// <param name="token"></param>
-        public static bool CompileToken(string token)
+        public static bool CompileToken(string token, CompiledStatement parent)
         {
-            if (CompileAsValue(RootStatement, token))
+            if (CompileAsValue(parent, token))
             {
                 return true;
             }
-            else if (CompileAsVariable(RootStatement, token))
+            else if (CompileAsVariable(parent, token))
             {
                 return true;
             }
-            else if (CompileAsKeyword(RootStatement, token))
+            else if (CompileAsFunction(parent, token))
             {
                 return true;
             }
-            else if (CompileAsBinaryOperator(RootStatement, token))
+            else if (CompileAsKeyword(parent, token))
+            {
+                return true;
+            }
+            else if (CompileAsBinaryOperator(parent, token))
             {
                 return true;
             }
@@ -272,6 +276,32 @@ namespace Celeste
             CelesteStack.CurrentScope.GetLocalVariable(token).Compile(parent, token, Tokens, Lines);
 
             return true;
+        }
+
+        /// <summary>
+        /// See if this inputted token is actually a function call.
+        /// We cannot use CompileAsVariable, because to mark it as a call we use brackets and pass parameters.
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        private static bool CompileAsFunction(CompiledStatement parent, string token)
+        {
+            int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
+            if (parameterStartDelimiterIndex > 0)
+            {
+                string functionName = token.Substring(0, parameterStartDelimiterIndex);
+
+                if (CelesteStack.CurrentScope.VariableExists(functionName, ScopeSearchOption.kUpwardsRecursive))
+                {
+                    // Call compile - this will push a reference onto the stack and add references to the variables we will use as arguments
+                    CelesteStack.CurrentScope.GetLocalVariable(functionName).Compile(parent, token, Tokens, Lines);
+
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>

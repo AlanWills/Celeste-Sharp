@@ -13,7 +13,7 @@ namespace TestCeleste
 
             Assert.AreEqual(2, script.ScriptScope.VariableCount);
             script.CheckLocalVariable("variable", null);
-            Assert.IsTrue(script.ScriptScope.VariableExists("func()"));
+            Assert.IsTrue(script.ScriptScope.VariableExists("func"));
         }
     }
 }

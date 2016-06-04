@@ -93,9 +93,9 @@ namespace Celeste
             LocalVariables.Add(variable.Name, variable);
         }
 
-        internal Variable GetLocalVariable(string variableName)
+        internal Variable GetLocalVariable(string variableName, ScopeSearchOption searchOption = ScopeSearchOption.kUpwardsRecursive)
         {
-            Debug.Assert(VariableExists(variableName, ScopeSearchOption.kUpwardsRecursive));
+            Debug.Assert(VariableExists(variableName, searchOption));
 
             Variable variable;
             if (LocalVariables.TryGetValue(variableName, out variable))

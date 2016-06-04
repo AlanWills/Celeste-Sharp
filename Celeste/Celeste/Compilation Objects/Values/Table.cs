@@ -79,7 +79,7 @@ namespace Celeste
                 {
                     foundClosing = true;
                 }
-                else if (CelesteCompiler.CompileToken(nextToken))
+                else if (CelesteCompiler.CompileToken(nextToken, parent))
                 {
                     CompiledStatement compiledStatement = parent.ChildCompiledStatements[parent.ChildCount - 1];
 

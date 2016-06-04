@@ -23,7 +23,7 @@ namespace Celeste
             parent.Add(this);
 
             // Parse the rest of the token which we will act on
-            if (CelesteCompiler.CompileToken(rest))
+            if (CelesteCompiler.CompileToken(rest, parent))
             {
                 // Take the value that has been added to the root and add it under this operator instead
                 parent.MoveChildAtIndex(parent.ChildCount - 1, this);
