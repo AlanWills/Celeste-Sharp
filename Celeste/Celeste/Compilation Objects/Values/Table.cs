@@ -42,6 +42,15 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
+            // We know the token will at least start with the start delimiter
+            if (token.Length > 1)
+            {
+                // In here if the start delimiter and another token are smushed together with no space
+                // Split the start delimiter and the rest of the token and add the rest of the token to the start of our tokens list
+                string rest = token.Remove(0, 1);
+                tokens.AddFirst(rest);
+            }
+
             // We keep parsing until we find a closing character for our list
             bool foundClosing = false;
             while (!foundClosing)
@@ -55,6 +64,17 @@ namespace Celeste
                 }
 
                 string nextToken = CelesteCompiler.PopToken();
+                if (nextToken == AssignmentOperator.scriptToken)
+                {
+                    string valueToken = tokens.First.Value;
+                    if (valueToken.EndsWith(endDelimiter) && valueToken.Length > 1)
+                    {
+                        valueToken = valueToken.Remove(valueToken.Length - 1, 1);
+                        tokens.First.Value = valueToken;
+                        foundClosing = true;
+                    }
+                }
+
                 if (nextToken == endDelimiter)
                 {
                     foundClosing = true;

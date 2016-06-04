@@ -5,10 +5,9 @@ scoped multiLineList = [
   5
   5 
 ]
-scoped strangeFormatList = [ "Test" 
+scoped strangeFormatList = ["Test" 
    "Test" "Test" ]
-scoped strangeFormatList2 = [ true true true 
-]
+scoped strangeFormatList2 = [true true true]
 scoped indentedList = [
   [
     5

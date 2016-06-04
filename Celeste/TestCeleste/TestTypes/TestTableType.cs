@@ -34,6 +34,19 @@ namespace TestCeleste.TestTypes
                 Assert.AreEqual(expected[10.0f], actual[10.0f]);
             }
             {
+                Assert.IsTrue(script.ScriptScope.VariableExists("firstTableCondensedFormat"));
+                Variable variable = script.ScriptScope.GetLocalVariable("firstTableCondensedFormat");
+                Dictionary<object, object> expected = new Dictionary<object, object>()
+                {
+                    { "Test", 5.0f },
+                    { 10.0f, true }
+                };
+
+                Dictionary<object, object> actual = variable.GetReferencedValue<Dictionary<object, object>>();
+                Assert.AreEqual(expected["Test"], actual["Test"]);
+                Assert.AreEqual(expected[10.0f], actual[10.0f]);
+            }
+            {
                 Assert.IsTrue(script.ScriptScope.VariableExists("secondTable"));
                 Variable variable = script.ScriptScope.GetLocalVariable("secondTable");
                 Dictionary<object, object> expected = new Dictionary<object, object>()
