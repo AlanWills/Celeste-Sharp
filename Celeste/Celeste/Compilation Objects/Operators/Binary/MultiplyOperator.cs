@@ -8,9 +8,14 @@ namespace Celeste
     /// </summary>
     internal class MultiplyOperator : BinaryOperator
     {
-        internal static string scriptToken = "*";
+        private static string scriptToken = "*";
 
         #region Virtual Functions
+
+        public static bool IsMultiplyOperator(string token)
+        {
+            return token.StartsWith(scriptToken);
+        }
 
         /// <summary>
         /// Multiplication should take precendence over assignment

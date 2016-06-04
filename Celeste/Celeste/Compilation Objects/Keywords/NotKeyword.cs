@@ -26,10 +26,12 @@ namespace Celeste
             // Now check that there is an element after our keyword that we can use as the variable name
             Debug.Assert(tokens.Count > 0, "No value found for the right hand side of the 'not' keyword");
 
+            string rhsToken = CelesteCompiler.PopToken();
+
             // Create a not operator and compile - this will do all the work of moving statements around in the parent
             // It will also add itself to the parent tree
             NotOperator notOperator = new NotOperator();
-            notOperator.Compile(parent, NotOperator.scriptToken, tokens, lines);
+            notOperator.Compile(parent, NotOperator.scriptToken + rhsToken, tokens, lines);
         }
 
         #endregion

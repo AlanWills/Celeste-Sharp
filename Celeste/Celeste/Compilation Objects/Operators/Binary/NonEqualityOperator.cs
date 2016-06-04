@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-
-namespace Celeste
+﻿namespace Celeste
 {
     /// <summary>
     /// The non equality operator which tests whether two Values are not equal for value types and references not equal for reference types
     /// </summary>
     internal class NonEqualityOperator : LogicalBinaryOperator
     {
-        internal static string scriptToken = "!=";
+        private static string scriptToken = "!=";
 
         #region Virtual Functions
+
+        public static bool IsNonEqualityOperator(string token)
+        {
+            return token.StartsWith(scriptToken);
+        }
 
         /// <summary>
         /// Equate the references

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -10,9 +9,14 @@ namespace Celeste
     /// </summary>
     internal class SubtractOperator : BinaryOperator
     {
-        internal static string scriptToken = "-";
+        private static string scriptToken = "-";
 
         #region Virtual Functions
+
+        public static bool IsSubtractOperator(string token)
+        {
+            return token.StartsWith(scriptToken);
+        }
 
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {

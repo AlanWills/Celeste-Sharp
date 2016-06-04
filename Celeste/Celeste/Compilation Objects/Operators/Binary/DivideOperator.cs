@@ -8,9 +8,14 @@ namespace Celeste
     /// </summary>
     internal class DivideOperator : BinaryOperator
     {
-        internal static string scriptToken = "/";
+        private static string scriptToken = "/";
 
         #region Virtual Functions
+
+        public static bool IsDivideOperator(string token)
+        {
+            return token.StartsWith(scriptToken);
+        }
 
         /// <summary>
         /// Division should take precedence over Assignment

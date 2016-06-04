@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace Celeste
+﻿namespace Celeste
 {
     /// <summary>
     /// Represents the 'binary' logical operator which checks for true for Values and equates to null for References
@@ -11,6 +8,11 @@ namespace Celeste
         internal static string scriptToken = "&&";
 
         #region Virtual Functions
+
+        public static bool IsAndOperator(string token)
+        {
+            return token.StartsWith(scriptToken);
+        }
 
         /// <summary>
         /// Check to see whether the two references are null.

@@ -9,9 +9,14 @@ namespace Celeste
     /// </summary>
     internal class AddOperator : BinaryOperator
     {
-        internal static string scriptToken = "+";
+        private static string scriptToken = "+";
 
         #region Virtual Functions
+
+        public static bool IsAddOperator(string token)
+        {
+            return token.StartsWith(scriptToken);
+        }
 
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {

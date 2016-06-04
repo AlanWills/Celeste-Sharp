@@ -11,6 +11,11 @@ namespace Celeste
 
         #region Virtual Functions
 
+        public static bool IsAssignmentOperator(string token)
+        {
+            return token == scriptToken;
+        }
+
         /// <summary>
         /// Assigns the expression on the right to the local variable on the left
         /// </summary>

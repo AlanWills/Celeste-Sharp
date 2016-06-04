@@ -9,6 +9,11 @@
 
         #region Virtual Functions
 
+        public static bool IsEqualityOperator(string token)
+        {
+            return token.StartsWith(scriptToken);
+        }
+
         /// <summary>
         /// Equate the two references
         /// </summary>

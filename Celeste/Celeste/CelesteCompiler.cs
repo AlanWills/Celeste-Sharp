@@ -27,17 +27,18 @@ namespace Celeste
         /// <summary>
         /// A dictionary of registered binary operators we will use when parsing our script
         /// </summary>
-        private static Dictionary<string, Type> RegisteredOperators = new Dictionary<string, Type>()
+        private static Dictionary<Func<string, bool>, Type> RegisteredOperators = new Dictionary<Func<string, bool>, Type>()
         {
-            { AddOperator.scriptToken, typeof(AddOperator) },
-            { SubtractOperator.scriptToken, typeof(SubtractOperator) },
-            { MultiplyOperator.scriptToken, typeof(MultiplyOperator) },
-            { DivideOperator.scriptToken, typeof(DivideOperator) },
-            { AssignmentOperator.scriptToken, typeof(AssignmentOperator) },
-            { EqualityOperator.scriptToken, typeof(EqualityOperator) },
-            { NonEqualityOperator.scriptToken, typeof(NonEqualityOperator) },
-            { OrOperator.scriptToken, typeof(OrOperator) },
-            { AndOperator.scriptToken, typeof(AndOperator) },
+            { AddOperator.IsAddOperator, typeof(AddOperator) },
+            { SubtractOperator.IsSubtractOperator, typeof(SubtractOperator) },
+            { MultiplyOperator.IsMultiplyOperator, typeof(MultiplyOperator) },
+            { DivideOperator.IsDivideOperator, typeof(DivideOperator) },
+            { AssignmentOperator.IsAssignmentOperator, typeof(AssignmentOperator) },
+            { EqualityOperator.IsEqualityOperator, typeof(EqualityOperator) },
+            { NonEqualityOperator.IsNonEqualityOperator, typeof(NonEqualityOperator) },
+            { OrOperator.IsOrOperator, typeof(OrOperator) },
+            { AndOperator.IsAndOperator, typeof(AndOperator) },
+            { NotOperator.IsNotOperator, typeof(NotOperator) },
         };
 
         /// <summary>
@@ -302,15 +303,17 @@ namespace Celeste
         /// <returns></returns>
         private static bool CompileAsBinaryOperator(CompiledStatement parent, string token)
         {
-            if (!RegisteredOperators.ContainsKey(token))
+            foreach (KeyValuePair<Func<string, bool>, Type> pair in RegisteredOperators)
             {
-                return false;
+                if (pair.Key(token))
+                {
+                    Create<BinaryOperator>(parent, token, pair.Value);
+
+                    return true;
+                }
             }
 
-            // Create an instance of our operator
-            Create<BinaryOperator>(parent, token, RegisteredOperators[token]);
-
-            return true;
+            return false;
         }
 
         #endregion

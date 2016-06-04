@@ -14,17 +14,16 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
+            // Unary operators act on other variables/values and so they must be included in the same token as another token (e.g. !var for example)
+            // We remove the script token for the operator and split the other token out
+            Debug.Assert(token.Length > 1);
+            string rest = token.Remove(0, 1);
+
             // Add this operator to the tree
             parent.Add(this);
 
-            // Now check that there is another element after our operator that we can act on
-            Debug.Assert(tokens.Count > 0, "No value found for the right hand side of operator: " + token);
-
-            // Get the next token that appears on the right hand side of this operator
-            string rhsOfOperatorToken = CelesteCompiler.PopToken();
-
-            // Parse the next token which we will act on
-            if (CelesteCompiler.CompileToken(rhsOfOperatorToken))
+            // Parse the rest of the token which we will act on
+            if (CelesteCompiler.CompileToken(rest))
             {
                 // Take the value that has been added to the root and add it under this operator instead
                 parent.MoveChildAtIndex(parent.ChildCount - 1, this);

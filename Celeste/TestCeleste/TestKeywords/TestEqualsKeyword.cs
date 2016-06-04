@@ -29,7 +29,7 @@ namespace TestCeleste.TestKeywords
         }
 
         [TestMethod]
-        public void TestEqualityOperatorEquateBools()
+        public void TestEqualityKeywordEquateBools()
         {
             CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateBools.cel");
 
@@ -39,7 +39,7 @@ namespace TestCeleste.TestKeywords
         }
 
         [TestMethod]
-        public void TestEqualityOperatorEquateReferences()
+        public void TestEqualityKeywordEquateReferences()
         {
             CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateReferences.cel");
 

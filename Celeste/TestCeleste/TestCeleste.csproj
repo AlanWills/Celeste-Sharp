@@ -72,6 +72,7 @@
     <Compile Include="TestOperators\TestDivideOperator.cs" />
     <Compile Include="TestOperators\TestAssignmentOperator.cs" />
     <Compile Include="TestOperators\TestAndOperator.cs" />
+    <Compile Include="TestOperators\TestNotOperator.cs" />
     <Compile Include="TestOperators\TestOrOperator.cs" />
     <Compile Include="TestOperators\TestNonEquality.cs" />
     <Compile Include="TestOperators\TestEqualityOperator.cs" />
@@ -204,6 +205,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Not\TestNotKeywordNotBools.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Not\TestNotKeywordNotNumbers.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Not\TestNotKeywordNotReferences.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Not\TestNotKeywordNotStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Or\TestOrOperatorOrBools.cel">

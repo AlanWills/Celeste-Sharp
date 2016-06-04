@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace Celeste
+﻿namespace Celeste
 {
     /// <summary>
     /// The or operator, which tests whether at least one of the two objects it acts upon is:
@@ -13,6 +10,11 @@ namespace Celeste
         internal static string scriptToken = "||";
 
         #region Virtual Functions
+
+        public static bool IsOrOperator(string token)
+        {
+            return token.StartsWith(scriptToken);
+        }
 
         /// <summary>
         /// Returns whether either one of the references is not null.
