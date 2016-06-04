@@ -38,3 +38,4 @@ scoped boolNotEqualsList = bool != list
 scoped boolNotEqualsTable = bool != table
 
 scoped listNotEqualsTable = list != table
+scoped notListNotEqualsTable = not list != table

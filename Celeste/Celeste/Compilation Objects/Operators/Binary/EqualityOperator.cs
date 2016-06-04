@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Celeste
+﻿namespace Celeste
 {
     /// <summary>
     /// The equality operator which tests whether two Values are equal for value types and reference for reference types.
@@ -8,8 +6,6 @@ namespace Celeste
     internal class EqualityOperator : LogicalBinaryOperator
     {
         internal static string scriptToken = "==";
-
-
 
         #region Virtual Functions
 

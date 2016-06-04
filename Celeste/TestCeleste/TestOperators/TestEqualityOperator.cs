@@ -36,6 +36,9 @@ namespace TestCeleste
             script.CheckLocalVariable("trueEquality", true);
             script.CheckLocalVariable("falseEquality", true);
             script.CheckLocalVariable("boolInequality", false);
+            script.CheckLocalVariable("notTrueFalse", true);
+            script.CheckLocalVariable("trueNotFalse", true);
+            script.CheckLocalVariable("trueNotTrue", false);
         }
 
         [TestMethod]
@@ -58,19 +61,20 @@ namespace TestCeleste
             script.CheckLocalVariable("tableEqualsTableRef", true);
 
             // Check the different types are not equal to each other
-            script.CheckLocalVariable("numberNotEqualsString", false);
-            script.CheckLocalVariable("numberNotEqualsBool", false);
-            script.CheckLocalVariable("numberNotEqualsList", false);
-            script.CheckLocalVariable("numberNotEqualsTable", false);
+            script.CheckLocalVariable("numberEqualsString", false);
+            script.CheckLocalVariable("numberEqualsBool", false);
+            script.CheckLocalVariable("numberEqualsList", false);
+            script.CheckLocalVariable("numberEqualsTable", false);
 
-            script.CheckLocalVariable("stringNotEqualsBool", false);
-            script.CheckLocalVariable("stringNotEqualsList", false);
-            script.CheckLocalVariable("stringNotEqualsTable", false);
+            script.CheckLocalVariable("stringEqualsBool", false);
+            script.CheckLocalVariable("stringEqualsList", false);
+            script.CheckLocalVariable("stringEqualsTable", false);
 
-            script.CheckLocalVariable("boolNotEqualsList", false);
-            script.CheckLocalVariable("boolNotEqualsTable", false);
+            script.CheckLocalVariable("boolEqualsList", false);
+            script.CheckLocalVariable("boolEqualsTable", false);
 
-            script.CheckLocalVariable("listNotEqualsTable", false);
+            script.CheckLocalVariable("listEqualsTable", false);
+            script.CheckLocalVariable("notListEqualsTable", false);
         }
     }
 }

@@ -36,6 +36,9 @@ namespace TestCeleste
             script.CheckLocalVariable("trueEquality", false);
             script.CheckLocalVariable("falseEquality", false);
             script.CheckLocalVariable("boolInequality", true);
+            script.CheckLocalVariable("notTrueFalse", false);
+            script.CheckLocalVariable("trueNotFalse", false);
+            script.CheckLocalVariable("trueNotTrue", true);
         }
 
         [TestMethod]
@@ -71,6 +74,7 @@ namespace TestCeleste
             script.CheckLocalVariable("boolNotEqualsTable", true);
 
             script.CheckLocalVariable("listNotEqualsTable", true);
+            script.CheckLocalVariable("notListNotEqualsTable", true);
         }
     }
 }
