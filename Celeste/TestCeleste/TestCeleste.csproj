@@ -111,7 +111,10 @@
     <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordFunctionReassignment.cel">
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordFunctionReassignmentWithArgs.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordFunctionReassignmentNoArgs.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Function\TestFunctionKeywordNotEnoughInputs.cel">

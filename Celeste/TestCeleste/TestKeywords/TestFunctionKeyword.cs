@@ -80,9 +80,20 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordFunctionReassignment()
+        public void TestFunctionKeywordFunctionReassignmentNoArgs()
         {
-            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordFunctionReassignment.cel");
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordFunctionReassignmentNoArgs.cel");
+
+            Assert.IsTrue(script.ScriptScope.VariableExists("firstFunc"));
+            Assert.IsTrue(script.ScriptScope.VariableExists("secondFunc"));
+            script.CheckLocalVariable("firstVariable", true);
+            script.CheckLocalVariable("secondVariable", false);
+        }
+
+        [TestMethod]
+        public void TestFunctionKeywordFunctionReassignmentWithArgs()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordFunctionReassignmentWithArgs.cel");
 
             Assert.IsTrue(script.ScriptScope.VariableExists("firstFunc"));
             Assert.IsTrue(script.ScriptScope.VariableExists("secondFunc"));
