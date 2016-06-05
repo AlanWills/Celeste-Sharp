@@ -70,19 +70,20 @@ namespace TestCeleste
             script.CheckLocalVariable("secondVariable", null);
         }
 
-        [TestMethod]
-        public void TestFunctionKeywordFunctionReassignment()
-        {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Function\\TestFunctionKeywordFunctionReassignment.cel");
+        //[TestMethod]
+        //public void TestFunctionKeywordFunctionReassignment()
+        //{
+        //    CelesteScript script = RunScript("TestScripts\\Keywords\\Function\\TestFunctionKeywordFunctionReassignment.cel");
 
-            Assert.IsTrue(script.ScriptScope.VariableExists("firstFunc"));
-            Assert.IsTrue(script.ScriptScope.VariableExists("secondFunc"));
-            script.CheckLocalVariable("firstVariable", true);
-            script.CheckLocalVariable("secondVariable", false);
-        }
+        //    Assert.IsTrue(script.ScriptScope.VariableExists("firstFunc"));
+        //    Assert.IsTrue(script.ScriptScope.VariableExists("secondFunc"));
+        //    script.CheckLocalVariable("firstVariable", true);
+        //    script.CheckLocalVariable("secondVariable", false);
+        //}
 
         // Tests still to do:
         // Assigning functions to one another - see if the behaviour changes midway through script (maybe better in the Assignment test suite)
+        // Going to be tough - parameters.  Maybe we should change the reference rather than the FuncImpl
 
         // Improve the Function class - we do not need to store CompiledStatements, we just need to store the object we will assign to the local variable
         // So have a list of objects instead stored in the big list - when we compile we either store the Value, or the Reference based on what type the thing we compiled was

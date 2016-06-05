@@ -12,7 +12,7 @@ namespace Celeste
     {
         #region Properties and Fields
 
-        public CompiledStatement FuncImpl { get { return ((_Value as Reference).Value as CompiledStatement); } }
+        public CompiledStatement FuncImpl { get { return (_Value as Reference).Value as CompiledStatement; } }
 
         /// <summary>
         /// A list where each child in the list represents one round of parameters to the function.
@@ -33,7 +33,7 @@ namespace Celeste
         public Function(string name) :
             base(name)
         {
-            (_Value as Reference).Value = new CompiledStatement();
+            (_Value as Reference).Value  = new CompiledStatement();
             ParameterImpl = new List<CompiledStatement>();
 
             FunctionScope = new Scope();
@@ -56,30 +56,44 @@ namespace Celeste
         /// <param name="lines"></param>
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {
-            base.Compile(parent, token, tokens, lines);
-
             // If we have no brackets, we are trying to compile the function as a value rather than as a call (for use in equality for example)
             if (token.IndexOf(FunctionKeyword.parameterStartDelimiter) < 0)
             {
-                // Assign a reference to our implementation to a value variable so that we can change what the reference points to
-                Value functionAsValue = new Value(_Value);
-                functionAsValue.Compile(parent, token, tokens, lines);
-            }
-            else if (ParameterNames.Count > 0)
-            {
-                // Only add parameters if our registered parameter names are greater than zero
-                // The compiled statement we will child the input parameters under
-                CompiledStatement thisCallParameters = new CompiledStatement();
-                ParameterImpl.Add(thisCallParameters);
-
-                int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
-                string inputParameters = token.Substring(parameterStartDelimiterIndex + 1, token.Length - parameterStartDelimiterIndex - 2);
-                string[] inputParameterNames = inputParameters.Split(FunctionKeyword.parameterDelimiter);
-
-                for (int i = 0, n = inputParameterNames.Length; i < Math.Min(n, ParameterNames.Count); i++)
+                CompiledStatement funcStatement = null;
+                if (parent.ChildCompiledStatements[parent.ChildCount - 1] is AssignmentOperator)
                 {
-                    CelesteCompiler.CompileToken(inputParameterNames[i], thisCallParameters);
-                    Debug.Assert(thisCallParameters.ChildCompiledStatements[i] is Value || thisCallParameters.ChildCompiledStatements[i] is Variable);
+                    // This is being compiled on the rhs of an assignment so we push the value of the FuncImpl
+                    funcStatement = new Value(FuncImpl);
+                }
+                else
+                {
+                    // Wrap the reference to our FuncImpl so that we can affect it by assignment
+                    funcStatement = new Reference(_Value);
+                }
+
+                funcStatement.Compile(parent, token, tokens, lines);
+            }
+            else
+            {
+                // Add a reference to this function in our compile tree
+                base.Compile(parent, token, tokens, lines);
+
+                if (ParameterNames.Count > 0)
+                {
+                    // Only add parameters if our registered parameter names are greater than zero
+                    // The compiled statement we will child the input parameters under
+                    CompiledStatement thisCallParameters = new CompiledStatement();
+                    ParameterImpl.Add(thisCallParameters);
+
+                    int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
+                    string inputParameters = token.Substring(parameterStartDelimiterIndex + 1, token.Length - parameterStartDelimiterIndex - 2);
+                    string[] inputParameterNames = inputParameters.Split(FunctionKeyword.parameterDelimiter);
+
+                    for (int i = 0, n = inputParameterNames.Length; i < Math.Min(n, ParameterNames.Count); i++)
+                    {
+                        CelesteCompiler.CompileToken(inputParameterNames[i], thisCallParameters);
+                        Debug.Assert(thisCallParameters.ChildCompiledStatements[i] is Value || thisCallParameters.ChildCompiledStatements[i] is Variable);
+                    }
                 }
             }
 

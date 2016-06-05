@@ -3,7 +3,8 @@
 namespace Celeste
 {
     /// <summary>
-    /// A class representing a hard coded compiled value in our script
+    /// A class representing a hard coded compiled value in our script.
+    /// Objects wrapped in a Value will not be altered, but rather a copy of them will be used.
     /// </summary>
     internal class Value : CompiledStatement
     {

@@ -13,7 +13,7 @@ namespace Celeste
     /// A class representing a node in our compile tree which can have children objects.
     /// Do not want to expose this outside of the namespace with the compiler.
     /// </summary>
-    internal class CompiledStatement
+    public class CompiledStatement
     {
         #region Properties and Fields
 
