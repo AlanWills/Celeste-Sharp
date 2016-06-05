@@ -117,13 +117,16 @@
     <None Include="TestScripts\Keywords\Function\TestFunctionKeywordNotEnoughInputs.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordOneReferenceArgument.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Function\TestFunctionKeywordTooManyInputs.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Function\TestFunctionKeywordMultipleCalls.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordOneArgument.cel">
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordOneValueArgument.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Function\TestFunctionKeywordSimpleExecution.cel">

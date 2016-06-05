@@ -28,7 +28,7 @@ namespace Celeste
         /// <summary>
         /// The reference wrapper around the value we are storing
         /// </summary>
-        private Reference ValueImpl { get; set; }
+        internal Reference ValueImpl { get; set; }
 
         /// <summary>
         /// A reference to our stored object's type

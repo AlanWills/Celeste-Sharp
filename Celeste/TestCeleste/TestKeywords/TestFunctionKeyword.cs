@@ -33,12 +33,21 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordOneArgument()
+        public void TestFunctionKeywordOneValueArgument()
         {
-            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordOneArgument.cel");
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordOneValueArgument.cel");
 
             Assert.IsTrue(script.ScriptScope.VariableExists("funcOneArg"));
             script.CheckLocalVariable("result", 2.0f);
+        }
+
+        [TestMethod]
+        public void TestFunctionKeywordOneReferenceArgument()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordOneReferenceArgument.cel");
+
+            Assert.IsTrue(script.ScriptScope.VariableExists("funcOneArg"));
+            script.CheckLocalVariable("result", true);
         }
 
         [TestMethod]
