@@ -58,6 +58,7 @@ namespace Celeste
 
             CelesteScript script = CompiledScripts[args.Name];
 
+            // Try to avoid spurious re-compiles and re-runs for multiple events sent within a short time of each other
             if (!script.Compiling && !script.Running)
             {
                 script.Compile();

@@ -50,9 +50,6 @@ namespace Celeste
         /// </summary>
         public void Compile()
         {
-            // Wait until we finish running
-            while (Running || Compiling) { }
-
             Compiling = true;
 
             if (CelesteStack.Scopes.Exists(x => x == ScriptScope))
@@ -87,9 +84,6 @@ namespace Celeste
         /// </summary>
         public void Run()
         {
-            // Wait until we finish compiling before running
-            while (Compiling) { }
-
             Running = true;
 
             Debug.Assert(ScriptExecutable != null, "Call Compile on this script before you run it");
