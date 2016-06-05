@@ -15,7 +15,7 @@ namespace Celeste
         /// <summary>
         /// A reference to our stored object we create this object with
         /// </summary>
-        public object Value
+        internal object Value
         {
             get { return ValueImpl.Value; }
             set
@@ -105,9 +105,18 @@ namespace Celeste
         /// Return our stored object as a reference
         /// </summary>
         /// <returns></returns>
-        public Reference AsReference()
+        internal Reference AsReference()
         {
             return Value as Reference;
+        }
+
+        /// <summary>
+        /// Returns our stored object as a function
+        /// </summary>
+        /// <returns></returns>
+        internal Function AsFunction()
+        {
+            return Value as Function;
         }
 
         /// <summary>
@@ -172,9 +181,18 @@ namespace Celeste
         /// Returns whether our stored object is actually a reference to another object
         /// </summary>
         /// <returns></returns>
-        public bool IsReference()
+        internal bool IsReference()
         {
             return Value is Reference;
+        }
+
+        /// <summary>
+        /// Returns whether our stored object is actually a reference to a Function
+        /// </summary>
+        /// <returns></returns>
+        public bool IsFunction()
+        {
+            return Value is Function;
         }
             
         #endregion

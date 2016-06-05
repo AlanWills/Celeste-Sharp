@@ -100,5 +100,16 @@ namespace TestCeleste
             script.CheckLocalVariable("firstVariable", true);
             script.CheckLocalVariable("secondVariable", false);
         }
+
+        [TestMethod]
+        public void TestFunctionKeywordFunctionReassignmentDifferentNumberArgs()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordFunctionReassignmentDifferentNumberArgs.cel");
+
+            Assert.IsTrue(script.ScriptScope.VariableExists("firstFunc"));
+            Assert.IsTrue(script.ScriptScope.VariableExists("secondFunc"));
+            script.CheckLocalVariable("firstVariable", 10.0f);
+            script.CheckLocalVariable("secondVariable", "TestReassignment");
+        }
     }
 }

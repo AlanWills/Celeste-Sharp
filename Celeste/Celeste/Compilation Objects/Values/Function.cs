@@ -17,9 +17,9 @@ namespace Celeste
         /// <summary>
         /// The scope created for all the scoped variables declared within this function
         /// </summary>
-        internal Scope FunctionScope { get; private set; }
+        internal Scope FunctionScope { get; set; }
 
-        private List<string> ParameterNames { get; set; }
+        internal List<string> ParameterNames { get; set; }
 
         #endregion
 
@@ -51,7 +51,8 @@ namespace Celeste
             // If we have no brackets, we are trying to compile the function as a reference rather than as a call (for use in equality for example)
             if (token.IndexOf(FunctionKeyword.parameterStartDelimiter) < 0)
             {
-                (Value as Reference).Compile(parent, token, tokens, lines);
+                Reference funcRef = new Reference(this);
+                funcRef.Compile(parent, Name, tokens, lines);
             }
             else
             {
@@ -61,17 +62,19 @@ namespace Celeste
                     string inputParameters = token.Substring(parameterStartDelimiterIndex + 1, token.Length - parameterStartDelimiterIndex - 2);
                     string[] inputParameterNames = inputParameters.Split(FunctionKeyword.parameterDelimiter);
 
-                    for (int i = 0, n = inputParameterNames.Length; i < Math.Min(n, ParameterNames.Count); i++)
-                    {
-                        Debug.Assert(CelesteCompiler.CompileToken(inputParameterNames[i], parent), "Failed to compile input parameter");
-                    }
-
-                    // Fill out the rest of our parameters with null if we have not passed in enough
+                    // Add null references first for all of the parameters we are missing
                     for (int i = inputParameterNames.Length; i < ParameterNames.Count; i++)
                     {
                         // This will push null onto the stack for every parameter we have not provided an input for
                         Reference refToNull = new Reference(null);
                         refToNull.Compile(parent, "null", tokens, lines);
+                    }
+
+                    // Then add the actual parameters we have inputted
+                    for (int i = inputParameterNames.Length - 1; i >= 0 ; i--)
+                    {
+                        // Add our parameters in reverse order, so they get added to the stack in reverse order
+                        Debug.Assert(CelesteCompiler.CompileToken(inputParameterNames[i], parent), "Failed to compile input parameter");
                     }
                 }
 
@@ -80,13 +83,13 @@ namespace Celeste
             }
 
             // Any local variable that is not set will be null
-            // Any extra parameters will be ignored
+            // Any extra parameters will be added, but because we add them in reverse order, if they are not needed they will just be thrown away on the stack
         }
 
         public override void PerformOperation()
         {
-            // Set up our parameters - read them off the stack in reverse order
-            for (int i = ParameterNames.Count - 1; i >= 0; i--)
+            // Set up our parameters - read them off the stack with the first parameter at the top
+            for (int i = 0; i < ParameterNames.Count; i++)
             {
                 Debug.Assert(CelesteStack.StackSize > 0, "Insufficient parameters to function");
                 CelesteObject input = CelesteStack.Pop();

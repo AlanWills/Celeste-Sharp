@@ -32,7 +32,19 @@ namespace Celeste
             CelesteObject lhs = CelesteStack.Pop();
 
             Debug.Assert(lhs.IsReference());
-            if (rhs.IsReference())
+            // All functions are references so check this condition first
+            if (rhs.IsFunction())
+            {
+                Debug.Assert(lhs.IsFunction(), "A function can only be assigned to another function");
+                Function lhsFunc = lhs.AsFunction();
+                Function rhsFunc = rhs.AsFunction();
+
+                Debug.Assert(CelesteStack.CurrentScope != lhsFunc.FunctionScope, "Cannot reassign functions inside their own scope");
+                lhsFunc.FunctionScope = rhsFunc.FunctionScope;
+                lhsFunc.ParameterNames = rhsFunc.ParameterNames;
+                lhsFunc.Ref = rhsFunc.Ref;  // This is equivalent to setting their implementation to be the same
+            }
+            else if (rhs.IsReference())
             {
                 lhs.Value = rhs.Value;
             }
