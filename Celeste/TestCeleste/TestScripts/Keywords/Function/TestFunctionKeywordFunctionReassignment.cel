@@ -1,12 +1,12 @@
-scoped firstVariable
-scoped secondVariable
+scoped firstVariable = "first"
+scoped secondVariable = "second"
 
-scoped function firstFunc(input)
-	input = true
+scoped function firstFunc()
+	firstVariable = true
 end
 
-scoped function secondFunc(input)
-	input = false
+scoped function secondFunc()
+	secondVariable = false
 end
 
 firstFunc(firstVariable)

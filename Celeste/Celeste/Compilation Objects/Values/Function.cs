@@ -56,22 +56,10 @@ namespace Celeste
         /// <param name="lines"></param>
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {
-            // If we have no brackets, we are trying to compile the function as a value rather than as a call (for use in equality for example)
+            // If we have no brackets, we are trying to compile the function as a reference rather than as a call (for use in equality for example)
             if (token.IndexOf(FunctionKeyword.parameterStartDelimiter) < 0)
             {
-                CompiledStatement funcStatement = null;
-                if (parent.ChildCompiledStatements[parent.ChildCount - 1] is AssignmentOperator)
-                {
-                    // This is being compiled on the rhs of an assignment so we push the value of the FuncImpl
-                    funcStatement = new Value(FuncImpl);
-                }
-                else
-                {
-                    // Wrap the reference to our FuncImpl so that we can affect it by assignment
-                    funcStatement = new Reference(Value);
-                }
-
-                funcStatement.Compile(parent, token, tokens, lines);
+                (Value as Reference).Compile(parent, token, tokens, lines);
             }
             else
             {
