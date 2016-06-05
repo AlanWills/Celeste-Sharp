@@ -12,7 +12,7 @@ namespace Celeste
     {
         #region Properties and Fields
 
-        public CompiledStatement FuncImpl { get { return (_Value as Reference).Value as CompiledStatement; } }
+        public CompiledStatement FuncImpl { get { return Ref.Value as CompiledStatement; } }
 
         /// <summary>
         /// A list where each child in the list represents one round of parameters to the function.
@@ -33,7 +33,7 @@ namespace Celeste
         public Function(string name) :
             base(name)
         {
-            (_Value as Reference).Value  = new CompiledStatement();
+            SetReferencedValue(new CompiledStatement());
             ParameterImpl = new List<CompiledStatement>();
 
             FunctionScope = new Scope();
@@ -68,7 +68,7 @@ namespace Celeste
                 else
                 {
                     // Wrap the reference to our FuncImpl so that we can affect it by assignment
-                    funcStatement = new Reference(_Value);
+                    funcStatement = new Reference(Value);
                 }
 
                 funcStatement.Compile(parent, token, tokens, lines);
@@ -114,17 +114,13 @@ namespace Celeste
                     {
                         if (ParameterImpl[0].ChildCompiledStatements[i] is Variable)
                         {
-                            // Assign the function's local variable to reference the same object as the input variable
-                            Reference firstRef = (ParameterImpl[0].ChildCompiledStatements[i] as Variable)._Value as Reference;
-
-                            // firstRef.Value is a reference to the object we are passing in - this is the thing we want to set on the function's local variable
-                            (functionParameter._Value as Reference).Value = firstRef.Value;
+                            // Set the references to be the same so that modifications to the function's local variable affect the variable we passed in
+                            functionParameter.Value = (ParameterImpl[0].ChildCompiledStatements[i] as Variable).Value;
                         }
                         else if (ParameterImpl[0].ChildCompiledStatements[i] is Value)
                         {
                             // Otherwise we have passed in a value
-                            // Set the object the local function variable references to be this value
-                            (functionParameter._Value as Reference).Value = (ParameterImpl[0].ChildCompiledStatements[i] as Value)._Value;
+                            functionParameter.Ref.Value = ((ParameterImpl[0].ChildCompiledStatements[i] as Value)._Value);
                         }
                         else
                         {
@@ -133,8 +129,8 @@ namespace Celeste
                     }
                     else
                     {
-                        // Set any excess parameters with no input value to null
-                        (functionParameter._Value as Reference).Value = null;
+                        // Clear our reference to any input variable ready for a new call
+                        functionParameter.Ref = null;
                     }
                 }
 

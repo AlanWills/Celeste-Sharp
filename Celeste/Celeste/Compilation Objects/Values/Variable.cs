@@ -3,11 +3,20 @@
     /// <summary>
     /// A class to represent a variable within our program
     /// </summary>
-    internal class Variable : Value
+    internal class Variable : Reference
     {
         #region Properties and Fields
 
         public string Name { get; private set; }
+
+        /// <summary>
+        /// The reference to the object this variable represents
+        /// </summary>
+        public Reference Ref
+        {
+            get { return (Value as Reference).Value as Reference; }
+            set { (Value as Reference).Value = value; }
+        }
 
         #endregion
 
@@ -28,19 +37,19 @@
                 statement.PerformOperation();
             }
 
-            CelesteStack.Push(_Value as Reference);
+            (Value as Reference).PerformOperation();
         }
 
         #endregion
 
         public T GetReferencedValue<T>()
         {
-            return (T)((_Value as Reference).Value as Reference).Value;
+            return (T)Ref.Value;
         }
 
         public void SetReferencedValue(object newValue)
         {
-            ((_Value as Reference).Value as Reference).Value = newValue;
+            Ref.Value = newValue;
         }
     }
 }
