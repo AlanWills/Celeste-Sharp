@@ -16,10 +16,10 @@ namespace Celeste
 
         /// <summary>
         /// A list where each child in the list represents one round of parameters to the function.
-        /// When the function is called, the first child of this list will be run to set up the parameters for that call.
+        /// When the function is called, the first child of this list will be iterated over and the parameters set to the values that exist there.
         /// Once this has been done it will be removed from the list.
         /// </summary>
-        private List<CompiledStatement> ParameterImpl { get; set; }
+        private List<List<object>> ParameterImpl { get; set; }
 
         /// <summary>
         /// The scope created for all the scoped variables declared within this function
@@ -34,7 +34,7 @@ namespace Celeste
             base(name)
         {
             SetReferencedValue(new CompiledStatement());
-            ParameterImpl = new List<CompiledStatement>();
+            ParameterImpl = new List<List<object>>();
 
             FunctionScope = new Scope();
             FunctionScope.Name = Name + "Scope";
@@ -81,8 +81,7 @@ namespace Celeste
                 if (ParameterNames.Count > 0)
                 {
                     // Only add parameters if our registered parameter names are greater than zero
-                    // The compiled statement we will child the input parameters under
-                    CompiledStatement thisCallParameters = new CompiledStatement();
+                    List<object> thisCallParameters = new List<object>(ParameterNames.Count);
                     ParameterImpl.Add(thisCallParameters);
 
                     int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
@@ -91,8 +90,28 @@ namespace Celeste
 
                     for (int i = 0, n = inputParameterNames.Length; i < Math.Min(n, ParameterNames.Count); i++)
                     {
-                        CelesteCompiler.CompileToken(inputParameterNames[i], thisCallParameters);
-                        Debug.Assert(thisCallParameters.ChildCompiledStatements[i] is Value || thisCallParameters.ChildCompiledStatements[i] is Variable);
+                        Debug.Assert(CelesteCompiler.CompileToken(inputParameterNames[i], this), "Failed to compile input parameter");
+                        CompiledStatement input = ChildCompiledStatements[ChildCount - 1];
+                        ChildCompiledStatements.RemoveAt(ChildCount - 1);
+
+                        if (input is Value)
+                        {
+                            thisCallParameters.Add(input);
+                        }
+                        else if (input is Variable)
+                        {
+                            thisCallParameters.Add((input as Variable).Value);
+                        }
+                        else
+                        {
+                            Debug.Fail("Invalid input to function");
+                        }
+                    }
+
+                    // Fill out the rest of our parameters with null if we have not passed in enough
+                    for (int i = inputParameterNames.Length; i < thisCallParameters.Capacity; i++)
+                    {
+                        thisCallParameters.Add(null);
                     }
                 }
             }
@@ -105,36 +124,23 @@ namespace Celeste
         {
             if (ParameterImpl.Count > 0)
             {
+                List<object> inputParameters = ParameterImpl[0];
+                ParameterImpl.RemoveAt(0);
+
                 // Set up our parameters
                 for (int i = 0; i < ParameterNames.Count; i++)
                 {
                     Variable functionParameter = FunctionScope.GetLocalVariable(ParameterNames[i], ScopeSearchOption.kThisScope);
 
-                    if (i < ParameterImpl[0].ChildCount)
+                    if (inputParameters[i] is Reference)
                     {
-                        if (ParameterImpl[0].ChildCompiledStatements[i] is Variable)
-                        {
-                            // Set the references to be the same so that modifications to the function's local variable affect the variable we passed in
-                            functionParameter.Value = (ParameterImpl[0].ChildCompiledStatements[i] as Variable).Value;
-                        }
-                        else if (ParameterImpl[0].ChildCompiledStatements[i] is Value)
-                        {
-                            // Otherwise we have passed in a value
-                            functionParameter.Ref.Value = ((ParameterImpl[0].ChildCompiledStatements[i] as Value)._Value);
-                        }
-                        else
-                        {
-                            Debug.Fail("Invalid input value");
-                        }
+                        functionParameter.Value = inputParameters[i];
                     }
                     else
                     {
-                        // Clear our reference to any input variable ready for a new call
-                        functionParameter.Ref = null;
+                        functionParameter.Value = inputParameters[i];
                     }
                 }
-
-                ParameterImpl.RemoveAt(0);
             }
 
             CelesteStack.CurrentScope = FunctionScope;

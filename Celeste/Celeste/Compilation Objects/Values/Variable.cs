@@ -37,7 +37,14 @@
                 statement.PerformOperation();
             }
 
-            (Value as Reference).PerformOperation();
+            if (Value is Reference)
+            {
+                (Value as Reference).PerformOperation();
+            }
+            else
+            {
+                (Value as Value).PerformOperation();
+            }
         }
 
         #endregion
