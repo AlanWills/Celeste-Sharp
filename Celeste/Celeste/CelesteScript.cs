@@ -21,6 +21,11 @@ namespace Celeste
         /// </summary>
         internal Scope ScriptScope { get; private set; }
 
+        /// <summary>
+        /// The compiled script which we can call PerformOperation() on to run the whole script
+        /// </summary>
+        private CompiledStatement ScriptExecutable { get; set; }
+
         #endregion
 
         public CelesteScript(string scriptPath)
@@ -32,9 +37,9 @@ namespace Celeste
         #region Utility Functions
 
         /// <summary>
-        /// Loads our file and sends it to the parser
+        /// Loads our file and sends it to the parser to compile into a statement tree
         /// </summary>
-        public void Run()
+        public void Compile()
         {
             if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ScriptPath))
             {
@@ -43,24 +48,33 @@ namespace Celeste
                 if (result.Item1)
                 {
                     // If we have successfully parsed the script, we execute the compile tree
-                    result.Item2.PerformOperation();
+                    ScriptExecutable = result.Item2;
                 }
                 else
                 {
-                    Debug.Fail("Script " + ScriptPath + " will not run because there was an error during compiling");
+                    Debug.Fail("Script " + ScriptPath + " had an error during compilation");
                 }
-
-                // Reset the current scope to the global scope
-                CelesteStack.Scopes.Remove(CelesteStack.CurrentScope);
-                CelesteStack.CurrentScope = CelesteStack.GlobalScope;
-
-                // Clear the stack - there should be no objects on the stack over different scripts
-                CelesteStack.Clear();
             }
             else
             {
                 Debug.Fail("Invalid filepath for script");
             }
+        }
+
+        /// <summary>
+        /// Calls the executable operation and runs the script
+        /// </summary>
+        public void Run()
+        {
+            Debug.Assert(ScriptExecutable != null, "Call Compile on this script before you run it");
+            ScriptExecutable.PerformOperation();
+
+            // Reset the current scope to the global scope
+            CelesteStack.Scopes.Remove(CelesteStack.CurrentScope);
+            CelesteStack.CurrentScope = CelesteStack.GlobalScope;
+
+            // Clear the stack - there should be no objects on the stack over different scripts
+            CelesteStack.Clear();
         }
 
         #endregion
