@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestNullKeywordParsing()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Null\\TestNullParsing.cel");
+            CelesteScript script = RunScript("Keywords\\Null\\TestNullParsing.cel");
 
             script.CheckLocalVariable("variable", null);
         }

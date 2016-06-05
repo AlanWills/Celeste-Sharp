@@ -10,7 +10,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestAddOperatorAddNumbers()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Add\\TestAddOperatorNumbers.cel");
+            CelesteScript script = RunScript("Operators\\Add\\TestAddOperatorNumbers.cel");
             
             script.CheckLocalVariable("addNumbers", 15.0f);
             script.CheckLocalVariable("addMultipleNumbers", 10.0f);
@@ -19,7 +19,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestAddOperatorAddStrings()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Add\\TestAddOperatorStrings.cel");
+            CelesteScript script = RunScript("Operators\\Add\\TestAddOperatorStrings.cel");
 
             script.CheckLocalVariable("stringAdding", "testadding");
         }
@@ -27,7 +27,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestAddOperatorAddLists()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Add\\TestAddOperatorLists.cel");
+            CelesteScript script = RunScript("Operators\\Add\\TestAddOperatorLists.cel");
 
             List<object> expected = new List<object>()
             {
@@ -45,7 +45,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestAddOperatorAddTables()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Add\\TestAddOperatorTables.cel");
+            CelesteScript script = RunScript("Operators\\Add\\TestAddOperatorTables.cel");
 
             Dictionary<object, object> expected = new Dictionary<object, object>()
             {

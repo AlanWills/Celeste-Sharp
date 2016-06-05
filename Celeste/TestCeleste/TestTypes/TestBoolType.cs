@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestBoolTypeParsing()
         {
-            CelesteScript script = RunScript("TestScripts\\Types\\Bool\\TestBoolParsing.cel");
+            CelesteScript script = RunScript("Types\\Bool\\TestBoolParsing.cel");
 
             script.CheckLocalVariable("trueObject", true);
             script.CheckLocalVariable("falseObject", false);

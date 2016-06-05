@@ -26,12 +26,21 @@ namespace Celeste
         /// </summary>
         private CompiledStatement ScriptExecutable { get; set; }
 
+        /// <summary>
+        /// This flag marks that we have begun compiling so should not run
+        /// </summary>
+        public bool Compiling { get; set; }
+
+        /// <summary>
+        /// This flag marks that we have begun running so should not call compile until it is finished
+        /// </summary>
+        public bool Running { get; set; }
+
         #endregion
 
-        public CelesteScript(string scriptPath)
+        internal CelesteScript(string scriptPath)
         {
             ScriptPath = scriptPath;
-            ScriptScope = new Scope(ScriptPath);
         }
 
         #region Utility Functions
@@ -41,24 +50,36 @@ namespace Celeste
         /// </summary>
         public void Compile()
         {
-            if (File.Exists(Directory.GetCurrentDirectory() + "\\" + ScriptPath))
-            {
-                Tuple<bool, CompiledStatement> result = CelesteCompiler.CompileScript(File.OpenText(Directory.GetCurrentDirectory() + "\\" + ScriptPath));
+            // Wait until we finish running
+            while (Running || Compiling) { }
 
-                if (result.Item1)
-                {
-                    // If we have successfully parsed the script, we execute the compile tree
-                    ScriptExecutable = result.Item2;
-                }
-                else
-                {
-                    Debug.Fail("Script " + ScriptPath + " had an error during compilation");
-                }
+            Compiling = true;
+
+            if (CelesteStack.Scopes.Exists(x => x == ScriptScope))
+            {
+                CelesteStack.Scopes.Remove(ScriptScope);
+            }
+
+            ScriptScope = new Scope(ScriptPath);
+
+            Tuple<bool, CompiledStatement> result = null;
+            using (StreamReader scriptReader = File.OpenText(CelesteScriptManager.ScriptDirectoryPath + "\\" + ScriptPath))
+            {
+                result = CelesteCompiler.CompileScript(scriptReader);
+            }
+
+            Debug.Assert(result != null);
+            if (result.Item1)
+            {
+                // If we have successfully parsed the script, we execute the compile tree
+                ScriptExecutable = result.Item2;
             }
             else
             {
-                Debug.Fail("Invalid filepath for script");
+                Debug.Fail("Script " + ScriptPath + " had an error during compilation");
             }
+
+            Compiling = false;
         }
 
         /// <summary>
@@ -66,15 +87,22 @@ namespace Celeste
         /// </summary>
         public void Run()
         {
+            // Wait until we finish compiling before running
+            while (Compiling) { }
+
+            Running = true;
+
             Debug.Assert(ScriptExecutable != null, "Call Compile on this script before you run it");
             ScriptExecutable.PerformOperation();
 
             // Reset the current scope to the global scope
-            CelesteStack.Scopes.Remove(CelesteStack.CurrentScope);
+            CelesteStack.Scopes.Remove(ScriptScope);
             CelesteStack.CurrentScope = CelesteStack.GlobalScope;
 
             // Clear the stack - there should be no objects on the stack over different scripts
             CelesteStack.Clear();
+
+            Running = false;
         }
 
         #endregion

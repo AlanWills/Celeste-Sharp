@@ -80,13 +80,13 @@ namespace TestCeleste
         #region Utility Functions
 
         /// <summary>
-        /// Runs an returns the script at the inputted file path
+        /// Runs and returns the script at the inputted file path
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
         protected CelesteScript RunScript(string filePath)
         {
-            CelesteScript script = new CelesteScript(filePath);
+            CelesteScript script = CelesteScriptManager.CreateScript(filePath);
             script.Compile();
             script.Run();
 

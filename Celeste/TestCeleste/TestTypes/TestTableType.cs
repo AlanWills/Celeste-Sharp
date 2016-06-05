@@ -10,7 +10,7 @@ namespace TestCeleste.TestTypes
         [TestMethod]
         public void TestTableTypeAssignment()
         {
-            CelesteScript script = RunScript("TestScripts\\Types\\Table\\TestTableParsing.cel");
+            CelesteScript script = RunScript("Types\\Table\\TestTableParsing.cel");
 
             {
                 Assert.IsTrue(script.ScriptScope.VariableExists("emptyTable"));

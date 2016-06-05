@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestStringTypeParsing()
         {
-            CelesteScript script = RunScript("TestScripts\\Types\\String\\TestStringParsing.cel");
+            CelesteScript script = RunScript("Types\\String\\TestStringParsing.cel");
 
             script.CheckLocalVariable("test", "Test");
             script.CheckLocalVariable("testWhitespace", "test");

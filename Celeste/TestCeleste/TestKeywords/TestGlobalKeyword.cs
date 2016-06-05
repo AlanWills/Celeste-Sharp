@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestGlobalKeywordParsing()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Global\\TestGlobalParsing.cel");
+            CelesteScript script = RunScript("Keywords\\Global\\TestGlobalParsing.cel");
 
             Assert.AreEqual(2, CelesteStack.GlobalScope.VariableCount);
             CheckGlobalVariable("variable", null);

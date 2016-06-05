@@ -282,6 +282,9 @@
     <None Include="TestScripts\Types\Table\TestTableParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestScripts\TestRecompilingOnChange.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\2DEngine\UnitTestGameFramework\UnitTestGameFramework.csproj">

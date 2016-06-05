@@ -35,7 +35,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestReferencingScopedVariables()
         {
-            CelesteScript script = RunScript("TestScripts\\TestReferencingScopedVariables.cel");
+            CelesteScript script = RunScript("TestReferencingScopedVariables.cel");
 
             float expected = 10.0f;
             script.CheckLocalVariable("firstVariable", expected);

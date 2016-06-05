@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestOrKeywordOrNumbers()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Or\\TestOrKeywordOrNumbers.cel");
+            CelesteScript script = RunScript("Keywords\\Or\\TestOrKeywordOrNumbers.cel");
 
             script.CheckLocalVariable("intOr", false);
             script.CheckLocalVariable("intOr2", false);
@@ -20,7 +20,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestOrKeywordOrStrings()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Or\\TestOrKeywordOrStrings.cel");
+            CelesteScript script = RunScript("Keywords\\Or\\TestOrKeywordOrStrings.cel");
 
             script.CheckLocalVariable("stringOr", false);
             script.CheckLocalVariable("stringOr2", false);
@@ -31,7 +31,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestOrKeywordOrBools()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Or\\TestOrKeywordOrBools.cel");
+            CelesteScript script = RunScript("Keywords\\Or\\TestOrKeywordOrBools.cel");
 
             script.CheckLocalVariable("trueOr", true);
             script.CheckLocalVariable("falseOr", false);
@@ -43,7 +43,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestOrKeywordOrReferences()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Or\\TestOrKeywordOrReferences.cel");
+            CelesteScript script = RunScript("Keywords\\Or\\TestOrKeywordOrReferences.cel");
 
             // Check reflexivity of references - references that are not null will always be true
             script.CheckLocalVariable("numberReflexivity", true);

@@ -11,7 +11,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestListTypeParsing()
         {
-            CelesteScript script = RunScript("TestScripts\\Types\\List\\TestListParsing.cel");
+            CelesteScript script = RunScript("Types\\List\\TestListParsing.cel");
 
             {
                 List<object> expected = new List<object>() { };

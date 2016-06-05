@@ -10,7 +10,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestSubtractOperatorSubtractNumbers()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Subtract\\TestSubtractOperatorNumbers.cel");
+            CelesteScript script = RunScript("Operators\\Subtract\\TestSubtractOperatorNumbers.cel");
 
             script.CheckLocalVariable("intSubtract", 5.0f);
             script.CheckLocalVariable("floatSubtract", 5.0f);
@@ -20,7 +20,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestSubtractOperatorSubractStrings()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Subtract\\TestSubtractOperatorStrings.cel");
+            CelesteScript script = RunScript("Operators\\Subtract\\TestSubtractOperatorStrings.cel");
 
             script.CheckLocalVariable("subtracting", "test");
             script.CheckLocalVariable("noSubtracting", "testsubtracting");
@@ -29,7 +29,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestSubtractOperatorSubtractLists()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Subtract\\TestSubtractOperatorLists.cel");
+            CelesteScript script = RunScript("Operators\\Subtract\\TestSubtractOperatorLists.cel");
 
             List<object> expected = new List<object>()
             {
@@ -44,7 +44,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestSubtractOperatorSubtractTables()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Subtract\\TestSubtractOperatorTables.cel");
+            CelesteScript script = RunScript("Operators\\Subtract\\TestSubtractOperatorTables.cel");
 
             Dictionary<object, object> expected = new Dictionary<object, object>()
             {

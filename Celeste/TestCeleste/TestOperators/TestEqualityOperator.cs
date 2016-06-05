@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestEqualityOperatorEquateNumbers()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateNumbers.cel");
+            CelesteScript script = RunScript("Operators\\Equality\\TestEqualityOperatorEquateNumbers.cel");
 
             script.CheckLocalVariable("floatEquality", true);
             script.CheckLocalVariable("intEquality", true);
@@ -20,7 +20,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestEqualityOperatorEquateStrings()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateStrings.cel");
+            CelesteScript script = RunScript("Operators\\Equality\\TestEqualityOperatorEquateStrings.cel");
 
             script.CheckLocalVariable("stringEquality", true);
             script.CheckLocalVariable("stringInequality", false);
@@ -31,7 +31,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestEqualityOperatorEquateBools()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateBools.cel");
+            CelesteScript script = RunScript("Operators\\Equality\\TestEqualityOperatorEquateBools.cel");
 
             script.CheckLocalVariable("trueEquality", true);
             script.CheckLocalVariable("falseEquality", true);
@@ -44,7 +44,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestEqualityOperatorEquateReferences()
         {
-            CelesteScript script = RunScript("TestScripts\\Operators\\Equality\\TestEqualityOperatorEquateReferences.cel");
+            CelesteScript script = RunScript("Operators\\Equality\\TestEqualityOperatorEquateReferences.cel");
 
             // Check reflexivity of references - references should always be equal to themselves
             script.CheckLocalVariable("numberReflexivity", true);

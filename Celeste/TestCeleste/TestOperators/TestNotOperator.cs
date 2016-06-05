@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestNotOperatorOrNumbers()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Not\\TestNotKeywordNotNumbers.cel");
+            CelesteScript script = RunScript("Keywords\\Not\\TestNotKeywordNotNumbers.cel");
 
             script.CheckLocalVariable("notInt", false);
             script.CheckLocalVariable("notFloat", false);
@@ -18,7 +18,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestNotOperatorOrStrings()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Not\\TestNotKeywordNotStrings.cel");
+            CelesteScript script = RunScript("Keywords\\Not\\TestNotKeywordNotStrings.cel");
 
             script.CheckLocalVariable("notString", false);
             script.CheckLocalVariable("notEmpty", false);
@@ -27,7 +27,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestNotOperatorOrBools()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Not\\TestNotKeywordNotBools.cel");
+            CelesteScript script = RunScript("Keywords\\Not\\TestNotKeywordNotBools.cel");
 
             script.CheckLocalVariable("notTrue", false);
             script.CheckLocalVariable("notFalse", true);
@@ -36,7 +36,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestNotOperatorOrReferences()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Not\\TestNotKeywordNotReferences.cel");
+            CelesteScript script = RunScript("Keywords\\Not\\TestNotKeywordNotReferences.cel");
 
             script.CheckLocalVariable("notList", false);
             script.CheckLocalVariable("notTable", false);

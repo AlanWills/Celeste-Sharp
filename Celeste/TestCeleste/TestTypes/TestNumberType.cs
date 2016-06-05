@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestNumberTypeParsing()
         {
-            CelesteScript script = RunScript("TestScripts\\Types\\Number\\TestNumberParsing.cel");
+            CelesteScript script = RunScript("Types\\Number\\TestNumberParsing.cel");
 
             script.CheckLocalVariable("int", 10.0f);
             script.CheckLocalVariable("anotherInt", 5.0f);

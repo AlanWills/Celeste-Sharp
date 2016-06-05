@@ -9,7 +9,7 @@ namespace TestCeleste.TestKeywords
         [TestMethod]
         public void TestEqualsKeywordEquateNumbers()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateNumbers.cel");
+            CelesteScript script = RunScript("Keywords\\Equals\\TestEqualsKeywordEquateNumbers.cel");
 
             script.CheckLocalVariable("floatEquality", true);
             script.CheckLocalVariable("intEquality", true);
@@ -20,7 +20,7 @@ namespace TestCeleste.TestKeywords
         [TestMethod]
         public void TestEqualsKeywordEquateStrings()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateStrings.cel");
+            CelesteScript script = RunScript("Keywords\\Equals\\TestEqualsKeywordEquateStrings.cel");
 
             script.CheckLocalVariable("stringEquality", true);
             script.CheckLocalVariable("stringInequality", false);
@@ -31,7 +31,7 @@ namespace TestCeleste.TestKeywords
         [TestMethod]
         public void TestEqualityKeywordEquateBools()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateBools.cel");
+            CelesteScript script = RunScript("Keywords\\Equals\\TestEqualsKeywordEquateBools.cel");
 
             script.CheckLocalVariable("trueEquality", true);
             script.CheckLocalVariable("falseEquality", true);
@@ -41,7 +41,7 @@ namespace TestCeleste.TestKeywords
         [TestMethod]
         public void TestEqualityKeywordEquateReferences()
         {
-            CelesteScript script = RunScript("TestScripts\\Keywords\\Equals\\TestEqualsKeywordEquateReferences.cel");
+            CelesteScript script = RunScript("Keywords\\Equals\\TestEqualsKeywordEquateReferences.cel");
 
             // Check reflexivity of references - references should always be equal to themselves
             script.CheckLocalVariable("numberReflexivity", true);
