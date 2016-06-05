@@ -111,6 +111,15 @@
     <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordFunctionReassignment.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordNotEnoughInputs.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordTooManyInputs.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Function\TestFunctionKeywordMultipleCalls.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

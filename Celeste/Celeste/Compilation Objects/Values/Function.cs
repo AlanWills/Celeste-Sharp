@@ -58,16 +58,21 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
-            // Only add parameters if our registered parameter names are greater than zero
-            if (ParameterNames.Count > 0)
+            // If we have no brackets, we are trying to compile the function as a value rather than as a call (for use in equality for example)
+            if (token.IndexOf(FunctionKeyword.parameterStartDelimiter) < 0)
             {
-
+                // Assign a reference to our implementation to a value variable so that we can change what the reference points to
+                Value functionAsValue = new Value(_Value);
+                functionAsValue.Compile(parent, token, tokens, lines);
+            }
+            else if (ParameterNames.Count > 0)
+            {
+                // Only add parameters if our registered parameter names are greater than zero
                 // The compiled statement we will child the input parameters under
                 CompiledStatement thisCallParameters = new CompiledStatement();
                 ParameterImpl.Add(thisCallParameters);
 
                 int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
-                Debug.Assert(parameterStartDelimiterIndex > 0);
                 string inputParameters = token.Substring(parameterStartDelimiterIndex + 1, token.Length - parameterStartDelimiterIndex - 2);
                 string[] inputParameterNames = inputParameters.Split(FunctionKeyword.parameterDelimiter);
 

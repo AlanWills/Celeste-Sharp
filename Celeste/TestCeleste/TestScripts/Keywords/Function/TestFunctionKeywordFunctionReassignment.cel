@@ -1,0 +1,16 @@
+scoped firstVariable
+scoped secondVariable
+
+scoped function firstFunc(input)
+	input = true
+end
+
+scoped function secondFunc(input)
+	input = false
+end
+
+firstFunc(firstVariable)
+
+firstFunc = secondFunc
+
+firstFunc(secondVariable)

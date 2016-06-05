@@ -1,0 +1,9 @@
+scoped firstVariable
+scoped secondVariable
+
+scoped function func(first,second)
+	firstVariable = first
+	secondVariable = second
+end
+
+func(true)
