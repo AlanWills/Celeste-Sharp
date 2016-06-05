@@ -96,7 +96,7 @@ namespace Celeste
 
                         if (input is Value)
                         {
-                            thisCallParameters.Add(input);
+                            thisCallParameters.Add(new Reference((input as Value)._Value));
                         }
                         else if (input is Variable)
                         {
@@ -131,16 +131,11 @@ namespace Celeste
                 for (int i = 0; i < ParameterNames.Count; i++)
                 {
                     Variable functionParameter = FunctionScope.GetLocalVariable(ParameterNames[i], ScopeSearchOption.kThisScope);
-
-                    if (inputParameters[i] is Reference)
-                    {
-                        functionParameter.Value = inputParameters[i];
-                    }
-                    else
-                    {
-                        functionParameter.Value = inputParameters[i];
-                    }
+                    functionParameter.Value = inputParameters[i];
                 }
+
+                // Ensure our list will be destroyed by GC
+                inputParameters.Clear();
             }
 
             CelesteStack.CurrentScope = FunctionScope;

@@ -18,6 +18,24 @@
             set { (Value as Reference).Value = value; }
         }
 
+        /// <summary>
+        /// The reference to the value object this variable represents
+        /// </summary>
+        public Value Val
+        {
+            get { return (Value as Reference).Value as Value; }
+            set { (Value as Reference).Value = value; }
+        }
+
+        /// <summary>
+        /// Every variable has two layers of referencing, but the first layer is subtle and below the surface - this allows us to change what the inner reference is referencing
+        /// and have the change call through to all other objects referencing it.
+        /// The outer hidder reference is a reference either to a Reference object or a Value object.
+        /// These bools indicate which it is.
+        /// </summary>
+        public bool IsValueType { get { return (Value as Reference).Value is Value; } }
+        public bool IsReferenceType { get { return (Value as Reference).Value is Reference; } }
+
         #endregion
 
         // Don't make the constructor less than public - it's needed in the CelesteCompiler
@@ -37,14 +55,7 @@
                 statement.PerformOperation();
             }
 
-            if (Value is Reference)
-            {
-                (Value as Reference).PerformOperation();
-            }
-            else
-            {
-                (Value as Value).PerformOperation();
-            }
+            (Value as Reference).PerformOperation();
         }
 
         #endregion
