@@ -59,7 +59,7 @@ namespace Celeste
                 {
                     foundClosing = true;
                 }
-                else if (CelesteCompiler.CompileToken(nextToken, parent))
+                else if (CelesteCompiler.CompileToken(nextToken, function.FuncImpl))
                 {
                     
                 }
@@ -68,12 +68,6 @@ namespace Celeste
                     // Error message if we cannot parse the next token
                     Debug.Fail("Operator invalid on token: " + token);
                 }
-            }
-
-            // Move all of the additional compiled statements to underneath the function
-            for (int i = currentIndex; i < parent.ChildCount; i++)
-            {
-                parent.MoveChildAtIndex(i, function.FuncImpl);
             }
 
             // Do not add the function - it will be looked up to and called rather than pushed onto the stack (much like a variable)

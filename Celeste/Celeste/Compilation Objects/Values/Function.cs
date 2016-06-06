@@ -112,6 +112,11 @@ namespace Celeste
             foreach (CompiledStatement statement in FuncImpl.ChildCompiledStatements)
             {
                 statement.PerformOperation();
+                if (statement is ReturnKeyword)
+                {
+                    // Stop iterating through if we have hit a ReturnKeyword in our function
+                    break;
+                }
             }
 
             CelesteStack.Scopes.Remove(FunctionScope);

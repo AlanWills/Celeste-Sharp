@@ -1,0 +1,7 @@
+scoped variable = "Original"
+
+scoped function funcReturnsTrue()
+	return true
+end
+
+variable = funcReturnsTrue()

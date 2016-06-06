@@ -64,6 +64,7 @@
     <Compile Include="TestKeywords\TestNullKeyword.cs" />
     <Compile Include="TestKeywords\TestNotKeyword.cs" />
     <Compile Include="TestKeywords\TestOrKeyword.cs" />
+    <Compile Include="TestKeywords\TestReturnKeyword.cs" />
     <Compile Include="TestKeywords\TestScopedKeyword.cs" />
     <Compile Include="TestObjects\TestCelesteObject.cs" />
     <Compile Include="TestCelesteStack.cs" />
@@ -172,6 +173,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Or\TestOrKeywordOrStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnInput.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnHardCodedValue.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnNothing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Scoped\TestScopedParsing.cel">
