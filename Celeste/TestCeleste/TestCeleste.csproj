@@ -175,6 +175,9 @@
     <None Include="TestScripts\Keywords\Or\TestOrKeywordOrStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnMultipleParamsSimple.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnInput.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

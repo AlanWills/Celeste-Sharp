@@ -58,6 +58,10 @@ namespace Celeste
             {
                 if (ParameterNames.Count > 0)
                 {
+                    // Group our inputs under this object so that we can store them underneath this function
+                    CompiledStatement thisCallsParams = new CompiledStatement();
+                    Add(thisCallsParams);
+
                     int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
                     string inputParameters = token.Substring(parameterStartDelimiterIndex + 1, token.Length - parameterStartDelimiterIndex - 2);
                     string[] inputParameterNames = inputParameters.Split(FunctionKeyword.parameterDelimiter);
@@ -67,14 +71,14 @@ namespace Celeste
                     {
                         // This will push null onto the stack for every parameter we have not provided an input for
                         Reference refToNull = new Reference(null);
-                        refToNull.Compile(parent, "null", tokens, lines);
+                        refToNull.Compile(thisCallsParams, "null", tokens, lines);
                     }
 
                     // Then add the actual parameters we have inputted
                     for (int i = inputParameterNames.Length - 1; i >= 0 ; i--)
                     {
                         // Add our parameters in reverse order, so they get added to the stack in reverse order
-                        Debug.Assert(CelesteCompiler.CompileToken(inputParameterNames[i], parent), "Failed to compile input parameter");
+                        Debug.Assert(CelesteCompiler.CompileToken(inputParameterNames[i], thisCallsParams), "Failed to compile input parameter");
                     }
                 }
 
@@ -88,6 +92,17 @@ namespace Celeste
 
         public override void PerformOperation()
         {
+            // Set up our parameters if required
+            if (ParameterNames.Count > 0)
+            {
+                Debug.Assert(ChildCount > 0, "Fatal error in function call - no arguments to process");
+                CompiledStatement thisCallsParams = ChildCompiledStatements[0];
+                ChildCompiledStatements.RemoveAt(0);
+
+                // This will run through each stored parameter and add them to the stack
+                thisCallsParams.PerformOperation();
+            }
+
             // Set up our parameters - read them off the stack with the first parameter at the top
             for (int i = 0; i < ParameterNames.Count; i++)
             {

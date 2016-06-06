@@ -34,8 +34,18 @@ namespace TestCeleste
             Assert.AreEqual(4, script.ScriptScope.VariableCount);
             script.CheckLocalVariable("firstVariable", true);
             script.CheckLocalVariable("secondVariable", "Test");
-            script.CheckLocalVariable("thirdVariable", script.ScriptScope.GetLocalVariable("firstVariable"));
+            script.CheckLocalVariable("thirdVariable", true);
             Assert.IsTrue(script.ScriptScope.VariableExists("funcReturnsInput"));
+        }
+
+        [TestMethod]
+        public void TestReturnKeywordReturnMultipleParamsSimple()
+        {
+            // This just tests that nothing goes wrong when returning multiple parameters
+            CelesteScript script = RunScript("Keywords\\Return\\TestReturnKeywordReturnMultipleParamsSimple.cel");
+
+            Assert.AreEqual(1, script.ScriptScope.VariableCount);
+            Assert.IsTrue(script.ScriptScope.VariableExists("funcReturnsMultipleParams"));
         }
     }
 }
