@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCeleste", "TestCeleste\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DF0B0F99-E5D0-4922-93D2-EDAF6A0D6814}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestGameFramework", "..\..\2DEngine\UnitTestGameFramework\UnitTestGameFramework.csproj", "{BA2B17B0-EF9D-4351-8839-C46282CE2ECF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestFramework", "..\..\UnitTestGameFramework\UnitTestFramework.csproj", "{BA2B17B0-EF9D-4351-8839-C46282CE2ECF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

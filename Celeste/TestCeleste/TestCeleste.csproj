@@ -313,9 +313,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\2DEngine\UnitTestGameFramework\UnitTestGameFramework.csproj">
+    <ProjectReference Include="..\..\..\UnitTestGameFramework\UnitTestFramework.csproj">
       <Project>{ba2b17b0-ef9d-4351-8839-c46282ce2ecf}</Project>
-      <Name>UnitTestGameFramework</Name>
+      <Name>UnitTestFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Celeste\Celeste.csproj">
       <Project>{9c094a71-5829-4533-b094-5ed2b5fae07a}</Project>

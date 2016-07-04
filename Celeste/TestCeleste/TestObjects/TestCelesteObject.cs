@@ -1,7 +1,7 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using UnitTestGameFramework;
+using UnitTestFramework;
 
 namespace TestCeleste
 {
