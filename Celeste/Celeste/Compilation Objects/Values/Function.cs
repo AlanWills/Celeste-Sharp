@@ -66,14 +66,6 @@ namespace Celeste
                     string inputParameters = token.Substring(parameterStartDelimiterIndex + 1, token.Length - parameterStartDelimiterIndex - 2);
                     string[] inputParameterNames = inputParameters.Split(FunctionKeyword.parameterDelimiter);
 
-                    // Add null references first for all of the parameters we are missing
-                    for (int i = inputParameterNames.Length; i < ParameterNames.Count; i++)
-                    {
-                        // This will push null onto the stack for every parameter we have not provided an input for
-                        Reference refToNull = new Reference(null);
-                        refToNull.Compile(thisCallsParams, "null", tokens, lines);
-                    }
-
                     // Then add the actual parameters we have inputted
                     for (int i = inputParameterNames.Length - 1; i >= 0 ; i--)
                     {
@@ -95,29 +87,37 @@ namespace Celeste
             // Set up our parameters if required
             if (ParameterNames.Count > 0)
             {
-                Debug.Assert(ChildCount > 0, "Fatal error in function call - no arguments to process");
-                CompiledStatement thisCallsParams = ChildCompiledStatements[0];
-                ChildCompiledStatements.RemoveAt(0);
+                if (ChildCount > 0)
+                {
+                    CompiledStatement thisCallsParams = ChildCompiledStatements[0];
+                    ChildCompiledStatements.RemoveAt(0);
 
-                // This will run through each stored parameter and add them to the stack
-                thisCallsParams.PerformOperation();
+                    // This will run through each stored parameter and add them to the stack
+                    thisCallsParams.PerformOperation();
+                }
             }
 
             // Set up our parameters - read them off the stack with the first parameter at the top
             for (int i = 0; i < ParameterNames.Count; i++)
             {
-                Debug.Assert(CelesteStack.StackSize > 0, "Insufficient parameters to function");
-                CelesteObject input = CelesteStack.Pop();
-
                 Variable functionParameter = FunctionScope.GetLocalVariable(ParameterNames[i], ScopeSearchOption.kThisScope);
 
-                if (input.IsReference())
+                if (CelesteStack.StackSize > 0)
                 {
-                    functionParameter.Value = input.ValueImpl;
+                    CelesteObject input = CelesteStack.Pop();
+
+                    if (input.IsReference())
+                    {
+                        functionParameter.Value = input.ValueImpl;
+                    }
+                    else
+                    {
+                        (functionParameter.Value as Reference).Value = input.Value;
+                    }
                 }
                 else
                 {
-                    (functionParameter.Value as Reference).Value = input.Value;
+                    (functionParameter.Value as Reference).Value = null;
                 }
             }
 

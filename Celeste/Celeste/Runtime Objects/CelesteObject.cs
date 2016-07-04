@@ -54,13 +54,26 @@ namespace Celeste
 
         public CelesteObject(object value)
         {
-            ValueImpl = new Reference(value);
+            if (value is Function || !(value is Reference))
+            {
+                ValueImpl = new Reference(value);
+            }
+            else
+            {
+                ValueImpl = value as Reference;
+            }
+
             Type = value != null ? value.GetType() : null;
         }
-
-        public CelesteObject(Reference reference)
+        
+        /// <summary>
+        /// Wraps up the functionality of creating a CelesteObject with reference to a value which can be passed to script.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static CelesteObject CreateVariable(object value = null)
         {
-            ValueImpl = reference;
+            return new CelesteObject(new Reference(new Reference(value)));
         }
 
         #region Utility Functions
@@ -193,6 +206,36 @@ namespace Celeste
         public bool IsFunction()
         {
             return Value is Function;
+        }
+
+        /// <summary>
+        /// If this is a function, we can call it's underlying script code.
+        /// We pass in arbitrary parameters which are then pushed onto the stack in reverse order and call the function's PerformOperator.
+        /// </summary>
+        /// <param name="parameters"></param>
+        public void Invoke(params object[] parameters)
+        {
+            Debug.Assert(IsFunction());
+
+            // Iterate in reverse so our first parameter is at the top of the stack
+            for (int i = parameters.Length - 1; i >= 0; i--)
+            {
+                if (parameters[i] is CelesteObject)
+                {
+                    CelesteStack.Push(parameters[i] as CelesteObject);
+                }
+                else if (parameters[i] is Reference)
+                {
+                    CelesteStack.Push(parameters[i] as Reference);
+                }
+                else
+                {
+                    CelesteStack.Push(parameters[i]);
+                }
+            }
+
+            // This will pop the parameters and set up the variable names
+            (Value as Function).PerformOperation();
         }
             
         #endregion

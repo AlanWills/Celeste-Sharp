@@ -1,0 +1,3 @@
+scoped function testFunc(input)
+	input = "TestFunction"
+end

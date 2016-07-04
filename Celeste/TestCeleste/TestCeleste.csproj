@@ -70,6 +70,7 @@
     <Compile Include="TestCelesteStack.cs" />
     <Compile Include="TestCelesteScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestObjects\TestCelesteObjectAsFunction.cs" />
     <Compile Include="TestOperators\TestDivideOperator.cs" />
     <Compile Include="TestOperators\TestAssignmentOperator.cs" />
     <Compile Include="TestOperators\TestAndOperator.cs" />
@@ -281,6 +282,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Add\TestAddOperatorStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\TestFunction.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\TestReferencingScopedVariables.cel">

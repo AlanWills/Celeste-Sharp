@@ -51,11 +51,6 @@ namespace Celeste
             CelStack.Push(new CelesteObject(value));
         }
 
-        public static void Push(Reference reference)
-        {
-            CelStack.Push(new CelesteObject(reference));
-        }
-
         /// <summary>
         /// Pushes an already created Celeste object onto the stack
         /// </summary>
