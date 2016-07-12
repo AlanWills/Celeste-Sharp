@@ -1,0 +1,4 @@
+scoped intAnd = 1 && 1
+scoped intAnd2 = 2 && 1
+scoped floatAnd = 1.5 && 2
+scoped floatAnd2 = -1 && -1.0

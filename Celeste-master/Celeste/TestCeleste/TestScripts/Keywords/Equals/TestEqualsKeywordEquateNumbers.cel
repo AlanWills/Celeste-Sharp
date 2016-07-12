@@ -1,0 +1,4 @@
+scoped intEquality = 1 equals 1
+scoped intInequality = 2 equals 1
+scoped floatInequality = 1.5 equals 2
+scoped floatEquality = -1 equals -1.0

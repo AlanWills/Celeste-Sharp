@@ -1,0 +1,46 @@
+scoped number = 5
+scoped string = "test"
+scoped bool = true
+scoped list = [ ]
+scoped table = { }
+scoped nullVar = null
+
+scoped numberReflexivity = number and number
+scoped stringReflexivity = string and string
+scoped boolReflexivity = bool and bool
+scoped listReflexivity = list and list
+scoped tableReflexivity = table and table
+
+scoped numberRef = number
+scoped numberAndNumberRef = number and numberRef
+
+scoped stringRef = string
+scoped stringAndStringRef = string and stringRef
+
+scoped boolRef = bool
+scoped boolAndBoolRef = bool and boolRef
+
+scoped listRef = list
+scoped listAndListRef = list and listRef
+
+scoped tableRef = table
+scoped tableAndTableRef = table and tableRef
+
+scoped numberAndString = number and string
+scoped numberAndBool = number and bool
+scoped numberAndList = number and list
+scoped numberAndTable = number and table
+
+scoped stringAndBool = string and bool
+scoped stringAndList = string and list
+scoped stringAndTable = string and table
+
+scoped boolAndList = bool and list
+scoped boolAndTable = bool and table
+
+scoped listAndTable = list and table
+
+scoped nullReflexivity = nullVar and nullVar
+scoped nullAndValue = nullVar and 5
+scoped nullAndNonNullVariable = nullVar and number
+scoped notNullAndNonNullVariable = not nullVar and number

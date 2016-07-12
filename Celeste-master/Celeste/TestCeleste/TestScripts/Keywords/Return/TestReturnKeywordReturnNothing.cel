@@ -1,0 +1,9 @@
+scoped variable = true
+
+scoped function funcNoReturnParams()
+	return
+
+	variable = "Shouldn't get here"
+end
+
+funcNoReturnParams()

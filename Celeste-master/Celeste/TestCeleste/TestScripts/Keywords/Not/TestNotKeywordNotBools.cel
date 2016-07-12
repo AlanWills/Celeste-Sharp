@@ -1,0 +1,2 @@
+scoped notTrue = not true
+scoped notFalse = not false

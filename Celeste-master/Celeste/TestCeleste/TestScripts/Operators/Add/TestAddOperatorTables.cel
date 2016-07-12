@@ -1,0 +1,2 @@
+scoped addTable = { 1 = true } + { 2 = false }
+scoped addTable2 = { "key" = "value" } + { "secondKey" = "secondValue" }

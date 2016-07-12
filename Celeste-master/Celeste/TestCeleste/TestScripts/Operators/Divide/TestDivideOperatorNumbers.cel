@@ -1,0 +1,3 @@
+﻿scoped intDivide = 10 / 2
+scoped floatDivide = 0.1 / 0.5
+scoped multiDivide = 10 / 5 / 2

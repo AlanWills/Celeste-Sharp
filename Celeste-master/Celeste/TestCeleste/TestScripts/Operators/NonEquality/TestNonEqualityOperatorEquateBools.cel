@@ -1,0 +1,6 @@
+scoped trueEquality = true != true
+scoped falseEquality = false != false
+scoped boolInequality = true != false
+scoped notTrueFalse = not true != false
+scoped trueNotFalse = true != not false
+scoped trueNotTrue = true != not true

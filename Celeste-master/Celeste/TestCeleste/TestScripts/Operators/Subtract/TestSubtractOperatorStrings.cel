@@ -1,0 +1,2 @@
+﻿scoped subtracting = "testsubtracting" - "subtracting"
+scoped noSubtracting = "testsubtracting" - "adding"

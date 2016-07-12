@@ -1,0 +1,2 @@
+﻿scoped variable = "hello"
+print(variable)

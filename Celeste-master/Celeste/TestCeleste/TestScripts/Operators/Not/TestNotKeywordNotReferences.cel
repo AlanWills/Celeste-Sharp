@@ -1,0 +1,25 @@
+scoped number = 5
+scoped string = "test"
+scoped bool = true
+scoped list = [ ]
+scoped table = { }
+scoped nullVar = null
+
+scoped notList = !list
+scoped notTable = !table
+scoped notNull = !null
+
+scoped numberRef = number
+scoped notNumberRef = !numberRef
+
+scoped stringRef = string
+scoped notStringRef = !stringRef
+
+scoped boolRef = bool
+scoped notBoolRef = !boolRef
+
+scoped listRef = list
+scoped notListRef = !listRef
+
+scoped tableRef = table
+scoped notTableRef = !tableRef

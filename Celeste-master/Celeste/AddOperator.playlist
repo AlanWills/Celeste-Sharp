@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="TestCeleste.TestAddOperator.TestAddOperatorAddStrings" /><Add Test="TestCeleste.TestAddOperator.TestAddOperatorAddLists" /><Add Test="TestCeleste.TestAddOperator.TestAddOperatorAddTables" /><Add Test="TestCeleste.TestAddOperator.TestAddOperatorAddNumbers" /></Playlist>

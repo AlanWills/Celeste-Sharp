@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="TestCeleste.TestCelesteStack.TestCelesteStackPopNumbers" /><Add Test="TestCeleste.TestCelesteStack.TestCelesteStackPopLists" /><Add Test="TestCeleste.TestCelesteStack.TestCelesteStackPopStrings" /><Add Test="TestCeleste.TestCelesteStack.TestCelesteStackPopBooleans" /></Playlist>
