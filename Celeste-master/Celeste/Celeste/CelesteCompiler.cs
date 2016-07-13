@@ -74,6 +74,8 @@ namespace Celeste
                 return;
             }
 
+            Cel.LogOutputFilePath = Cel.ScriptDirectoryPath + "\\Log.txt";
+
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
             {
                 if (type.IsSubclassOf(typeof(Value)) && type.GetCustomAttribute<CompilableValue>() != null)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Celeste
 {
@@ -14,10 +15,35 @@ namespace Celeste
             Console.WriteLine(input.ToString());
         }
 
-        // Script command for logging
-        // Script command for debugging?
-        // For debug info we will just need to add debug logging whenever we have an assert
-        // Debug to the same place as logging?
-        // Have logError and logWarning script commands
+        [ScriptCommand("log")]
+        public static void LogCmd(object message)
+        {
+            using (StreamWriter writer = Cel.LogWriter)
+            {
+                writer.WriteLine(message.ToString());
+            }
+        }
+
+        [ScriptCommand("logWarning")]
+        public static void LogWarningCmd(object message)
+        {
+            // Customise this later
+            using (StreamWriter writer = Cel.LogWriter)
+            {
+                writer.WriteLine(message.ToString());
+            }
+        }
+
+        [ScriptCommand("logError")]
+        public static void LogErrorCmd(object message)
+        {
+            // Customise this later
+            using (StreamWriter writer = Cel.LogWriter)
+            {
+                writer.WriteLine(message.ToString());
+            }
+        }
+
+        // Commands for setting log output
     }
 }

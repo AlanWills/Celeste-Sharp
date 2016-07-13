@@ -12,11 +12,11 @@ namespace TestCeleste
         public void TestPrintCmdHardCodedValues()
         {
             // Overwrite the file - we do not want any previous test results interacting with this
-            string outputFilePath = Celeste.Cel.ScriptDirectoryPath + "\\CoreScriptCommands\\PrintCmd\\TestPrintCmdHardCodedValues.txt";
+            string outputFilePath = Cel.ScriptDirectoryPath + "\\ScriptCommands\\Core\\PrintCmd\\TestPrintCmdHardCodedValues.txt";
             using (StreamWriter writer = new StreamWriter(outputFilePath, false))
             {
                 Console.SetOut(writer);
-                CelesteScript script = RunScript("CoreScriptCommands\\PrintCmd\\TestPrintCmdHardCodedValues.cel");
+                CelesteScript script = RunScript("ScriptCommands\\Core\\PrintCmd\\TestPrintCmdHardCodedValues.cel");
             }
 
             Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("print"));
@@ -35,11 +35,11 @@ namespace TestCeleste
         public void TestPrintCmdVariables()
         {
             // Overwrite the file - we do not want any previous test results interacting with this
-            string outputFilePath = Celeste.Cel.ScriptDirectoryPath + "\\CoreScriptCommands\\PrintCmd\\TestPrintCmdVariables.txt";
+            string outputFilePath = Cel.ScriptDirectoryPath + "\\ScriptCommands\\Core\\PrintCmd\\TestPrintCmdVariables.txt";
             using (StreamWriter writer = new StreamWriter(outputFilePath, false))
             {
                 Console.SetOut(writer);
-                CelesteScript script = RunScript("CoreScriptCommands\\PrintCmd\\TestPrintCmdVariables.cel");
+                CelesteScript script = RunScript("ScriptCommands\\Core\\PrintCmd\\TestPrintCmdVariables.cel");
             }
 
             Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("print"));
@@ -51,7 +51,7 @@ namespace TestCeleste
                 Assert.AreEqual("True", reader.ReadLine());
                 Assert.AreEqual("10", reader.ReadLine());
                 Assert.AreEqual("-10", reader.ReadLine());
-                Assert.AreEqual("refer", reader.ReadLine());
+                Assert.AreEqual("reference", reader.ReadLine());
             }
         }
     }

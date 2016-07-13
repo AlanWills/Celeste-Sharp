@@ -1,15 +1,15 @@
 ﻿scoped variable = "hello"
-print(variable)
+log(variable)
 
 variable = true
-print(variable)
+log(variable)
 
 variable = 10
-print(variable)
+log(variable)
 
 variable = -10
-print(variable)
+log(variable)
 
 scoped secondVariable = variable
 variable = "reference"
-print(secondVariable)
+log(secondVariable)

@@ -1,0 +1,16 @@
+scoped reassigned = "failure"
+
+scoped function newprint(input)
+	reassigned = input
+end
+
+scoped function oldprint() end
+
+oldprint = print
+print = newprint
+
+print("success")
+
+print = oldprint
+
+print("success")

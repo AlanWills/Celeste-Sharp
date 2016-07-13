@@ -5,11 +5,13 @@ using System.IO;
 namespace TestCeleste
 {
     [TestClass]
-    public class TestCelesteLogging
+    public class TestCelesteLogging : CelesteUnitTest
     {
         [TestMethod]
         public void TestCelesteLoggingTestWriting()
         {
+            // Reset the log
+            Cel.ClearLog();
             Cel.LogOutputFilePath = Cel.ScriptDirectoryPath + "\\Log.txt";
 
             using (StreamWriter writer = Cel.LogWriter)
@@ -21,6 +23,8 @@ namespace TestCeleste
         [TestMethod]
         public void TestCelesteLoggingTestWritingAndReading()
         {
+            // Reset the log
+            Cel.ClearLog();
             Cel.LogOutputFilePath = Cel.ScriptDirectoryPath + "\\Log.txt";
 
             using (StreamWriter writer = Cel.LogWriter)
@@ -41,6 +45,8 @@ namespace TestCeleste
         [TestMethod]
         public void TestCelesteLoggingTestOverwriting()
         {
+            // Reset the log
+            Cel.ClearLog();
             Cel.LogOutputFilePath = Cel.ScriptDirectoryPath + "\\Log.txt";
 
             using (StreamWriter writer = Cel.LogWriter)
@@ -50,7 +56,7 @@ namespace TestCeleste
                 writer.WriteLine(10);
             }
 
-            Cel.LogOutputFilePath = Cel.ScriptDirectoryPath + "\\Log.txt";
+            Cel.ClearLog();
 
             using (StreamReader reader = Cel.LogReader)
             {

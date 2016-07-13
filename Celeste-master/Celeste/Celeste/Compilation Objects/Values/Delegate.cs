@@ -36,6 +36,9 @@ namespace Celeste
 
             // Set up the callback to our Method
             FuncImpl.Add(new Invocation(methodInfo, GetParameters()));
+
+            // Reset the current scope to be the parent of this script command's scope
+            CelesteStack.CurrentScope = FunctionScope.ParentScope;
         }
     }
 }

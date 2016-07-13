@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="CelesteUnitTest.cs" />
     <Compile Include="TestCelesteLogging.cs" />
+    <Compile Include="TestScriptCommands\Core\TestLogErrorCmd.cs" />
+    <Compile Include="TestScriptCommands\Core\TestLogWarningCmd.cs" />
+    <Compile Include="TestScriptCommands\Core\TestLogCmd.cs" />
     <Compile Include="TestScriptCommands\Core\TestPrintCmd.cs" />
     <Compile Include="TestExtensions\TestExtensions.cs" />
     <Compile Include="TestExtensions\TestObjectComparer.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="TestOperators\TestAddOperator.cs" />
     <Compile Include="TestOperators\TestSubtractOperator.cs" />
     <Compile Include="TestReferencing.cs" />
+    <Compile Include="TestScriptCommands\TestScriptCommands.cs" />
     <Compile Include="TestTypes\TestBoolType.cs" />
     <Compile Include="TestTypes\TestListType.cs" />
     <Compile Include="TestTypes\TestNumberType.cs" />
@@ -90,6 +94,24 @@
     <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestScripts\ScriptCommands\Core\LogCmd\TestLogCmdHardCodedValues.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\ScriptCommands\Core\LogCmd\TestLogCmdVariables.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\ScriptCommands\Core\LogErrorCmd\TestLogErrorCmdHardCodedValues.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\ScriptCommands\Core\LogErrorCmd\TestLogErrorCmdVariables.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\ScriptCommands\Core\LogWarningCmd\TestLogWarningCmdHardCodedValues.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\ScriptCommands\Core\LogWarningCmd\TestLogWarningCmdVariables.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\ScriptCommands\Core\PrintCmd\TestPrintCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -291,6 +313,9 @@
     <None Include="TestScripts\Operators\Add\TestAddOperatorStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="TestScripts\ScriptCommands\Core\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\TestReferencingScopedVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -317,7 +342,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\UnitTestFramework\UnitTestFramework.csproj">
+    <ProjectReference Include="..\..\..\..\UnitTestFramework\UnitTestFramework\UnitTestFramework.csproj">
       <Project>{a9189426-6668-474f-b709-6050f2707c02}</Project>
       <Name>UnitTestFramework</Name>
     </ProjectReference>

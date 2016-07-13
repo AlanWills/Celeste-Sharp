@@ -1,0 +1,4 @@
+log("hello")
+log(true)
+log(1)
+log(-1)

@@ -51,39 +51,24 @@ namespace Celeste
         /// <summary>
         /// Creates a stream writer for the LogOutputFilePath.
         /// Do not call this unless you specify LogOutputFilePath.
+        /// Will append to the file.
+        /// Ownership of the LogWriter passes to whoever uses it.
         /// </summary>
-        public static StreamWriter LogWriter { get { return new StreamWriter(LogOutputFilePath); } }
+        public static StreamWriter LogWriter { get { return new StreamWriter(LogOutputFilePath, true); } }
 
         /// <summary>
         /// Creates a stream reader for the LogOutputFilePath.
         /// Do not call this unless you specify LogOutputFilePath.
+        /// Ownership of the LogReader passes to whoever uses it.
         /// </summary>
         public static StreamReader LogReader { get { return new StreamReader(LogOutputFilePath); } }
 
         /// <summary>
         /// Specify this filepath to overwrite the output of the log to a file.
-        /// Specify the same file path to clear the log file.
         /// Will create a file if it does not exist.
+        /// Default value is Cel.ScriptDirectoryPath + "\\Log.txt";
         /// </summary>
-        private static string logOutputFilePath;
-        public static string LogOutputFilePath
-        {
-            get { return logOutputFilePath; }
-            set
-            {
-                // If we are specifying the same filepath we should clear the file
-                logOutputFilePath = value;
-
-                if (File.Exists(logOutputFilePath))
-                {
-                    File.WriteAllText(logOutputFilePath, string.Empty);
-                }
-                else
-                {
-                    File.Create(logOutputFilePath);
-                }
-            }
-        }
+        public static string LogOutputFilePath { get; set; }
 
         private static Dictionary<string, CelesteScript> CompiledScripts = new Dictionary<string, CelesteScript>();
 
@@ -126,6 +111,17 @@ namespace Celeste
 
             CompiledScripts.Add(scriptPath, script);
             return script;
+        }
+
+        /// <summary>
+        /// Wipes the log file
+        /// </summary>
+        public static void ClearLog()
+        {
+            if (LogOutputFilePath != null && File.Exists(LogOutputFilePath))
+            {
+                File.WriteAllText(LogOutputFilePath, string.Empty);
+            }
         }
     }
 }
