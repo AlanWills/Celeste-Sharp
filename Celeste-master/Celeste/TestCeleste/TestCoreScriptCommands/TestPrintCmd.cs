@@ -12,7 +12,7 @@ namespace TestCeleste
         public void TestPrintCmdHardCodedValues()
         {
             // Overwrite the file - we do not want any previous test results interacting with this
-            string outputFilePath = CelesteScriptManager.ScriptDirectoryPath + "\\CoreScriptCommands\\PrintCmd\\TestPrintCmdHardCodedValues.txt";
+            string outputFilePath = Celeste.Cel.ScriptDirectoryPath + "\\CoreScriptCommands\\PrintCmd\\TestPrintCmdHardCodedValues.txt";
             using (StreamWriter writer = new StreamWriter(outputFilePath, false))
             {
                 Console.SetOut(writer);
@@ -35,7 +35,7 @@ namespace TestCeleste
         public void TestPrintCmdVariables()
         {
             // Overwrite the file - we do not want any previous test results interacting with this
-            string outputFilePath = CelesteScriptManager.ScriptDirectoryPath + "\\CoreScriptCommands\\PrintCmd\\TestPrintCmdVariables.txt";
+            string outputFilePath = Celeste.Cel.ScriptDirectoryPath + "\\CoreScriptCommands\\PrintCmd\\TestPrintCmdVariables.txt";
             using (StreamWriter writer = new StreamWriter(outputFilePath, false))
             {
                 Console.SetOut(writer);

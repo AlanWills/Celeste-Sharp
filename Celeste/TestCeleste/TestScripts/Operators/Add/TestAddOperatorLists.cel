@@ -1,1 +1,0 @@
-scoped addedList = [ 5 "Test" true ] + [ 10 "List Adding" false ]

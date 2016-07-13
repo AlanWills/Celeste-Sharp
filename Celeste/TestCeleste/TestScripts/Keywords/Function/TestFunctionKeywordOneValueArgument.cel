@@ -1,7 +1,0 @@
-scoped result
-
-scoped function funcOneArg(number)
-	result = number
-end
-
-funcOneArg(2)

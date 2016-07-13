@@ -1,4 +1,0 @@
-scoped intAnd = 1 and 1
-scoped intAnd2 = 2 and 1
-scoped floatAnd = 1.5 and 2
-scoped floatAnd2 = -1 and -1.0

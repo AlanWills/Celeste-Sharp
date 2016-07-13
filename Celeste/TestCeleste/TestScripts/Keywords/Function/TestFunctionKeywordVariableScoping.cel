@@ -1,7 +1,0 @@
-scoped functionResult = "Same variable name outside of function scope"
-
-function testFunction()
-	functionResult = 5
-end
-
-testFunction()

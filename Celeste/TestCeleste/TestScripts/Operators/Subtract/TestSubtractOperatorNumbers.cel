@@ -1,3 +1,0 @@
-﻿scoped intSubtract = 10 - 5
-scoped floatSubtract = 10.0 - 5.0
-scoped multiSubtract = 10 - 5 - -5

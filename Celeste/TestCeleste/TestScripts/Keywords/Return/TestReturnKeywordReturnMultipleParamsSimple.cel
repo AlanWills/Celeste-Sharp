@@ -1,5 +1,0 @@
-scoped function funcReturnsMultipleParams()
-	return true, null
-end
-
-funcReturnsMultipleParams()

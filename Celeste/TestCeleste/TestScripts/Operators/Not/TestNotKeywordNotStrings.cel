@@ -1,2 +1,0 @@
-scoped notString = !"test"
-scoped notEmpty = !""

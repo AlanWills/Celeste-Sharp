@@ -12,8 +12,8 @@ namespace TestCeleste
         public void TestCelesteScriptDotCelFileOpen()
         {
             string filePath = "TestEmptyScript.cel";
-            string dir = CelesteScriptManager.ScriptDirectoryPath;
-            string fullPath = Path.Combine(CelesteScriptManager.ScriptDirectoryPath, filePath);
+            string dir = Celeste.Cel.ScriptDirectoryPath;
+            string fullPath = Path.Combine(Celeste.Cel.ScriptDirectoryPath, filePath);
             Assert.IsTrue(File.Exists(fullPath));
 
             FileStream reader = File.Open(fullPath, FileMode.Open);

@@ -1,1 +1,0 @@
-<Playlist Version="1.0"><Add Test="TestCeleste.TestSubtractOperator.TestSubtractOperatorSubtractTables" /><Add Test="TestCeleste.TestSubtractOperator.TestSubtractOperatorAddNumbers" /><Add Test="TestCeleste.TestSubtractOperator.TestSubtractOperatorSubtractLists" /><Add Test="TestCeleste.TestSubtractOperator.TestSubtractOperatorAddStrings" /></Playlist>

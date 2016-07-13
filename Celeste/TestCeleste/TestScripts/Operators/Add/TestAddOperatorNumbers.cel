@@ -1,2 +1,0 @@
-﻿scoped addNumbers = 10 + 5
-scoped addMultipleNumbers = 10 + 5 + -5

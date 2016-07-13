@@ -1,3 +1,0 @@
-scoped trueOr = true || true
-scoped falseOr = false || false
-scoped trueFalseOr = true || false

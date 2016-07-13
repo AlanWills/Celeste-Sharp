@@ -86,7 +86,7 @@ namespace TestCeleste
         /// <returns></returns>
         protected CelesteScript RunScript(string filePath)
         {
-            CelesteScript script = CelesteScriptManager.CreateScript(filePath);
+            CelesteScript script = Celeste.Cel.CreateScript(filePath);
             script.Compile();
             script.Run();
 

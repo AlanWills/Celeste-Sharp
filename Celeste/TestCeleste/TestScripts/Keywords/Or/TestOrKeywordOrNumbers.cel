@@ -1,4 +1,0 @@
-scoped intOr = 1 or 1
-scoped intOr2 = 2 or 1
-scoped floatOr = 1.5 or 2
-scoped floatOr2 = -1 or -1.0

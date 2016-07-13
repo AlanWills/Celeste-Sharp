@@ -1,4 +1,0 @@
-scoped stringOr = "test" || "test"
-scoped stringOr2 = "Test" || "test"
-scoped emptyOr = "" || "not empty"
-scoped emptyOr2 = "" || ""

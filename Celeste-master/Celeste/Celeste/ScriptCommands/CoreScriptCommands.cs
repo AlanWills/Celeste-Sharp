@@ -14,7 +14,9 @@ namespace Celeste
             Console.WriteLine(input.ToString());
         }
 
-        // Script command for changing Console output and debug information output (when we have added it)
-        // For debug info we will just need to add logging whenever we have an assert
+        // Script command for logging
+        // Script command for debugging?
+        // For debug info we will just need to add debug logging whenever we have an assert
+        // Debug to the same place as logging?
     }
 }

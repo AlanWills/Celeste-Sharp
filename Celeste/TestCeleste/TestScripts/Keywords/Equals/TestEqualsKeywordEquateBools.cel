@@ -1,3 +1,0 @@
-scoped trueEquality = true equals true
-scoped falseEquality = false equals false
-scoped boolInequality = true equals false

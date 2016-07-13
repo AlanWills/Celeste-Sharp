@@ -1,2 +1,0 @@
-scoped notString = not "test"
-scoped notEmpty = not ""

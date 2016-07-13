@@ -1,4 +1,0 @@
-scoped intEquality = 1 == 1
-scoped intInequality = 2 == 1
-scoped floatInequality = 1.5 == 2
-scoped floatEquality = -1 == -1.0

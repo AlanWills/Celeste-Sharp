@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CelesteUnitTest.cs" />
+    <Compile Include="TestCelesteLogging.cs" />
     <Compile Include="TestCoreScriptCommands\TestPrintCmd.cs" />
     <Compile Include="TestExtensions\TestExtensions.cs" />
     <Compile Include="TestExtensions\TestObjectComparer.cs" />
@@ -92,7 +93,9 @@
     <None Include="TestScripts\CoreScriptCommands\PrintCmd\TestPrintCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\CoreScriptCommands\PrintCmd\TestPrintCmdVariables.cel" />
+    <None Include="TestScripts\CoreScriptCommands\PrintCmd\TestPrintCmdVariables.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\And\TestAndKeywordAndBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -314,7 +317,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\UnitTestFramework\UnitTestFramework.csproj">
+    <ProjectReference Include="..\..\..\..\UnitTestFramework\UnitTestFramework\UnitTestFramework.csproj">
       <Project>{a9189426-6668-474f-b709-6050f2707c02}</Project>
       <Name>UnitTestFramework</Name>
     </ProjectReference>

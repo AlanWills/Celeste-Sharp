@@ -1,7 +1,0 @@
-scoped variable
-
-scoped function func(input)
-	variable = input
-end
-
-func(true,2)

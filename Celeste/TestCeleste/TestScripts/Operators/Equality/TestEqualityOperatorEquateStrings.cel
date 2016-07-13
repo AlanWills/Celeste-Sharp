@@ -1,4 +1,0 @@
-scoped stringEquality = "test" == "test"
-scoped stringInequality = "Test" == "test"
-scoped emptyInequality = "" == "not empty"
-scoped emptyEquality = "" == ""

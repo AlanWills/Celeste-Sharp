@@ -1,7 +1,0 @@
-scoped result
-
-scoped function funcOneArg(ref)
-	ref = true
-end
-
-funcOneArg(result)

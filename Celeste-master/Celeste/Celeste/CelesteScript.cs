@@ -60,7 +60,7 @@ namespace Celeste
             ScriptScope = new Scope(ScriptPath);
 
             Tuple<bool, CompiledStatement> result = null;
-            using (StreamReader scriptReader = File.OpenText(CelesteScriptManager.ScriptDirectoryPath + "\\" + ScriptPath))
+            using (StreamReader scriptReader = File.OpenText(Cel.ScriptDirectoryPath + "\\" + ScriptPath))
             {
                 result = CelesteCompiler.CompileScript(scriptReader);
             }

@@ -1,4 +1,0 @@
-scoped stringAnd = "test" and "test"
-scoped stringAnd2 = "Test" and "test"
-scoped emptyAnd = "" and "not empty"
-scoped emptyAnd2 = "" and ""

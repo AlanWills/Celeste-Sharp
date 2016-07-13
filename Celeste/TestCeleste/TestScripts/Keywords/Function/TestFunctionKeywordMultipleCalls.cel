@@ -1,9 +1,0 @@
-scoped firstCall
-scoped secondCall
-
-function assignmentFunc(input,variable)
-	variable = input
-end
-
-assignmentFunc(2,firstCall)
-assignmentFunc(true,secondCall)
