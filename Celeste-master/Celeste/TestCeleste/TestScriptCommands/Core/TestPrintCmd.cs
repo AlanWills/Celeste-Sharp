@@ -48,6 +48,10 @@ namespace TestCeleste
             using (StreamReader reader = new StreamReader(outputFilePath))
             {
                 Assert.AreEqual("hello", reader.ReadLine());
+                Assert.AreEqual("True", reader.ReadLine());
+                Assert.AreEqual("10", reader.ReadLine());
+                Assert.AreEqual("-10", reader.ReadLine());
+                Assert.AreEqual("refer", reader.ReadLine());
             }
         }
     }

@@ -1,0 +1,15 @@
+﻿scoped variable = "hello"
+print(variable)
+
+variable = true
+print(variable)
+
+variable = 10
+print(variable)
+
+variable = -10
+print(variable)
+
+scoped secondVariable = variable
+variable = "refer"
+print(secondVariable)

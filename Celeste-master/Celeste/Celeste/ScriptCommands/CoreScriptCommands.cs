@@ -18,5 +18,6 @@ namespace Celeste
         // Script command for debugging?
         // For debug info we will just need to add debug logging whenever we have an assert
         // Debug to the same place as logging?
+        // Have logError and logWarning script commands
     }
 }
