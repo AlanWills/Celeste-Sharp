@@ -68,6 +68,7 @@
     <Compile Include="Compilation Objects\Operators\Binary\NonEqualityOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\OrOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\SubtractOperator.cs" />
+    <Compile Include="Compilation Objects\Delimiter.cs" />
     <Compile Include="Compilation Objects\Operators\Unary\NotOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Unary\UnaryOperator.cs" />
     <Compile Include="Compilation Objects\Scoping\Scope.cs" />

@@ -36,6 +36,8 @@
         public bool IsValueType { get { return (Value as Reference).Value is Value; } }
         public bool IsReferenceType { get { return (Value as Reference).Value is Reference; } }
 
+        internal static string variableDelimiter = ",";
+
         #endregion
 
         // Don't make the constructor less than public - it's needed in the CelesteCompiler

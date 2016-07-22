@@ -94,6 +94,12 @@
     <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestScripts\Keywords\Scoped\TestScopedKeywordMultipleVariableInitialisation.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Scoped\TestScopedKeywordMultipleVariableDeclaration.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\ScriptCommands\Core\LogCmd\TestLogCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -217,7 +223,7 @@
     <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnNothing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Scoped\TestScopedParsing.cel">
+    <None Include="TestScripts\Keywords\Scoped\TestScopedKeywordParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Add\TestAddOperatorTables.cel">

@@ -190,6 +190,18 @@ namespace Celeste
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="parent"></param>
+        private static void Create<T>(CompiledStatement parent, string token) where T : CompiledStatement
+        {
+            // Create an instance of our keyword
+            T statement = (T)Activator.CreateInstance(typeof(T));
+            statement.Compile(parent, token, Tokens, Lines);
+        }
+
+        /// <summary>
+        /// Create an instance of the inputted compiled statement
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="parent"></param>
         /// <param name="type"></param>
         private static void Create<T>(CompiledStatement parent, string token, Type type) where T : CompiledStatement
         {
@@ -256,6 +268,13 @@ namespace Celeste
         /// <param name="token"></param>
         public static bool CompileToken(string token, CompiledStatement parent)
         {
+            if (Delimiter.IsDelimiter(token))
+            {
+                // Don't stop if we find a delimiter, merely inline the appropriate token
+                Create<Delimiter>(parent, token);
+                token = PopToken();
+            }
+
             if (CompileAsValue(parent, token))
             {
                 return true;

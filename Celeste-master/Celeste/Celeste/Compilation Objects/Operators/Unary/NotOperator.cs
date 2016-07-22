@@ -12,13 +12,13 @@ namespace Celeste
     {
         internal static string scriptToken = "!";
 
-        #region Virtual Functions
-
         public static bool IsNotOperator(string token)
         {
             // The unary operator nees to be right next to another token to work - there can be no spaces
             return token.StartsWith(scriptToken) && token.Length > 1;
         }
+
+        #region Virtual Functions
 
         /// <summary>
         /// Removes the the object at the top of the stack and performs the not operation.
