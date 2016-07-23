@@ -13,8 +13,8 @@ namespace Celeste
         internal static string scriptToken = "function";
         private static string endDelimiter = "end";
         internal static char parameterStartDelimiter = '(';
+        private static char parameterEndDelimiterChar = ')';
         private static string parameterEndDelimiter = ")";
-        internal static char parameterDelimiter = ',';
 
         #endregion
 
@@ -30,17 +30,38 @@ namespace Celeste
 
             int bracketOpening = rhsOfKeyword.IndexOf(parameterStartDelimiter);
             Debug.Assert(bracketOpening >= 0, "No '(' token in function declaration");
-            Debug.Assert(rhsOfKeyword.EndsWith(parameterEndDelimiter));
 
             string functionName = rhsOfKeyword.Substring(0, bracketOpening);
-            string parameters = rhsOfKeyword.Substring(bracketOpening + 1, rhsOfKeyword.Length - functionName.Length - 2);
 
             Debug.Assert(!CelesteStack.CurrentScope.VariableExists(functionName), "Variable with the same name already exists in this scope");
             int currentIndex = parent.ChildCount;
 
             // Creates a new function, but does not call Compile - Compile for function assigns a reference from the stored function in CelesteStack
             Function function = CelesteStack.CurrentScope.CreateLocalVariable<Function>(functionName);
-            function.SetParameters(parameters.Split(parameterDelimiter));
+
+            // Obtain the parameter names from the strings/tokens between the brackets
+            string parameters = rhsOfKeyword.Substring(bracketOpening + 1);
+            tokens.AddFirst(parameters);
+            List<string> paramNames = new List<string>();
+            do
+            {
+                // We do this if our function arguments are separated by spaces
+                parameters = CelesteCompiler.PopToken();
+                if (parameters.EndsWith(parameterEndDelimiter))
+                {
+                    // Remove the end delimiter if needs be
+                    parameters.Substring(0, parameters.Length - 1);
+                }
+
+                // Add any parameters which are of this form 'param1,param2'
+                // TODO Need to remove delimiters and empty spaces
+                paramNames.AddRange(parameters.Split(Delimiter.scriptTokenChar));
+
+                // This algorithm should completely take care of any mix of parameters separated with a space or not
+            }
+            while (!parameters.EndsWith(parameterEndDelimiter));
+
+            function.SetParameters(paramNames.ToArray());
 
             // We keep parsing until we find the closing keyword for our function
             bool foundClosing = false;
@@ -69,7 +90,7 @@ namespace Celeste
                     Debug.Fail("Operator invalid on token: " + token);
                 }
             }
-
+ 
             // Do not add the function - it will be looked up to and called rather than pushed onto the stack (much like a variable)
             // Close the function's scope now - we have added all the appropriate variables to it
             CelesteStack.CurrentScope = function.FunctionScope.ParentScope;

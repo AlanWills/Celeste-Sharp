@@ -64,7 +64,7 @@ namespace Celeste
 
                     int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
                     string inputParameters = token.Substring(parameterStartDelimiterIndex + 1, token.Length - parameterStartDelimiterIndex - 2);
-                    string[] inputParameterNames = inputParameters.Split(FunctionKeyword.parameterDelimiter);
+                    string[] inputParameterNames = inputParameters.Split(Delimiter.scriptTokenChar);
 
                     // Add null references first for all of the parameters we are missing
                     for (int i = inputParameterNames.Length; i < ParameterNames.Count; i++)
@@ -148,7 +148,7 @@ namespace Celeste
             {
                 if (!string.IsNullOrWhiteSpace(parameterName))
                 {
-                    FunctionScope.CreateLocalVariable<Variable>(parameterName);
+                    FunctionScope.CreateLocalVariable<Variable>(parameterName.Replace(Delimiter.scriptToken, ""));
                     ParameterNames.Add(parameterName);
                 }
             }

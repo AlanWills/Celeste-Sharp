@@ -10,6 +10,7 @@ namespace Celeste
     internal class Delimiter : CompiledStatement
     {
         internal static string scriptToken = ",";
+        internal static char scriptTokenChar = ',';
         internal static string inlineToken = "";
 
         public static bool IsDelimiter(string token)

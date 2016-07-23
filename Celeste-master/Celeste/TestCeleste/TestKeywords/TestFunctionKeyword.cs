@@ -15,6 +15,48 @@ namespace TestCeleste
         }
 
         [TestMethod]
+        public void TestFunctionKeywordArgumentParsingNoSpaces()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingNoSpaces.cel");
+
+            Assert.IsTrue(script.ScriptScope.VariableExists("testFunction"));
+
+            Function testFunc = script.ScriptScope.GetLocalVariable("testFunction", ScopeSearchOption.kThisScope) as Function;
+            Assert.AreEqual(3, testFunc.ParameterNames.Count);
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param1"));
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param2"));
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param3"));
+        }
+
+        [TestMethod]
+        public void TestFunctionKeywordArgumentParsingSpaces()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingSpaces.cel");
+
+            Assert.IsTrue(script.ScriptScope.VariableExists("testFunction"));
+
+            Function testFunc = script.ScriptScope.GetLocalVariable("testFunction", ScopeSearchOption.kThisScope) as Function;
+            Assert.AreEqual(3, testFunc.ParameterNames.Count);
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param1"));
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param2"));
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param3"));
+        }
+
+        [TestMethod]
+        public void TestFunctionKeywordArgumentParsingMixedSpaces()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingMixedSpaces.cel");
+
+            Assert.IsTrue(script.ScriptScope.VariableExists("testFunction"));
+
+            Function testFunc = script.ScriptScope.GetLocalVariable("testFunction", ScopeSearchOption.kThisScope) as Function;
+            Assert.AreEqual(3, testFunc.ParameterNames.Count);
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param1"));
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param2"));
+            Assert.IsTrue(testFunc.ParameterNames.Contains("param3"));
+        }
+
+        [TestMethod]
         public void TestFunctionKeywordSimpleExecution()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordSimpleExecution.cel");

@@ -94,6 +94,15 @@
     <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordArgumentParsingMixedSpaces.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordArgumentParsingSpaces.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordArgumentParsingNoSpaces.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Scoped\TestScopedKeywordMultipleVariableInitialisation.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
