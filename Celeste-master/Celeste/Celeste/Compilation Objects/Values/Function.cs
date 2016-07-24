@@ -55,8 +55,6 @@ namespace Celeste
             }
             else
             {
-                Delimiter.InlineToken = "";
-
                 if (ParameterNames.Count > 0)
                 {
                     // Group our inputs under this object so that we can store them underneath this function
@@ -64,17 +62,17 @@ namespace Celeste
                     Add(thisCallsParams);
 
                     int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
-                    string inputParameter = token.Substring(parameterStartDelimiterIndex + 1);
+                    token = token.Substring(parameterStartDelimiterIndex + 1);
 
                     List<string> inputParameterTokens = new List<string>();
-                    while (!inputParameter.EndsWith(FunctionKeyword.parameterEndDelimiter))
+                    while (!token.EndsWith(FunctionKeyword.parameterEndDelimiter))
                     {
-                        inputParameterTokens.Add(inputParameter);
-                        inputParameter = CelesteCompiler.PopToken();
+                        inputParameterTokens.Add(token);
+                        token = CelesteCompiler.PopToken();
                     }
 
-                    inputParameter = inputParameter.Substring(0, inputParameter.Length - 1);
-                    inputParameterTokens.Add(inputParameter);
+                    token = token.Substring(0, token.Length - 1);
+                    inputParameterTokens.Add(token);
 
                     // Add null references first for all of the parameters we are missing
                     for (int i = inputParameterTokens.Count; i < ParameterNames.Count; i++)
