@@ -11,11 +11,11 @@ namespace Celeste
     {
         internal static string scriptToken = ",";
         internal static char scriptTokenChar = ',';
-        internal static string inlineToken = "";
+        internal static string InlineToken = "";
 
-        public static bool IsDelimiter(string token)
+        public static bool HasDelimiter(string token)
         {
-            return token.EndsWith(scriptToken);
+            return token.Contains(scriptToken);
         }
 
         #region Virtual Functions
@@ -24,16 +24,28 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
-            // Add our inlined token
-            tokens.AddFirst(inlineToken);
+            // Find the first occurrence of the delimiter and split the string at that index
+            int delimiterIndex = token.IndexOf(scriptTokenChar);
+            Debug.Assert(delimiterIndex > 0);   // Must exist and cannot be the first element in a string
 
-            // Add anything leftover - e.g. scoped var = 5, var2 = 10
-            // we will want to change to scoped var = 5 scoped var2 = 10
-            string leftoverToken = token.Remove(token.Length - 1);
-            if (!string.IsNullOrEmpty(leftoverToken))
+            // Split the token into two strings - the lhs of the first delimiter and the remaining rhs after the delimiter
+            string lhsOfDelimiter = token.Substring(0, delimiterIndex);
+            string rhsOfDelimiter = token.Substring(delimiterIndex + 1);
+
+            // We add these in the reverse order so that they appear as LHS, INLINE, RHS (the tokens list is basically a stack)
+
+            // Add anything leftover on the rhs
+            if (!string.IsNullOrEmpty(rhsOfDelimiter))
             {
-                tokens.AddFirst(leftoverToken);
+                tokens.AddFirst(rhsOfDelimiter);
             }
+
+            // Add our inlined token
+            tokens.AddFirst(InlineToken);
+
+            // Add the lhs of delimiter - this cannot be empty
+            Debug.Assert(!string.IsNullOrEmpty(lhsOfDelimiter));
+            tokens.AddFirst(lhsOfDelimiter);
         }
 
         public override void PerformOperation()

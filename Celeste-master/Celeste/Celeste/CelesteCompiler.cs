@@ -268,12 +268,14 @@ namespace Celeste
         /// <param name="token"></param>
         public static bool CompileToken(string token, CompiledStatement parent)
         {
-            if (Delimiter.IsDelimiter(token))
-            {
-                // Don't stop if we find a delimiter, merely inline the appropriate token
-                Create<Delimiter>(parent, token);
-                token = PopToken();
-            }
+            // Check that the delimiter does not exist in this token
+            //if (Delimiter.HasDelimiter(token))
+            //{
+            //    // If we find a delimiter, inline this scoped keyword script token
+            //    Delimiter delimiter = new Delimiter();
+            //    delimiter.Compile(parent, token, Tokens, Lines);
+            //    token = PopToken();
+            //}
 
             if (CompileAsValue(parent, token))
             {
@@ -297,7 +299,7 @@ namespace Celeste
             }
             else
             {
-                Debug.Fail("Unrecognised token");
+                Debug.Fail("Unrecognised token " + token);
                 return false;
             }
         }

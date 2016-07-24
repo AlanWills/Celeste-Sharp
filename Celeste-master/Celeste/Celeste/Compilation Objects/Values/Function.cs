@@ -39,7 +39,6 @@ namespace Celeste
         /// <summary>
         /// Call compile when you wish to implement the function.
         /// Process the actual variable names that have been passed into the function using the token.
-        /// Formatting will be func(param1, param2, ...).
         /// Create a variable underneath this for each variable we are passing in.
         /// </summary>
         /// <param name="parent"></param>
