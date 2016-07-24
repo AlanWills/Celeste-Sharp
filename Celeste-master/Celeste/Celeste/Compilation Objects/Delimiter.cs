@@ -34,14 +34,18 @@ namespace Celeste
 
             // We add these in the reverse order so that they appear as LHS, INLINE, RHS (the tokens list is basically a stack)
 
-            // Add anything leftover on the rhs
             if (!string.IsNullOrEmpty(rhsOfDelimiter))
             {
+                // Add anything leftover on the rhs
                 tokens.AddFirst(rhsOfDelimiter);
             }
 
-            // Add our inlined token
-            tokens.AddFirst(InlineToken);
+            if (!string.IsNullOrEmpty(InlineToken))
+            {
+                // Add our inlined token if it is not empty
+                // If it is empty, then it was merely acting as a separator
+                tokens.AddFirst(InlineToken);
+            }
 
             // Add the lhs of delimiter - this cannot be empty
             Debug.Assert(!string.IsNullOrEmpty(lhsOfDelimiter));

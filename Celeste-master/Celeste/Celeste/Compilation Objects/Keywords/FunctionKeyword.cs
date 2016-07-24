@@ -14,8 +14,8 @@ namespace Celeste
         internal static string scriptToken = "function";
         private static string endDelimiter = "end";
         internal static char parameterStartDelimiter = '(';
-        private static char parameterEndDelimiterChar = ')';
-        private static string parameterEndDelimiter = ")";
+        internal static char parameterEndDelimiterChar = ')';
+        internal static string parameterEndDelimiter = ")";
 
         #endregion
 

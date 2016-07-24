@@ -24,21 +24,12 @@ namespace Celeste
             if (tokens.First.Value == FunctionKeyword.scriptToken)
             {
                 // If we have a function after this, we do nothing - functions by default are added to the current local scope
+                Delimiter.InlineToken = "";
                 return;
             }
 
             // Get the next token that appears on the right hand side of this operator - this will be our variable name
             string rhsOfKeyword = CelesteCompiler.PopToken();
-
-            // Check that the delimiter does not exist in this token
-            if (Delimiter.HasDelimiter(rhsOfKeyword))
-            {
-                // If we find a delimiter, inline this scoped keyword script token
-                Delimiter delimiter = new Delimiter();
-                delimiter.Compile(parent, rhsOfKeyword, tokens, lines);
-                rhsOfKeyword = CelesteCompiler.PopToken();
-            }
-
             Debug.Assert(!CelesteStack.CurrentScope.VariableExists(rhsOfKeyword), "Variable with the same name already exists in this scope");
 
             // Creates a new variable, but does not call Compile - Compile for variable assigns a reference from the stored variable in CelesteStack

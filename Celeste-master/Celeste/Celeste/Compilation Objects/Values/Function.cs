@@ -55,6 +55,8 @@ namespace Celeste
             }
             else
             {
+                Delimiter.InlineToken = "";
+
                 if (ParameterNames.Count > 0)
                 {
                     // Group our inputs under this object so that we can store them underneath this function
@@ -62,11 +64,20 @@ namespace Celeste
                     Add(thisCallsParams);
 
                     int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
-                    string inputParameters = token.Substring(parameterStartDelimiterIndex + 1, token.Length - parameterStartDelimiterIndex - 2);
-                    string[] inputParameterNames = inputParameters.Split(Delimiter.scriptTokenChar);
+                    string inputParameter = token.Substring(parameterStartDelimiterIndex + 1);
+
+                    List<string> inputParameterTokens = new List<string>();
+                    while (!inputParameter.EndsWith(FunctionKeyword.parameterEndDelimiter))
+                    {
+                        inputParameterTokens.Add(inputParameter);
+                        inputParameter = CelesteCompiler.PopToken();
+                    }
+
+                    inputParameter = inputParameter.Substring(0, inputParameter.Length - 1);
+                    inputParameterTokens.Add(inputParameter);
 
                     // Add null references first for all of the parameters we are missing
-                    for (int i = inputParameterNames.Length; i < ParameterNames.Count; i++)
+                    for (int i = inputParameterTokens.Count; i < ParameterNames.Count; i++)
                     {
                         // This will push null onto the stack for every parameter we have not provided an input for
                         Reference refToNull = new Reference(null);
@@ -74,10 +85,10 @@ namespace Celeste
                     }
 
                     // Then add the actual parameters we have inputted
-                    for (int i = inputParameterNames.Length - 1; i >= 0 ; i--)
+                    for (int i = inputParameterTokens.Count - 1; i >= 0 ; i--)
                     {
                         // Add our parameters in reverse order, so they get added to the stack in reverse order
-                        Debug.Assert(CelesteCompiler.CompileToken(inputParameterNames[i], thisCallsParams), "Failed to compile input parameter");
+                        Debug.Assert(CelesteCompiler.CompileToken(inputParameterTokens[i], thisCallsParams), "Failed to compile input parameter");
                     }
                 }
 
