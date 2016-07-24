@@ -7,7 +7,7 @@ namespace Celeste
     /// </summary>
     internal class SingleLineComment : CompiledStatement
     {
-        private static string scriptToken = "\\\\";
+        private static string scriptToken = "//";
 
         internal static bool IsCommented(string token)
         {

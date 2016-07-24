@@ -8,7 +8,7 @@ namespace Celeste
         private static string scriptToken = "while";
         private static string endDelimiter = "end";
 
-        internal static bool IsWhileControl(string token)
+        public static bool IsWhileControl(string token)
         {
             return token == scriptToken;
         }

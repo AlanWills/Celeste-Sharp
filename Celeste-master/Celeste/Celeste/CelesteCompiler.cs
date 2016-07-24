@@ -200,8 +200,17 @@ namespace Celeste
             {
                 SingleLineComment comment = new SingleLineComment();
                 comment.Compile(RootStatement, token, Tokens, Lines);
-                TokenizeNextLine();
-                token = PopToken();
+
+                if (Lines.Count > 0)
+                {
+                    TokenizeNextLine();
+                    token = PopToken();
+                }
+                else
+                {
+                    // We can set the token to null and it will not be compiled (i.e. if we have completely run out of tokens in our file)
+                    token = null;
+                }
             }
             else if (Delimiter.HasDelimiter(token))
             {
@@ -280,12 +289,15 @@ namespace Celeste
 
             while (Tokens.Count > 0)
             {
+                // We return null if there are no tokens at all left to pop
                 string token = PopToken();
+                if (token != null)
+                {
+                    bool tokenResult = CompileToken(token, RootStatement);
+                    Debug.Assert(tokenResult, "Compiling token: " + token + " failed");
 
-                bool tokenResult = CompileToken(token, RootStatement);
-                Debug.Assert(tokenResult, "Compiling token: " + token + " failed");
-
-                result = tokenResult && result;
+                    result = tokenResult && result;
+                }
             }
 
             return result;

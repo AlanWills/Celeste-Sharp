@@ -6,4 +6,4 @@
 //scoped function func() end
 //
 scoped var = 5
-scoped stringVar = "//test"
+//scoped stringVar = "//test"
