@@ -46,6 +46,7 @@
     <Compile Include="Attributes\ScriptCommandAttribute.cs" />
     <Compile Include="CelesteStack.cs" />
     <Compile Include="CelesteCompiler.cs" />
+    <Compile Include="Compilation Objects\FlowControl\FlowControl.cs" />
     <Compile Include="Compilation Objects\Keywords\NotKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\OrKeyword.cs" />
     <Compile Include="Compilation Objects\Keywords\AndKeyword.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Compilation Objects\Delimiter.cs" />
     <Compile Include="Compilation Objects\Operators\Unary\NotOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Unary\UnaryOperator.cs" />
+    <Compile Include="Compilation Objects\FlowControl\WhileControl.cs" />
     <Compile Include="Compilation Objects\Scoping\Scope.cs" />
     <Compile Include="Compilation Objects\Scoping\ScopeManager.cs" />
     <Compile Include="Compilation Objects\Values\Bool.cs" />

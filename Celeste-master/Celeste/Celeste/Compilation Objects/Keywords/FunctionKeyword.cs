@@ -103,6 +103,7 @@ namespace Celeste
  
             // Do not add the function - it will be looked up to and called rather than pushed onto the stack (much like a variable)
             // Close the function's scope now - we have added all the appropriate variables to it
+            // This scope is automatically opened in the Function constructor
             CelesteStack.CurrentScope = function.FunctionScope.ParentScope;
         }
     }
