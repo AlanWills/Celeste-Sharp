@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CelesteUnitTest.cs" />
     <Compile Include="TestCelesteLogging.cs" />
+    <Compile Include="TestFlowControls\TestWhileFlowControl.cs" />
     <Compile Include="TestScriptCommands\Core\TestLogErrorCmd.cs" />
     <Compile Include="TestScriptCommands\Core\TestLogWarningCmd.cs" />
     <Compile Include="TestScriptCommands\Core\TestLogCmd.cs" />

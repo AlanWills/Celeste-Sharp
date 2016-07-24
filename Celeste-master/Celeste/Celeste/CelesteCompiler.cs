@@ -24,6 +24,11 @@ namespace Celeste
         private static Dictionary<MethodInfo, Type> RegisteredOperators = new Dictionary<MethodInfo, Type>();
 
         /// <summary>
+        /// A dictionary of registered flow controls we will use when parsing our script
+        /// </summary>
+        private static Dictionary<MethodInfo, Type> RegisteredFlowControls = new Dictionary<MethodInfo, Type>();
+
+        /// <summary>
         /// A dictionary of registered keywords we will use when parsing our script
         /// </summary>
         private static Dictionary<string, Type> RegisteredKeywords = new Dictionary<string, Type>();
@@ -93,6 +98,13 @@ namespace Celeste
                     Debug.Assert(isTypeMethod != null);
 
                     RegisteredOperators.Add(isTypeMethod, type);
+                }
+                else if (type.IsSubclassOf(typeof(FlowControl)) && !type.IsAbstract)
+                {
+                    MethodInfo isTypeMethod = type.GetMethod("Is" + type.Name);
+                    Debug.Assert(isTypeMethod != null);
+
+                    RegisteredFlowControls.Add(isTypeMethod, type);
                 }
                 else if (type.IsSubclassOf(typeof(Keyword)))
                 {
@@ -287,6 +299,10 @@ namespace Celeste
             {
                 return true;
             }
+            else if (CompileAsFlowControl(parent, token))
+            {
+                return true;
+            }
             else if (CompileAsKeyword(parent, token))
             {
                 return true;
@@ -359,6 +375,28 @@ namespace Celeste
                 {
                     // Call compile - this will push a reference onto the stack and add references to the variables we will use as arguments
                     CelesteStack.CurrentScope.GetLocalVariable(functionName).Compile(parent, token, Tokens, Lines);
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Runs through our registered flow controls and see if we have one which fits our token
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        private static bool CompileAsFlowControl(CompiledStatement parent, string token)
+        {
+            foreach (KeyValuePair<MethodInfo, Type> pair in RegisteredFlowControls)
+            {
+                // Invoke the method we have picked up from reflection for seeing if this token is a valid value
+                if ((bool)pair.Key.Invoke(null, new object[] { token }))
+                {
+                    Create<FlowControl>(parent, token, pair.Value);
 
                     return true;
                 }
