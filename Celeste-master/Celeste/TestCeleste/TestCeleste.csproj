@@ -87,6 +87,7 @@
     <Compile Include="TestOperators\TestSubtractOperator.cs" />
     <Compile Include="TestReferencing.cs" />
     <Compile Include="TestScriptCommands\TestScriptCommands.cs" />
+    <Compile Include="TestSingleLineCommenting.cs" />
     <Compile Include="TestTypes\TestBoolType.cs" />
     <Compile Include="TestTypes\TestListType.cs" />
     <Compile Include="TestTypes\TestNumberType.cs" />
@@ -335,6 +336,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\TestEmptyScript.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\TestSingleLineCommenting.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Types\Bool\TestBoolParsing.cel">

@@ -1,0 +1,9 @@
+﻿//test
+// 1234556677
+//                 test
+// // // //
+// scoped var = 5
+//scoped function func() end
+//
+scoped var = 5
+scoped stringVar = "//test"
