@@ -16,7 +16,7 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
-            Delimiter.inlineToken = scriptToken;
+            Delimiter.InlineToken = scriptToken;
 
             // Now check that there is another element after our keyword that we can use as the variable name
             Debug.Assert(tokens.Count > 0, "No value found for the right hand side of keyword: " + token);
@@ -24,6 +24,7 @@ namespace Celeste
             if (tokens.First.Value == FunctionKeyword.scriptToken)
             {
                 // If we have a function after this, we do nothing - functions by default are added to the current local scope
+                Delimiter.InlineToken = "";
                 return;
             }
 

@@ -175,6 +175,8 @@ namespace Celeste
         {
             Debug.Assert(Lines.Count > 0, "No lines left to tokenize");
 
+            // No multiple variable declarations over different lines
+            Delimiter.InlineToken = "";
             Tokens.Clear();
             foreach (string splitString in Lines.First.Value.Split(' '))
             {
@@ -193,6 +195,21 @@ namespace Celeste
             Debug.Assert(Tokens.Count > 0, "No tokens left to pop");
             string token = Tokens.First.Value;
             Tokens.RemoveFirst();
+
+            if (SingleLineComment.IsCommented(token))
+            {
+                SingleLineComment comment = new SingleLineComment();
+                comment.Compile(RootStatement, token, Tokens, Lines);
+                TokenizeNextLine();
+                token = PopToken();
+            }
+            else if (Delimiter.HasDelimiter(token))
+            {
+                // If we find a delimiter, inline the stored token
+                Delimiter delimiter = new Delimiter();
+                delimiter.Compile(RootStatement, token, Tokens, Lines);
+                token = PopToken();
+            }
 
             return token;
         }
@@ -280,13 +297,6 @@ namespace Celeste
         /// <param name="token"></param>
         public static bool CompileToken(string token, CompiledStatement parent)
         {
-            if (Delimiter.IsDelimiter(token))
-            {
-                // Don't stop if we find a delimiter, merely inline the appropriate token
-                Create<Delimiter>(parent, token);
-                token = PopToken();
-            }
-
             if (CompileAsValue(parent, token))
             {
                 return true;
@@ -313,7 +323,7 @@ namespace Celeste
             }
             else
             {
-                Debug.Fail("Unrecognised token");
+                Debug.Fail("Unrecognised token " + token);
                 return false;
             }
         }

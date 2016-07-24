@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Celeste
 {
@@ -13,8 +14,8 @@ namespace Celeste
         internal static string scriptToken = "function";
         private static string endDelimiter = "end";
         internal static char parameterStartDelimiter = '(';
-        private static char parameterEndDelimiterChar = ')';
-        private static string parameterEndDelimiter = ")";
+        internal static char parameterEndDelimiterChar = ')';
+        internal static string parameterEndDelimiter = ")";
 
         #endregion
 
@@ -42,7 +43,11 @@ namespace Celeste
             // Obtain the parameter names from the strings/tokens between the brackets
             string parameters = rhsOfKeyword.Substring(bracketOpening + 1);
             tokens.AddFirst(parameters);
+
+            // Cannot just analyse parameters string because we modify it as we go along
+            bool finished = false;
             List<string> paramNames = new List<string>();
+
             do
             {
                 // We do this if our function arguments are separated by spaces
@@ -50,16 +55,21 @@ namespace Celeste
                 if (parameters.EndsWith(parameterEndDelimiter))
                 {
                     // Remove the end delimiter if needs be
-                    parameters.Substring(0, parameters.Length - 1);
+                    parameters = parameters.Substring(0, parameters.Length - 1);
+                    finished = true;
                 }
 
+                // Clean the parameter array of empty strings and remove any delimiter characters from parameter names
+                List<string> parameterList = new List<string>(parameters.Split(Delimiter.scriptTokenChar));
+                parameterList.RemoveAll(x => string.IsNullOrEmpty(x));
+                parameterList = new List<string>(parameterList.Select(x => x = x.Replace(Delimiter.scriptToken, "")));
+
                 // Add any parameters which are of this form 'param1,param2'
-                // TODO Need to remove delimiters and empty spaces
-                paramNames.AddRange(parameters.Split(Delimiter.scriptTokenChar));
+                paramNames.AddRange(parameterList);
 
                 // This algorithm should completely take care of any mix of parameters separated with a space or not
             }
-            while (!parameters.EndsWith(parameterEndDelimiter));
+            while (!finished);
 
             function.SetParameters(paramNames.ToArray());
 
