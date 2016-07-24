@@ -184,8 +184,14 @@ namespace Celeste
             string token = Tokens.First.Value;
             Tokens.RemoveFirst();
 
-            // Check that the delimiter does not exist in this token
-            if (Delimiter.HasDelimiter(token))
+            if (SingleLineComment.IsCommented(token))
+            {
+                SingleLineComment comment = new SingleLineComment();
+                comment.Compile(RootStatement, token, Tokens, Lines);
+                TokenizeNextLine();
+                token = PopToken();
+            }
+            else if (Delimiter.HasDelimiter(token))
             {
                 // If we find a delimiter, inline the stored token
                 Delimiter delimiter = new Delimiter();
