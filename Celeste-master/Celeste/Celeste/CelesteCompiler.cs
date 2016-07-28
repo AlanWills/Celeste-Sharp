@@ -91,11 +91,10 @@ namespace Celeste
                     RegisteredValues.Add(isTypeMethod, type);
                 }
                 // Don't add abstract classes - we shouldn't be able to create those anyway!
-                else if ((type.IsSubclassOf(typeof(BinaryOperator)) || type.IsSubclassOf(typeof(UnaryOperator))) &&
-                    !type.IsAbstract)
+                else if (type.IsSubclassOf(typeof(Operator)) && !type.IsAbstract)
                 {
                     MethodInfo isTypeMethod = type.GetMethod("Is" + type.Name);
-                    Debug.Assert(isTypeMethod != null);
+                    Debug.Assert(isTypeMethod != null, "Is" + type.Name + " static method not implemented");
 
                     RegisteredOperators.Add(isTypeMethod, type);
                 }
@@ -329,7 +328,7 @@ namespace Celeste
             {
                 return true;
             }
-            else if (CompileAsBinaryOperator(parent, token))
+            else if (CompileAsOperator(parent, token))
             {
                 return true;
             }
@@ -455,13 +454,13 @@ namespace Celeste
         /// <param name="token"></param>
         /// <param name="statements"></param>
         /// <returns></returns>
-        private static bool CompileAsBinaryOperator(CompiledStatement parent, string token)
+        private static bool CompileAsOperator(CompiledStatement parent, string token)
         {
             foreach (KeyValuePair<MethodInfo, Type> pair in RegisteredOperators)
             {
                 if ((bool)pair.Key.Invoke(null, new object[] { token }))
                 {
-                    Create<BinaryOperator>(parent, token, pair.Value);
+                    Create<Operator>(parent, token, pair.Value);
 
                     return true;
                 }

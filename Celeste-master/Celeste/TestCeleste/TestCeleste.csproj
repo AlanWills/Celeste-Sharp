@@ -56,6 +56,7 @@
     <Compile Include="CelesteUnitTest.cs" />
     <Compile Include="TestCelesteLogging.cs" />
     <Compile Include="TestFlowControls\TestWhileFlowControl.cs" />
+    <Compile Include="TestOperators\Unary\TestIncrementOperator.cs" />
     <Compile Include="TestScriptCommands\Core\TestLogErrorCmd.cs" />
     <Compile Include="TestScriptCommands\Core\TestLogWarningCmd.cs" />
     <Compile Include="TestScriptCommands\Core\TestLogCmd.cs" />
@@ -76,16 +77,16 @@
     <Compile Include="TestCelesteStack.cs" />
     <Compile Include="TestCelesteScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestOperators\TestDivideOperator.cs" />
-    <Compile Include="TestOperators\TestAssignmentOperator.cs" />
-    <Compile Include="TestOperators\TestAndOperator.cs" />
-    <Compile Include="TestOperators\TestNotOperator.cs" />
-    <Compile Include="TestOperators\TestOrOperator.cs" />
-    <Compile Include="TestOperators\TestNonEquality.cs" />
-    <Compile Include="TestOperators\TestEqualityOperator.cs" />
-    <Compile Include="TestOperators\TestMultiplyOperator.cs" />
-    <Compile Include="TestOperators\TestAddOperator.cs" />
-    <Compile Include="TestOperators\TestSubtractOperator.cs" />
+    <Compile Include="TestOperators\Binary\TestDivideOperator.cs" />
+    <Compile Include="TestOperators\Binary\TestAssignmentOperator.cs" />
+    <Compile Include="TestOperators\Binary\TestAndOperator.cs" />
+    <Compile Include="TestOperators\Unary\TestNotOperator.cs" />
+    <Compile Include="TestOperators\Binary\TestOrOperator.cs" />
+    <Compile Include="TestOperators\Binary\TestNonEquality.cs" />
+    <Compile Include="TestOperators\Binary\TestEqualityOperator.cs" />
+    <Compile Include="TestOperators\Binary\TestMultiplyOperator.cs" />
+    <Compile Include="TestOperators\Binary\TestAddOperator.cs" />
+    <Compile Include="TestOperators\Binary\TestSubtractOperator.cs" />
     <Compile Include="TestReferencing.cs" />
     <Compile Include="TestScriptCommands\TestScriptCommands.cs" />
     <Compile Include="TestSingleLineCommenting.cs" />
@@ -96,6 +97,12 @@
     <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TestScripts\FlowControl\TestWhileFlowControlSimple.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\FlowControl\TestWhileFlowControlParsing.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestScripts\Keywords\Function\TestFunctionKeywordArgumentParsingMixedSpaces.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -109,6 +116,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Keywords\Scoped\TestScopedKeywordMultipleVariableDeclaration.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestScripts\Operators\Increment\TestIncrementOperatorPostIncrementVariable.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\ScriptCommands\Core\LogCmd\TestLogCmdHardCodedValues.cel">
@@ -291,16 +301,16 @@
     <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Not\TestNotKeywordNotBools.cel">
+    <None Include="TestScripts\Operators\Not\TestNotOperatorNotBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Not\TestNotKeywordNotNumbers.cel">
+    <None Include="TestScripts\Operators\Not\TestNotOperatorNotNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Not\TestNotKeywordNotReferences.cel">
+    <None Include="TestScripts\Operators\Not\TestNotOperatorNotReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Not\TestNotKeywordNotStrings.cel">
+    <None Include="TestScripts\Operators\Not\TestNotOperatorNotStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestScripts\Operators\Or\TestOrOperatorOrBools.cel">
@@ -376,7 +386,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TestScripts\Operators\Binary\" />
+    <Folder Include="TestScripts\Operators\Unary\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -6,7 +6,7 @@ namespace Celeste
     /// <summary>
     /// An operator which acts on the next token in our script
     /// </summary>
-    internal class UnaryOperator : CompiledStatement
+    internal abstract class UnaryOperator : Operator
     {
         #region Virtual Functions
 
@@ -17,7 +17,7 @@ namespace Celeste
             // Unary operators act on other variables/values and so they must be included in the same token as another token (e.g. !var for example)
             // We remove the script token for the operator and split the other token out
             Debug.Assert(token.Length > 1);
-            string rest = token.Remove(0, 1);
+            string rest = token.Remove(0, 1); // Removing wrong thing here
 
             // Add this operator to the tree
             parent.Add(this);

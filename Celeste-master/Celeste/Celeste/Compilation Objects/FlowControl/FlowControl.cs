@@ -32,6 +32,20 @@ namespace Celeste
         #region Virtual Functions
 
         /// <summary>
+        /// Add the flow control to the expression tree
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="token"></param>
+        /// <param name="tokens"></param>
+        /// <param name="lines"></param>
+        public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
+        {
+            base.Compile(parent, token, tokens, lines);
+
+            parent.Add(this);
+        }
+
+        /// <summary>
         /// Iterates through the list of conditions and performs each one in turn.  Checks the top element of the stack to see
         /// if a true value has been pushed on.  If it has it performs the corresponding compiled statement in that KVP.
         /// </summary>

@@ -6,7 +6,7 @@ namespace Celeste
     /// <summary>
     /// An abstract class which represents an operator which acts on two objects and returns an object of the same type
     /// </summary>
-    internal abstract class BinaryOperator : CompiledStatement
+    internal abstract class BinaryOperator : Operator
     {
         #region Virtual Functions
 

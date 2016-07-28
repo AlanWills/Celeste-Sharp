@@ -70,9 +70,14 @@
     <Compile Include="Compilation Objects\Operators\Binary\OrOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Binary\SubtractOperator.cs" />
     <Compile Include="Compilation Objects\Delimiter.cs" />
+    <Compile Include="Compilation Objects\Operators\Operator.cs" />
+    <Compile Include="Compilation Objects\Operators\Unary\IncrementOperator.cs">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IncrementOperator.Designer.cs</LastGenOutput>
+    </Compile>
     <Compile Include="Compilation Objects\Operators\Unary\NotOperator.cs" />
     <Compile Include="Compilation Objects\Operators\Unary\UnaryOperator.cs" />
-    <Compile Include="Compilation Objects\FlowControl\WhileControl.cs" />
+    <Compile Include="Compilation Objects\FlowControl\WhileFlowControl.cs" />
     <Compile Include="Compilation Objects\Scoping\Scope.cs" />
     <Compile Include="Compilation Objects\Scoping\ScopeManager.cs" />
     <Compile Include="Compilation Objects\Values\Bool.cs" />

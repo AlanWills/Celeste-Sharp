@@ -1,0 +1,9 @@
+scoped variable = 0
+
+while variable != 5
+	variable = 5
+end
+
+while variable == 5
+	variable = 10
+end

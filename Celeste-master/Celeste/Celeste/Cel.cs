@@ -100,7 +100,7 @@ namespace Celeste
                 return script;
             }
 
-            if (File.Exists(scriptDirectoryPath + "\\" + scriptPath))
+            if (File.Exists(Path.Combine(scriptDirectoryPath, scriptPath)))
             {
                 script = new CelesteScript(scriptPath);
             }

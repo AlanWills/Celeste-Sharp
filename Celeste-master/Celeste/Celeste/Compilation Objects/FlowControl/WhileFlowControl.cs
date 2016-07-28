@@ -3,12 +3,12 @@ using System.Diagnostics;
 
 namespace Celeste
 {
-    internal class WhileControl : FlowControl
+    internal class WhileFlowControl : FlowControl
     {
         private static string scriptToken = "while";
         private static string endDelimiter = "end";
 
-        public static bool IsWhileControl(string token)
+        public static bool IsWhileFlowControl(string token)
         {
             return token == scriptToken;
         }
@@ -26,7 +26,7 @@ namespace Celeste
         {
             base.Compile(parent, token, tokens, lines);
 
-            KeyValuePair<CompiledStatement, CompiledStatement> whileCondBody = new KeyValuePair<CompiledStatement, CompiledStatement>();
+            KeyValuePair<CompiledStatement, CompiledStatement> whileCondBody = new KeyValuePair<CompiledStatement, CompiledStatement>(new CompiledStatement(), new CompiledStatement());
             ConditionsAndBodies.Add(whileCondBody);
 
             Debug.Assert(tokens.Count > 0, "Tokens required for while condition");
