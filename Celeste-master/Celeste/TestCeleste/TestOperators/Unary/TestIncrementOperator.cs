@@ -6,12 +6,12 @@ namespace TestCeleste
     [TestClass]
     public class TestIncrementOperator : CelesteUnitTest
     {
-        [TestMethod]
-        public void TestIncrementOperatorPostIncrementVariable()
-        {
-            CelesteScript script = RunScript("Operators\\Increment\\TestIncrementOperatorPostIncrementVariable.cel");
+        //[TestMethod]
+        //public void TestIncrementOperatorPostIncrementVariable()
+        //{
+        //    CelesteScript script = RunScript("Operators\\Increment\\TestIncrementOperatorPostIncrementVariable.cel");
 
-            script.CheckLocalVariable("variable", 5.0f);
-        }
+        //    script.CheckLocalVariable("variable", 5.0f);
+        //}
     }
 }

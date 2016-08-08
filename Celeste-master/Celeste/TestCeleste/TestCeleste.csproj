@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -44,13 +45,7 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
   <ItemGroup>
     <Compile Include="CelesteUnitTest.cs" />
@@ -97,277 +92,277 @@
     <Compile Include="TestTypes\TestTableType.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TestScripts\FlowControl\TestWhileFlowControlSimple.cel">
+    <None Include="Scripts\FlowControl\TestWhileFlowControlSimple.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\FlowControl\TestWhileFlowControlParsing.cel">
+    <None Include="Scripts\FlowControl\TestWhileFlowControlParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordArgumentParsingMixedSpaces.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordArgumentParsingMixedSpaces.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordArgumentParsingSpaces.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordArgumentParsingSpaces.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordArgumentParsingNoSpaces.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordArgumentParsingNoSpaces.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Scoped\TestScopedKeywordMultipleVariableInitialisation.cel">
+    <None Include="Scripts\Keywords\Scoped\TestScopedKeywordMultipleVariableInitialisation.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Scoped\TestScopedKeywordMultipleVariableDeclaration.cel">
+    <None Include="Scripts\Keywords\Scoped\TestScopedKeywordMultipleVariableDeclaration.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Increment\TestIncrementOperatorPostIncrementVariable.cel">
+    <None Include="Scripts\Operators\Increment\TestIncrementOperatorPostIncrementVariable.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\LogCmd\TestLogCmdHardCodedValues.cel">
+    <None Include="Scripts\ScriptCommands\Core\LogCmd\TestLogCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\LogCmd\TestLogCmdVariables.cel">
+    <None Include="Scripts\ScriptCommands\Core\LogCmd\TestLogCmdVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\LogErrorCmd\TestLogErrorCmdHardCodedValues.cel">
+    <None Include="Scripts\ScriptCommands\Core\LogErrorCmd\TestLogErrorCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\LogErrorCmd\TestLogErrorCmdVariables.cel">
+    <None Include="Scripts\ScriptCommands\Core\LogErrorCmd\TestLogErrorCmdVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\LogWarningCmd\TestLogWarningCmdHardCodedValues.cel">
+    <None Include="Scripts\ScriptCommands\Core\LogWarningCmd\TestLogWarningCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\LogWarningCmd\TestLogWarningCmdVariables.cel">
+    <None Include="Scripts\ScriptCommands\Core\LogWarningCmd\TestLogWarningCmdVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\PrintCmd\TestPrintCmdHardCodedValues.cel">
+    <None Include="Scripts\ScriptCommands\Core\PrintCmd\TestPrintCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\PrintCmd\TestPrintCmdVariables.cel">
+    <None Include="Scripts\ScriptCommands\Core\PrintCmd\TestPrintCmdVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\And\TestAndKeywordAndBools.cel">
+    <None Include="Scripts\Keywords\And\TestAndKeywordAndBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\And\TestAndKeywordAndNumbers.cel">
+    <None Include="Scripts\Keywords\And\TestAndKeywordAndNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\And\TestAndKeywordAndReferences.cel">
+    <None Include="Scripts\Keywords\And\TestAndKeywordAndReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\And\TestAndKeywordAndStrings.cel">
+    <None Include="Scripts\Keywords\And\TestAndKeywordAndStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateBools.cel">
+    <None Include="Scripts\Keywords\Equals\TestEqualsKeywordEquateBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateReferences.cel">
+    <None Include="Scripts\Keywords\Equals\TestEqualsKeywordEquateReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateStrings.cel">
+    <None Include="Scripts\Keywords\Equals\TestEqualsKeywordEquateStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Equals\TestEqualsKeywordEquateNumbers.cel">
+    <None Include="Scripts\Keywords\Equals\TestEqualsKeywordEquateNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordFunctionReassignmentDifferentNumberArgs.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordFunctionReassignmentDifferentNumberArgs.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordFunctionReassignmentWithArgs.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordFunctionReassignmentWithArgs.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordFunctionReassignmentNoArgs.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordFunctionReassignmentNoArgs.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordNotEnoughInputs.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordNotEnoughInputs.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordOneReferenceArgument.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordOneReferenceArgument.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordTooManyInputs.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordTooManyInputs.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordMultipleCalls.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordMultipleCalls.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordOneValueArgument.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordOneValueArgument.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordSimpleExecution.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordSimpleExecution.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordVariableScoping.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordVariableScoping.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Function\TestFunctionKeywordParsing.cel">
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Global\TestGlobalParsing.cel">
+    <None Include="Scripts\Keywords\Global\TestGlobalParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Not\TestNotKeywordNotBools.cel">
+    <None Include="Scripts\Keywords\Not\TestNotKeywordNotBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Not\TestNotKeywordNotNumbers.cel">
+    <None Include="Scripts\Keywords\Not\TestNotKeywordNotNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Not\TestNotKeywordNotReferences.cel">
+    <None Include="Scripts\Keywords\Not\TestNotKeywordNotReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Not\TestNotKeywordNotStrings.cel">
+    <None Include="Scripts\Keywords\Not\TestNotKeywordNotStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Null\TestNullParsing.cel">
+    <None Include="Scripts\Keywords\Null\TestNullParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Or\TestOrKeywordOrBools.cel">
+    <None Include="Scripts\Keywords\Or\TestOrKeywordOrBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Or\TestOrKeywordOrNumbers.cel">
+    <None Include="Scripts\Keywords\Or\TestOrKeywordOrNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Or\TestOrKeywordOrReferences.cel">
+    <None Include="Scripts\Keywords\Or\TestOrKeywordOrReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Or\TestOrKeywordOrStrings.cel">
+    <None Include="Scripts\Keywords\Or\TestOrKeywordOrStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnMultipleParamsSimple.cel">
+    <None Include="Scripts\Keywords\Return\TestReturnKeywordReturnMultipleParamsSimple.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnInput.cel">
+    <None Include="Scripts\Keywords\Return\TestReturnKeywordReturnInput.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnHardCodedValue.cel">
+    <None Include="Scripts\Keywords\Return\TestReturnKeywordReturnHardCodedValue.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Return\TestReturnKeywordReturnNothing.cel">
+    <None Include="Scripts\Keywords\Return\TestReturnKeywordReturnNothing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Keywords\Scoped\TestScopedKeywordParsing.cel">
+    <None Include="Scripts\Keywords\Scoped\TestScopedKeywordParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Add\TestAddOperatorTables.cel">
+    <None Include="Scripts\Operators\Add\TestAddOperatorTables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Add\TestAddOperatorLists.cel">
+    <None Include="Scripts\Operators\Add\TestAddOperatorLists.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\And\TestAndOperatorAndBools.cel">
+    <None Include="Scripts\Operators\And\TestAndOperatorAndBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\And\TestAndOperatorAndNumbers.cel">
+    <None Include="Scripts\Operators\And\TestAndOperatorAndNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\And\TestAndOperatorAndReferences.cel">
+    <None Include="Scripts\Operators\And\TestAndOperatorAndReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\And\TestAndOperatorAndStrings.cel">
+    <None Include="Scripts\Operators\And\TestAndOperatorAndStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Assignment\TestAssignmentOperatorReassignment.cel">
+    <None Include="Scripts\Operators\Assignment\TestAssignmentOperatorReassignment.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Equality\TestEqualityOperatorEquateBools.cel">
+    <None Include="Scripts\Operators\Equality\TestEqualityOperatorEquateBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Equality\TestEqualityOperatorEquateReferences.cel">
+    <None Include="Scripts\Operators\Equality\TestEqualityOperatorEquateReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Equality\TestEqualityOperatorEquateStrings.cel">
+    <None Include="Scripts\Operators\Equality\TestEqualityOperatorEquateStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Equality\TestEqualityOperatorEquateNumbers.cel">
+    <None Include="Scripts\Operators\Equality\TestEqualityOperatorEquateNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Multiply\TestMultiplyOperatorNumbers.cel">
+    <None Include="Scripts\Operators\Multiply\TestMultiplyOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Divide\TestDivideOperatorNumbers.cel">
+    <None Include="Scripts\Operators\Divide\TestDivideOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Assignment\TestAssignmentOperator.cel">
+    <None Include="Scripts\Operators\Assignment\TestAssignmentOperator.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateBools.cel">
+    <None Include="Scripts\Operators\NonEquality\TestNonEqualityOperatorEquateBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateNumbers.cel">
+    <None Include="Scripts\Operators\NonEquality\TestNonEqualityOperatorEquateNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateReferences.cel">
+    <None Include="Scripts\Operators\NonEquality\TestNonEqualityOperatorEquateReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\NonEquality\TestNonEqualityOperatorEquateStrings.cel">
+    <None Include="Scripts\Operators\NonEquality\TestNonEqualityOperatorEquateStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Not\TestNotOperatorNotBools.cel">
+    <None Include="Scripts\Operators\Not\TestNotOperatorNotBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Not\TestNotOperatorNotNumbers.cel">
+    <None Include="Scripts\Operators\Not\TestNotOperatorNotNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Not\TestNotOperatorNotReferences.cel">
+    <None Include="Scripts\Operators\Not\TestNotOperatorNotReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Not\TestNotOperatorNotStrings.cel">
+    <None Include="Scripts\Operators\Not\TestNotOperatorNotStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Or\TestOrOperatorOrBools.cel">
+    <None Include="Scripts\Operators\Or\TestOrOperatorOrBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Or\TestOrOperatorOrNumbers.cel">
+    <None Include="Scripts\Operators\Or\TestOrOperatorOrNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Or\TestOrOperatorOrReferences.cel">
+    <None Include="Scripts\Operators\Or\TestOrOperatorOrReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Or\TestOrOperatorOrStrings.cel">
+    <None Include="Scripts\Operators\Or\TestOrOperatorOrStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Subtract\TestSubtractOperatorTables.cel">
+    <None Include="Scripts\Operators\Subtract\TestSubtractOperatorTables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Subtract\TestSubtractOperatorLists.cel">
+    <None Include="Scripts\Operators\Subtract\TestSubtractOperatorLists.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Subtract\TestSubtractOperatorNumbers.cel">
+    <None Include="Scripts\Operators\Subtract\TestSubtractOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Subtract\TestSubtractOperatorStrings.cel">
+    <None Include="Scripts\Operators\Subtract\TestSubtractOperatorStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Operators\Add\TestAddOperatorStrings.cel">
+    <None Include="Scripts\Operators\Add\TestAddOperatorStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\ScriptCommands\Core\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel">
+    <None Include="Scripts\ScriptCommands\Core\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\TestReferencingScopedVariables.cel">
+    <None Include="Scripts\TestReferencingScopedVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\TestEmptyScript.cel">
+    <None Include="Scripts\TestEmptyScript.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\TestSingleLineCommenting.cel">
+    <None Include="Scripts\TestSingleLineCommenting.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Types\Bool\TestBoolParsing.cel">
+    <None Include="Scripts\Types\Bool\TestBoolParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Types\List\TestListParsing.cel">
+    <None Include="Scripts\Types\List\TestListParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Types\String\TestStringParsing.cel">
+    <None Include="Scripts\Types\String\TestStringParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Types\Number\TestNumberParsing.cel">
+    <None Include="Scripts\Types\Number\TestNumberParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\Types\Table\TestTableParsing.cel">
+    <None Include="Scripts\Types\Table\TestTableParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestScripts\TestRecompilingOnChange.cel">
+    <None Include="Scripts\TestRecompilingOnChange.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -382,13 +377,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="TestScripts\Operators\Add\TestAddOperatorNumbers.cel">
+    <None Include="Scripts\Operators\Add\TestAddOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TestScripts\Operators\Binary\" />
-    <Folder Include="TestScripts\Operators\Unary\" />
+    <Folder Include="Scripts\Operators\Binary\" />
+    <Folder Include="Scripts\Operators\Unary\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

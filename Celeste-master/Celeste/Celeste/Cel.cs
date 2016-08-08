@@ -12,36 +12,7 @@ namespace Celeste
     {
         #region Properties and Fields
 
-        /// <summary>
-        /// Reloads the script if changed
-        /// </summary>
-        private static FileSystemWatcher Watcher { get; set; }
-
-        private static bool reRunScriptsWhenChanged = true;
-        public static bool ReRunScriptsWhenChanged
-        {
-            set { reRunScriptsWhenChanged = value; }
-        }
-
-        private static bool recompileScriptsWhenChanged = false;
-        public static bool RecompileScriptsWhenChanged
-        {
-            set
-            {
-                recompileScriptsWhenChanged = value;
-                if (recompileScriptsWhenChanged && Watcher == null)
-                {
-                    Watcher = new FileSystemWatcher(ScriptDirectoryPath, "*.cel");
-                    Watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-                    Watcher.Changed += new FileSystemEventHandler(RecompileScript);
-                    Watcher.IncludeSubdirectories = true;
-                }
-
-                Watcher.EnableRaisingEvents = recompileScriptsWhenChanged;
-            }
-        }
-        
-        private static string scriptDirectoryPath = Directory.GetCurrentDirectory() + @"\TestScripts";
+        private static string scriptDirectoryPath = Directory.GetCurrentDirectory() + @"\Scripts";
         public static string ScriptDirectoryPath
         {
             get { return scriptDirectoryPath; }
@@ -74,42 +45,29 @@ namespace Celeste
 
         #endregion
 
-        private static void RecompileScript(object sender, FileSystemEventArgs args)
-        {
-            Debug.Assert(CompiledScripts.ContainsKey(args.Name));
-
-            CelesteScript script = CompiledScripts[args.Name];
-
-            // Try to avoid spurious re-compiles and re-runs for multiple events sent within a short time of each other
-            if (!script.Compiling && !script.Running)
-            {
-                script.Compile();
-
-                if (reRunScriptsWhenChanged)
-                {
-                    script.Run();
-                }
-            }
-        }
-
-        public static CelesteScript CreateScript(string scriptPath)
+        /// <summary>
+        /// Compiles and runs a script.
+        /// </summary>
+        /// <param name="relativeScriptPath">The relative path of the script from the scripts directory e.g. 'SubDirectory\\Script.cel'</param>
+        /// <returns></returns>
+        public static CelesteScript CreateScript(string relativeScriptPath)
         {
             CelesteScript script = null;
-            if (CompiledScripts.TryGetValue(scriptPath, out script))
+            if (CompiledScripts.TryGetValue(relativeScriptPath, out script))
             {
                 return script;
             }
 
-            if (File.Exists(Path.Combine(scriptDirectoryPath, scriptPath)))
+            if (File.Exists(Path.Combine(scriptDirectoryPath, relativeScriptPath)))
             {
-                script = new CelesteScript(scriptPath);
+                script = new CelesteScript(relativeScriptPath);
             }
             else
             {
                 Debug.Fail("Invalid filepath for script");
             }
 
-            CompiledScripts.Add(scriptPath, script);
+            CompiledScripts.Add(relativeScriptPath, script);
             return script;
         }
 
