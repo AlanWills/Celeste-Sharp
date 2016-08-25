@@ -52,6 +52,8 @@
     <Compile Include="TestCelesteLogging.cs" />
     <Compile Include="TestFlowControls\TestWhileFlowControl.cs" />
     <Compile Include="TestOperators\Unary\TestIncrementOperator.cs" />
+    <Compile Include="TestScriptCommands\Output\TestSetLogFilePathCmd.cs" />
+    <Compile Include="TestScriptCommands\Output\TestGetLogFilePathCmd.cs" />
     <Compile Include="TestScriptCommands\Output\TestLogErrorCmd.cs" />
     <Compile Include="TestScriptCommands\Output\TestLogWarningCmd.cs" />
     <Compile Include="TestScriptCommands\Output\TestLogCmd.cs" />
@@ -98,6 +100,9 @@
     <None Include="Scripts\FlowControl\TestWhileFlowControlParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordArgumentParsingEdgeCaseHardCodedStringWithSpaces.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Scripts\Keywords\Function\TestFunctionKeywordArgumentParsingMixedSpaces.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -114,6 +119,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\Operators\Unary\Increment\TestIncrementOperatorPostIncrementVariable.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\ScriptCommands\Output\GetLogFilePathCmd\TestGetLogFilePath.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\ScriptCommands\Output\LogCmd\TestLogCmdHardCodedValues.cel">
@@ -333,6 +341,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\Operators\Binary\Add\TestAddOperatorStrings.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\ScriptCommands\Output\SetLogFilePathCmd\TestSetLogFilePath.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\ScriptCommands\Output\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel">

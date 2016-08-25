@@ -15,7 +15,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordArgumentParsingNoSpaces()
+        public void Test_FunctionKeyword_ArgumentParsingNoSpaces()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingNoSpaces.cel");
 
@@ -29,7 +29,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordArgumentParsingSpaces()
+        public void Test_FunctionKeyword_ArgumentParsingSpaces()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingSpaces.cel");
 
@@ -43,7 +43,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordArgumentParsingMixedSpaces()
+        public void Test_FunctionKeyword_ArgumentParsingMixedSpaces()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingMixedSpaces.cel");
 
@@ -57,7 +57,15 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordSimpleExecution()
+        public void Test_FunctionKeyword_ArgumentParsingEdgeCase_HardCodedStringWithSpaces()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingEdgeCaseHardCodedStringWithSpaces.cel");
+
+            script.CheckLocalVariable("variable", "Argument with spaces");
+        }
+
+        [TestMethod]
+        public void Test_FunctionKeyword_SimpleExecution()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordSimpleExecution.cel");
 
@@ -66,7 +74,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordVariableScoping()
+        public void Test_FunctionKeyword_VariableScoping()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordVariableScoping.cel");
 
@@ -75,7 +83,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordOneValueArgument()
+        public void Test_FunctionKeyword_OneValueArgument()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordOneValueArgument.cel");
 
@@ -84,7 +92,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordOneReferenceArgument()
+        public void Test_FunctionKeyword_OneReferenceArgument()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordOneReferenceArgument.cel");
 
@@ -93,7 +101,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordMultipleCalls()
+        public void Test_FunctionKeyword_MultipleCalls()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordMultipleCalls.cel");
 
@@ -103,7 +111,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordTooManyInputs()
+        public void Test_FunctionKeyword_TooManyInputs()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordTooManyInputs.cel");
 
@@ -112,7 +120,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordNotEnoughInputs()
+        public void Test_FunctionKeyword_NotEnoughInputs()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordNotEnoughInputs.cel");
 
@@ -122,7 +130,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordFunctionReassignmentNoArgs()
+        public void Test_FunctionKeyword_FunctionReassignmentNoArgs()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordFunctionReassignmentNoArgs.cel");
 
@@ -133,7 +141,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordFunctionReassignmentWithArgs()
+        public void Test_FunctionKeyword_FunctionReassignmentWithArgs()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordFunctionReassignmentWithArgs.cel");
 
@@ -144,7 +152,7 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestFunctionKeywordFunctionReassignmentDifferentNumberArgs()
+        public void Test_FunctionKeyword_FunctionReassignmentDifferentNumberArgs()
         {
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordFunctionReassignmentDifferentNumberArgs.cel");
 

@@ -72,7 +72,10 @@ namespace Celeste
                     }
 
                     token = token.Substring(0, token.Length - 1);
-                    inputParameterTokens.Add(token);
+                    if (!string.IsNullOrEmpty(token))
+                    {
+                        inputParameterTokens.Add(token);
+                    }
 
                     // Add null references first for all of the parameters we are missing
                     for (int i = inputParameterTokens.Count; i < ParameterNames.Count; i++)

@@ -1,0 +1,5 @@
+setLogFilePath("C:\Users\Alan Wills\NewLog.txt")
+
+log("hello")
+logWarning("warning")
+logError("error")

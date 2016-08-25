@@ -56,7 +56,12 @@ namespace Celeste
                 index++;
             }
 
-            Method.Invoke(null, parameters);
+            object returnedArgument = Method.Invoke(null, parameters);
+            if (Method.ReturnType.Name != "Void")
+            {
+                // If the method does not return void, push it onto the stack
+                CelesteStack.Push(returnedArgument);
+            }
         }
 
         #endregion
