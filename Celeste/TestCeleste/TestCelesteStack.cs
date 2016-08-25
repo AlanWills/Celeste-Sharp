@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Celeste;
 using System.Collections.Generic;
-using UnitTestFramework;
 
 namespace TestCeleste
 {
@@ -52,10 +51,10 @@ namespace TestCeleste
             CelesteStack.Push(new List<object>());
 
             Assert.AreEqual(4, CelesteStack.StackSize);
-            //Extensions.ValueEquals(new List<object>() { }, CelesteStack.Pop().As<List<object>>());
-            //TestHelperFunctions.CheckOrderedListsEqual(new List<bool>() { true, true, false, false }, CelesteStack.Pop().As<List<bool>>());
-            //TestHelperFunctions.CheckOrderedListsEqual(new List<float>() { 5, -10, 20 }, CelesteStack.Pop().As<List<float>>());
-            //TestHelperFunctions.CheckOrderedListsEqual(new List<string>() { "test", "test1", }, CelesteStack.Pop().As<List<string>>());
+            Assert.IsTrue(CelesteStack.Pop().As<List<object>>().ValueEquals(new List<object>() { }));
+            CelesteStack.Pop().As<List<bool>>().CheckOrderedListsEqual(new List<bool>() { true, true, false, false });
+            CelesteStack.Pop().As<List<float>>().CheckOrderedListsEqual(new List<float>() { 5, -10, 20 });
+            CelesteStack.Pop().As<List<string>>().CheckOrderedListsEqual(new List<string>() { "test", "test1", });
         }
     }
 }

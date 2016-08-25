@@ -16,6 +16,7 @@ namespace Celeste
         object boolObject = true;
         object charObject = 's';
         object stringObject = "s";
+        object listObject = new List<object>();
 
         #endregion
         
@@ -27,6 +28,7 @@ namespace Celeste
             Assert.IsFalse(boolObject.IsNumber());
             Assert.IsFalse(charObject.IsNumber());
             Assert.IsFalse(stringObject.IsNumber());
+            Assert.IsFalse(listObject.IsNumber());
         }
 
         [TestMethod]
@@ -37,6 +39,7 @@ namespace Celeste
             Assert.IsFalse(boolObject.IsString());
             Assert.IsFalse(charObject.IsString());
             Assert.IsTrue(stringObject.IsString());
+            Assert.IsFalse(listObject.IsString());
         }
 
         [TestMethod]
@@ -47,6 +50,18 @@ namespace Celeste
             Assert.IsTrue(boolObject.IsBool());
             Assert.IsFalse(charObject.IsBool());
             Assert.IsFalse(stringObject.IsBool());
+            Assert.IsFalse(listObject.IsBool());
+        }
+
+        [TestMethod]
+        public void TestExtensionsIsList()
+        {
+            Assert.IsFalse(intObject.IsList());
+            Assert.IsFalse(floatObject.IsList());
+            Assert.IsFalse(boolObject.IsList());
+            Assert.IsFalse(charObject.IsList());
+            Assert.IsFalse(stringObject.IsList());
+            Assert.IsTrue(listObject.IsList());
         }
 
         [TestMethod]
@@ -56,7 +71,11 @@ namespace Celeste
             Assert.IsFalse(boolObject.ValueEquals(intObject));
             Assert.IsFalse(charObject.ValueEquals(stringObject));
             Assert.IsFalse(stringObject.ValueEquals(boolObject));
-            Assert.IsTrue(stringObject.ValueEquals(stringObject));     // strings are not primitive types, but this should still work - we must have reflexivity
+            Assert.IsFalse(listObject.ValueEquals(boolObject));
+
+            List<object> testList1 = new List<object>() { 1, true, "" };
+            List<object> testList2 = new List<object>() { 1, true, "" };
+            Assert.IsTrue(testList1.ValueEquals(testList2));
         }
 
         [TestMethod]
@@ -68,6 +87,7 @@ namespace Celeste
             Assert.IsTrue(boolObject.ValueEquals(boolObject));
             Assert.IsTrue(charObject.ValueEquals(charObject));
             Assert.IsTrue(stringObject.ValueEquals(stringObject));
+            Assert.IsTrue(listObject.ValueEquals(listObject));
         }
 
         [TestMethod]
@@ -86,11 +106,12 @@ namespace Celeste
             Assert.AreEqual(10.0f, dict.GetValue("Test"));
             Assert.AreEqual(false, dict.GetValue(true));
             Assert.AreEqual("Key", dict.GetValue(list));
+            Assert.AreEqual("Key", dict.GetValue(new List<object>()));
 
             // Test for the keys that do not exist
             Assert.IsNull(dict.GetValue("NonExistentKey"));
             Assert.IsNull(dict.GetValue(false));
-            Assert.IsNull(dict.GetValue(new List<object>()));
+            Assert.IsNull(dict.GetValue(new List<object>(){ true }));
         }
     }
 }

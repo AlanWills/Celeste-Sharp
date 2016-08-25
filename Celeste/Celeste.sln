@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Celeste", "Celeste\Celeste.csproj", "{9C094A71-5829-4533-B094-5ED2B5FAE07A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCeleste", "TestCeleste\TestCeleste.csproj", "{1EFE9E51-A8A5-40C0-8D90-3DD70A9220A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DF0B0F99-E5D0-4922-93D2-EDAF6A0D6814}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestFramework", "..\..\..\UnitTestFramework\UnitTestFramework\UnitTestFramework.csproj", "{A9189426-6668-474F-B709-6050F2707C02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +31,6 @@ Global
 		{1EFE9E51-A8A5-40C0-8D90-3DD70A9220A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1EFE9E51-A8A5-40C0-8D90-3DD70A9220A6}.Release|x86.ActiveCfg = Release|Any CPU
 		{1EFE9E51-A8A5-40C0-8D90-3DD70A9220A6}.Release|x86.Build.0 = Release|Any CPU
-		{A9189426-6668-474F-B709-6050F2707C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9189426-6668-474F-B709-6050F2707C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9189426-6668-474F-B709-6050F2707C02}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A9189426-6668-474F-B709-6050F2707C02}.Debug|x86.Build.0 = Debug|Any CPU
-		{A9189426-6668-474F-B709-6050F2707C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9189426-6668-474F-B709-6050F2707C02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9189426-6668-474F-B709-6050F2707C02}.Release|x86.ActiveCfg = Release|Any CPU
-		{A9189426-6668-474F-B709-6050F2707C02}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

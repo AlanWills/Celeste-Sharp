@@ -1,7 +1,6 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using UnitTestFramework;
 
 namespace TestCeleste
 {
@@ -71,7 +70,7 @@ namespace TestCeleste
                 };
 
                 List<object> embeddedList = (List<object>)indentedList[0];
-                //Assert.IsTrue(TestHelperFunctions.CheckOrderedListsEqual(expected, embeddedList));
+                Assert.IsTrue(embeddedList.CheckOrderedListsEqual(expected));
             }
         }
     }

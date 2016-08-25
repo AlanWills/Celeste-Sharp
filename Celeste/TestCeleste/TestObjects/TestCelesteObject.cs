@@ -1,7 +1,6 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using UnitTestFramework;
 
 namespace TestCeleste
 {
@@ -22,11 +21,6 @@ namespace TestCeleste
         private CelesteObject CelesteTable { get; set; }
 
         #endregion
-
-        public TestCelesteObject()
-        {
-
-        }
 
         private TestContext testContextInstance;
 
@@ -168,17 +162,17 @@ namespace TestCeleste
             Assert.AreEqual('[', CelesteObjectChar.As<char>());
             Assert.AreEqual("[", CelesteObjectChar.As<string>());
             Assert.AreEqual("Test", CelesteObjectString.As<string>());
-            //TestHelperFunctions.CheckOrderedListsEqual(new List<string>() { "1", "2" }, CelesteObjectStringList.As<List<string>>());
-            //TestHelperFunctions.CheckOrderedListsEqual(new List<string>() { "1", "2" }, CelesteObjectStringList.AsList<string>());
+            Assert.IsTrue(CelesteObjectStringList.As<List<string>>().CheckOrderedListsEqual(new List<string>() { "1", "2" }));
+            Assert.IsTrue(CelesteObjectStringList.AsList<string>().CheckOrderedListsEqual(new List<string>() { "1", "2" }));
 
-            //List<CelesteObject> objects = new List<CelesteObject>()
-            //{
-            //    CelesteObjectNumber,
-            //    CelesteObjectBool,
-            //    CelesteObjectString,
-            //    CelesteObjectStringList,
-            //};
-            //TestHelperFunctions.CheckOrderedListsEqual(objects, CelesteObjectCelesteObjectList.As<List<CelesteObject>>());
+            List<CelesteObject> objects = new List<CelesteObject>()
+            {
+                CelesteObjectNumber,
+                CelesteObjectBool,
+                CelesteObjectString,
+                CelesteObjectStringList,
+            };
+            //Assert.IsTrue(CelesteObjectCelesteObjectList.As<List<CelesteObject>>().CheckOrderedListsEqual(objects));
         }
 
         [TestMethod]

@@ -1,7 +1,6 @@
 ﻿using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using UnitTestFramework;
 
 namespace TestCeleste
 {
@@ -11,11 +10,6 @@ namespace TestCeleste
     [TestClass]
     public class CelesteUnitTest
     {
-        public CelesteUnitTest()
-        {
-            
-        }
-
         private TestContext testContextInstance;
 
         /// <summary>
@@ -118,7 +112,25 @@ namespace TestCeleste
         internal static void CheckLocalVariableList(this CelesteScript script, string variableName, List<object> expected)
         {
             Assert.IsTrue(script.ScriptScope.VariableExists(variableName));
-            //TestHelperFunctions.CheckOrderedListsEqual(expected, script.ScriptScope.GetLocalVariable(variableName).GetReferencedValue<List<object>>());
+            Assert.IsTrue(script.ScriptScope.GetLocalVariable(variableName).GetReferencedValue<List<object>>().CheckOrderedListsEqual(expected));
+        }
+
+        internal static bool CheckOrderedListsEqual<T>(this List<T> actual, List<T> expected)
+        {
+            if (actual.Count != expected.Count)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < actual.Count; i++)
+            {
+                if (!actual[i].ValueEquals(expected[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

@@ -28,10 +28,11 @@ namespace TestCeleste
             Assert.IsTrue(comparer.Equals(intObject, floatObject));
             Assert.IsTrue(comparer.Equals(stringObject, stringObject));
             Assert.IsTrue(comparer.Equals(listObject, listObject));
+            Assert.IsTrue(comparer.Equals(listObject, secondListObject));
 
             Assert.IsFalse(comparer.Equals(intObject, boolObject));
             Assert.IsFalse(comparer.Equals(charObject, stringObject));
-            Assert.IsFalse(comparer.Equals(listObject, secondListObject));
+            Assert.IsFalse(comparer.Equals(listObject, new List<object>() { true }));
         }
     }
 }

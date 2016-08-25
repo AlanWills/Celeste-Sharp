@@ -76,10 +76,8 @@ namespace Celeste
             {
                 return (T)Value;
             }
-            else
-            {
-                return (T)Convert.ChangeType(Value, typeof(T));
-            }
+
+            return (T)Convert.ChangeType(Value, typeof(T));
         }
 
         /// <summary>
@@ -152,14 +150,7 @@ namespace Celeste
         /// <returns></returns>
         public bool IsList()
         {
-            if (Type == null || Type.IsPrimitive)
-            {
-                return false;
-            }
-
-            return Value is IList &&
-                   Value.GetType().IsGenericType &&
-                   Value.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>));
+            return Value.IsList();
         }
         
         /// <summary>

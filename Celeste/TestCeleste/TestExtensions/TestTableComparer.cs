@@ -28,7 +28,7 @@ namespace TestCeleste
             Assert.IsTrue(keyComparer.Equals(boolPair, new KeyValuePair<object, object>(true, null)));
             Assert.IsTrue(keyComparer.Equals(charPair, new KeyValuePair<object, object>('s', null)));
             Assert.IsTrue(keyComparer.Equals(stringPair, new KeyValuePair<object, object>("s", null)));
-            Assert.IsFalse(keyComparer.Equals(listPair, new KeyValuePair<object, object>(new List<object>(), null)));
+            Assert.IsTrue(keyComparer.Equals(listPair, new KeyValuePair<object, object>(new List<object>(), null)));
         }
     }
 }

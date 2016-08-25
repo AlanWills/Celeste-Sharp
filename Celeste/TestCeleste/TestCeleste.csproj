@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -367,10 +367,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\UnitTestFramework\UnitTestFramework\UnitTestFramework.csproj">
-      <Project>{a9189426-6668-474f-b709-6050f2707c02}</Project>
-      <Name>UnitTestFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Celeste\Celeste.csproj">
       <Project>{9c094a71-5829-4533-b094-5ed2b5fae07a}</Project>
       <Name>Celeste</Name>
