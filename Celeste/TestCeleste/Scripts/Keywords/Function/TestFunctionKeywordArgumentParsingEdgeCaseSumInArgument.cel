@@ -1,0 +1,7 @@
+scoped variable
+
+scoped function testFunction(param)
+	variable = param
+end
+
+testFunction(-5 + 15)

@@ -1,0 +1,4 @@
+testFunction()
+
+scoped testFunction()
+end

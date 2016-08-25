@@ -1,0 +1,11 @@
+scoped variable
+
+scoped function testFunction(param)
+	variable = param
+end
+
+scoped function otherFunction()
+	return true
+end
+
+testFunction(otherFunction())

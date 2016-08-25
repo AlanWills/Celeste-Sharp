@@ -14,6 +14,5 @@ namespace TestCeleste
 
             script.CheckLocalVariable("logPath", Cel.ScriptDirectoryPath + "\\Log.txt");
         }
-
     }
 }

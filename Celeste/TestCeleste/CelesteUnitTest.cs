@@ -48,10 +48,7 @@ namespace TestCeleste
             Assert.IsTrue(CelesteStack.Scopes.Count == 1);
             Assert.IsTrue(CelesteStack.CurrentScope == CelesteStack.GlobalScope);
 
-            CelesteStack.Clear();
-            CelesteStack.Scopes.Clear();
-            CelesteStack.Scopes.Add(CelesteStack.GlobalScope);
-            CelesteStack.CurrentScope = CelesteStack.GlobalScope;
+            CleanUp();
         }
 
         // Check that the state of our stack and scopes are clean
@@ -63,6 +60,15 @@ namespace TestCeleste
             Assert.IsTrue(CelesteStack.Scopes.Count == 1);
             Assert.IsTrue(CelesteStack.CurrentScope == CelesteStack.GlobalScope);
 
+            CleanUp();
+        }
+
+        /// <summary>
+        /// Clears the stack and scopes and then adds the global scope again and sets the global scope to be the current scope.
+        /// Something more custom will have to be implemented if adding to the global scope during a test and wanting to call this explicitly.
+        /// </summary>
+        protected void CleanUp()
+        {
             CelesteStack.Clear();
             CelesteStack.Scopes.Clear();
             CelesteStack.Scopes.Add(CelesteStack.GlobalScope);

@@ -1,4 +1,5 @@
-﻿using Celeste;
+﻿using System.Diagnostics;
+using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestCeleste
@@ -62,6 +63,22 @@ namespace TestCeleste
             CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingEdgeCaseHardCodedStringWithSpaces.cel");
 
             script.CheckLocalVariable("variable", "Argument with spaces");
+        }
+
+        [TestMethod]
+        public void Test_FunctionKeyword_ArgumentParsingEdgeCase_SumInArgument()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingEdgeCaseSumInArgument.cel");
+
+            script.CheckLocalVariable("variable", 10.0f);
+        }
+
+        [TestMethod]
+        public void Test_FunctionKeyword_ArgumentParsingEdgeCase_FunctionCallInArgument()
+        {
+            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingEdgeCaseFunctionCallInArgument.cel");
+
+            script.CheckLocalVariable("variable", true);
         }
 
         [TestMethod]
@@ -160,6 +177,33 @@ namespace TestCeleste
             Assert.IsTrue(script.ScriptScope.VariableExists("secondFunc"));
             script.CheckLocalVariable("firstVariable", 10.0f);
             script.CheckLocalVariable("secondVariable", "TestReassignment");
+        }
+
+        [TestMethod]
+        public void Test_FunctionKeyword_FunctionCallBeforeDeclarationShouldFail()
+        {
+            bool error = false;
+
+            // Going to want to turn off the Debug asserts for this test cos things are going to go wrong
+            Trace.Listeners.Clear();
+
+            try
+            {
+                RunScript("Keywords\\Function\\TestFunctionKeywordFunctionCallBeforeDeclarationShouldFail.cel");
+            }
+            catch
+            {
+                // We WANT an exception to be thrown when running this script
+                error = true;
+            }
+
+            // And now turn the asserts back on
+            Trace.Refresh();
+
+            Assert.IsTrue(error);
+
+            // Reset stack and scopes so we do not get errors upon test cleanup
+            CleanUp();
         }
     }
 }

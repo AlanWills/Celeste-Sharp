@@ -100,6 +100,15 @@
     <None Include="Scripts\FlowControl\TestWhileFlowControlParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordFunctionCallBeforeDeclarationShouldFail.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordArgumentParsingEdgeCaseFunctionCallInArgument.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\Keywords\Function\TestFunctionKeywordArgumentParsingEdgeCaseSumInArgument.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Scripts\Keywords\Function\TestFunctionKeywordArgumentParsingEdgeCaseHardCodedStringWithSpaces.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
