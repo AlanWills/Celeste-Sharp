@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestMultiplyOperatorAddNumbers()
         {
-            CelesteScript script = RunScript("Operators\\Multiply\\TestMultiplyOperatorNumbers.cel");
+            CelesteScript script = RunScript("Operators\\Binary\\Multiply\\TestMultiplyOperatorNumbers.cel");
 
             script.CheckLocalVariable("intMultiply", 20.0f);
             script.CheckLocalVariable("multiMultiply", 2.0f);

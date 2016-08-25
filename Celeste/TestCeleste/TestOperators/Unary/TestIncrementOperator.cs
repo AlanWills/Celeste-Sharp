@@ -9,7 +9,7 @@ namespace TestCeleste
         //[TestMethod]
         //public void TestIncrementOperatorPostIncrementVariable()
         //{
-        //    CelesteScript script = RunScript("Operators\\Increment\\TestIncrementOperatorPostIncrementVariable.cel");
+        //    CelesteScript script = RunScript("Operators\\Unary\\Increment\\TestIncrementOperatorPostIncrementVariable.cel");
 
         //    script.CheckLocalVariable("variable", 5.0f);
         //}

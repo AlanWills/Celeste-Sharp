@@ -9,7 +9,7 @@ namespace TestCeleste.TestOperators
         [TestMethod]
         public void TestAssignmentOperatorInitialAssignment()
         {
-            CelesteScript script = RunScript("Operators\\Assignment\\TestAssignmentOperator.cel");
+            CelesteScript script = RunScript("Operators\\Binary\\Assignment\\TestAssignmentOperator.cel");
             
             script.CheckLocalVariable("number", 5.0f);
             script.CheckLocalVariable("string", "Test");
@@ -18,7 +18,7 @@ namespace TestCeleste.TestOperators
         [TestMethod]
         public void TestAssignmentOperatorReassignment()
         {
-            CelesteScript script = RunScript("Operators\\Assignment\\TestAssignmentOperatorReassignment.cel");
+            CelesteScript script = RunScript("Operators\\Binary\\Assignment\\TestAssignmentOperatorReassignment.cel");
 
             script.CheckLocalVariable("number", "Test");
         }

@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestDivideOperatorAddNumbers()
         {
-            CelesteScript script = RunScript("Operators\\Divide\\TestDivideOperatorNumbers.cel");
+            CelesteScript script = RunScript("Operators\\Binary\\Divide\\TestDivideOperatorNumbers.cel");
 
             script.CheckLocalVariable("intDivide", 5.0f);
             script.CheckLocalVariable("floatDivide", 0.2f);

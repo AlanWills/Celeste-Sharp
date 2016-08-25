@@ -113,7 +113,7 @@
     <None Include="Scripts\Keywords\Scoped\TestScopedKeywordMultipleVariableDeclaration.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Increment\TestIncrementOperatorPostIncrementVariable.cel">
+    <None Include="Scripts\Operators\Unary\Increment\TestIncrementOperatorPostIncrementVariable.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\ScriptCommands\Core\LogCmd\TestLogCmdHardCodedValues.cel">
@@ -242,97 +242,97 @@
     <None Include="Scripts\Keywords\Scoped\TestScopedKeywordParsing.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Add\TestAddOperatorTables.cel">
+    <None Include="Scripts\Operators\Binary\Add\TestAddOperatorTables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Add\TestAddOperatorLists.cel">
+    <None Include="Scripts\Operators\Binary\Add\TestAddOperatorLists.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\And\TestAndOperatorAndBools.cel">
+    <None Include="Scripts\Operators\Binary\And\TestAndOperatorAndBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\And\TestAndOperatorAndNumbers.cel">
+    <None Include="Scripts\Operators\Binary\And\TestAndOperatorAndNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\And\TestAndOperatorAndReferences.cel">
+    <None Include="Scripts\Operators\Binary\And\TestAndOperatorAndReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\And\TestAndOperatorAndStrings.cel">
+    <None Include="Scripts\Operators\Binary\And\TestAndOperatorAndStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Assignment\TestAssignmentOperatorReassignment.cel">
+    <None Include="Scripts\Operators\Binary\Assignment\TestAssignmentOperatorReassignment.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Equality\TestEqualityOperatorEquateBools.cel">
+    <None Include="Scripts\Operators\Binary\Equality\TestEqualityOperatorEquateBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Equality\TestEqualityOperatorEquateReferences.cel">
+    <None Include="Scripts\Operators\Binary\Equality\TestEqualityOperatorEquateReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Equality\TestEqualityOperatorEquateStrings.cel">
+    <None Include="Scripts\Operators\Binary\Equality\TestEqualityOperatorEquateStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Equality\TestEqualityOperatorEquateNumbers.cel">
+    <None Include="Scripts\Operators\Binary\Equality\TestEqualityOperatorEquateNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Multiply\TestMultiplyOperatorNumbers.cel">
+    <None Include="Scripts\Operators\Binary\Multiply\TestMultiplyOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Divide\TestDivideOperatorNumbers.cel">
+    <None Include="Scripts\Operators\Binary\Divide\TestDivideOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Assignment\TestAssignmentOperator.cel">
+    <None Include="Scripts\Operators\Binary\Assignment\TestAssignmentOperator.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\NonEquality\TestNonEqualityOperatorEquateBools.cel">
+    <None Include="Scripts\Operators\Binary\Inequality\TestNonEqualityOperatorEquateBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\NonEquality\TestNonEqualityOperatorEquateNumbers.cel">
+    <None Include="Scripts\Operators\Binary\Inequality\TestNonEqualityOperatorEquateNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\NonEquality\TestNonEqualityOperatorEquateReferences.cel">
+    <None Include="Scripts\Operators\Binary\Inequality\TestNonEqualityOperatorEquateReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\NonEquality\TestNonEqualityOperatorEquateStrings.cel">
+    <None Include="Scripts\Operators\Binary\Inequality\TestNonEqualityOperatorEquateStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Not\TestNotOperatorNotBools.cel">
+    <None Include="Scripts\Operators\Unary\Not\TestNotOperatorNotBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Not\TestNotOperatorNotNumbers.cel">
+    <None Include="Scripts\Operators\Unary\Not\TestNotOperatorNotNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Not\TestNotOperatorNotReferences.cel">
+    <None Include="Scripts\Operators\Unary\Not\TestNotOperatorNotReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Not\TestNotOperatorNotStrings.cel">
+    <None Include="Scripts\Operators\Unary\Not\TestNotOperatorNotStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Or\TestOrOperatorOrBools.cel">
+    <None Include="Scripts\Operators\Binary\Or\TestOrOperatorOrBools.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Or\TestOrOperatorOrNumbers.cel">
+    <None Include="Scripts\Operators\Binary\Or\TestOrOperatorOrNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Or\TestOrOperatorOrReferences.cel">
+    <None Include="Scripts\Operators\Binary\Or\TestOrOperatorOrReferences.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Or\TestOrOperatorOrStrings.cel">
+    <None Include="Scripts\Operators\Binary\Or\TestOrOperatorOrStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Subtract\TestSubtractOperatorTables.cel">
+    <None Include="Scripts\Operators\Binary\Subtract\TestSubtractOperatorTables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Subtract\TestSubtractOperatorLists.cel">
+    <None Include="Scripts\Operators\Binary\Subtract\TestSubtractOperatorLists.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Subtract\TestSubtractOperatorNumbers.cel">
+    <None Include="Scripts\Operators\Binary\Subtract\TestSubtractOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Subtract\TestSubtractOperatorStrings.cel">
+    <None Include="Scripts\Operators\Binary\Subtract\TestSubtractOperatorStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\Operators\Add\TestAddOperatorStrings.cel">
+    <None Include="Scripts\Operators\Binary\Add\TestAddOperatorStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\ScriptCommands\Core\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel">
@@ -373,14 +373,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\Operators\Add\TestAddOperatorNumbers.cel">
+    <None Include="Scripts\Operators\Binary\Add\TestAddOperatorNumbers.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\Operators\Binary\" />
-    <Folder Include="Scripts\Operators\Unary\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

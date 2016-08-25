@@ -9,7 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestAndOperatorAndNumbers()
         {
-            CelesteScript script = RunScript("Operators\\And\\TestAndOperatorAndNumbers.cel");
+            CelesteScript script = RunScript("Operators\\Binary\\And\\TestAndOperatorAndNumbers.cel");
 
             script.CheckLocalVariable("intAnd", false);
             script.CheckLocalVariable("intAnd2", false);
@@ -20,7 +20,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestAndOperatorAndStrings()
         {
-            CelesteScript script = RunScript("Operators\\And\\TestAndOperatorAndStrings.cel");
+            CelesteScript script = RunScript("Operators\\Binary\\And\\TestAndOperatorAndStrings.cel");
 
             script.CheckLocalVariable("stringAnd", false);
             script.CheckLocalVariable("stringAnd2", false);
@@ -31,7 +31,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestAndOperatorAndBools()
         {
-            CelesteScript script = RunScript("Operators\\And\\TestAndOperatorAndBools.cel");
+            CelesteScript script = RunScript("Operators\\Binary\\And\\TestAndOperatorAndBools.cel");
 
             script.CheckLocalVariable("trueAnd", true);
             script.CheckLocalVariable("falseAnd", false);
@@ -41,7 +41,7 @@ namespace TestCeleste
         [TestMethod]
         public void TestAndOperatorAndReferences()
         {
-            CelesteScript script = RunScript("Operators\\And\\TestAndOperatorAndReferences.cel");
+            CelesteScript script = RunScript("Operators\\Binary\\And\\TestAndOperatorAndReferences.cel");
 
             // Check reflexivity of references - references that are not null will always be true
             script.CheckLocalVariable("numberReflexivity", true);
