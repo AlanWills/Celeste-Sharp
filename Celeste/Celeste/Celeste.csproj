@@ -98,7 +98,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CelesteScript.cs" />
     <Compile Include="Cel.cs" />
-    <Compile Include="ScriptCommands\CoreScriptCommands.cs" />
+    <Compile Include="ScriptCommands\OutputScriptCommands.cs" />
     <Compile Include="SingleLineComment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

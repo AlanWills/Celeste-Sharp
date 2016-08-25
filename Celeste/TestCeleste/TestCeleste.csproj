@@ -52,10 +52,10 @@
     <Compile Include="TestCelesteLogging.cs" />
     <Compile Include="TestFlowControls\TestWhileFlowControl.cs" />
     <Compile Include="TestOperators\Unary\TestIncrementOperator.cs" />
-    <Compile Include="TestScriptCommands\Core\TestLogErrorCmd.cs" />
-    <Compile Include="TestScriptCommands\Core\TestLogWarningCmd.cs" />
-    <Compile Include="TestScriptCommands\Core\TestLogCmd.cs" />
-    <Compile Include="TestScriptCommands\Core\TestPrintCmd.cs" />
+    <Compile Include="TestScriptCommands\Output\TestLogErrorCmd.cs" />
+    <Compile Include="TestScriptCommands\Output\TestLogWarningCmd.cs" />
+    <Compile Include="TestScriptCommands\Output\TestLogCmd.cs" />
+    <Compile Include="TestScriptCommands\Output\TestPrintCmd.cs" />
     <Compile Include="TestExtensions\TestExtensions.cs" />
     <Compile Include="TestExtensions\TestObjectComparer.cs" />
     <Compile Include="TestExtensions\TestTableComparer.cs" />
@@ -116,28 +116,28 @@
     <None Include="Scripts\Operators\Unary\Increment\TestIncrementOperatorPostIncrementVariable.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\LogCmd\TestLogCmdHardCodedValues.cel">
+    <None Include="Scripts\ScriptCommands\Output\LogCmd\TestLogCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\LogCmd\TestLogCmdVariables.cel">
+    <None Include="Scripts\ScriptCommands\Output\LogCmd\TestLogCmdVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\LogErrorCmd\TestLogErrorCmdHardCodedValues.cel">
+    <None Include="Scripts\ScriptCommands\Output\LogErrorCmd\TestLogErrorCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\LogErrorCmd\TestLogErrorCmdVariables.cel">
+    <None Include="Scripts\ScriptCommands\Output\LogErrorCmd\TestLogErrorCmdVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\LogWarningCmd\TestLogWarningCmdHardCodedValues.cel">
+    <None Include="Scripts\ScriptCommands\Output\LogWarningCmd\TestLogWarningCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\LogWarningCmd\TestLogWarningCmdVariables.cel">
+    <None Include="Scripts\ScriptCommands\Output\LogWarningCmd\TestLogWarningCmdVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\PrintCmd\TestPrintCmdHardCodedValues.cel">
+    <None Include="Scripts\ScriptCommands\Output\PrintCmd\TestPrintCmdHardCodedValues.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\PrintCmd\TestPrintCmdVariables.cel">
+    <None Include="Scripts\ScriptCommands\Output\PrintCmd\TestPrintCmdVariables.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\Keywords\And\TestAndKeywordAndBools.cel">
@@ -335,7 +335,7 @@
     <None Include="Scripts\Operators\Binary\Add\TestAddOperatorStrings.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ScriptCommands\Core\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel">
+    <None Include="Scripts\ScriptCommands\Output\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\TestReferencingScopedVariables.cel">

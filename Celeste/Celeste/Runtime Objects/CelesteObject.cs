@@ -187,5 +187,14 @@ namespace Celeste
         }
             
         #endregion
+
+        /// <summary>
+        /// Returns the CelesteObject's Value as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

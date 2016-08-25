@@ -1,0 +1,4 @@
+logWarning("hello")
+logWarning(true)
+logWarning(1)
+logWarning(-1)

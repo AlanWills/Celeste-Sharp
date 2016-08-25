@@ -1,0 +1,4 @@
+logError("hello")
+logError(true)
+logError(1)
+logError(-1)

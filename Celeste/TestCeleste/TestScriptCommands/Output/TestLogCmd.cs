@@ -5,15 +5,15 @@ using System.IO;
 namespace TestCeleste
 {
     [TestClass]
-    public class TestLogWarningCmd : CelesteUnitTest
+    public class TestLogCmd : CelesteUnitTest
     {
         [TestMethod]
-        public void TestLogWarningCmdHardCodedValues()
+        public void TestLogCmdHardCodedValues()
         {
             Cel.ClearLog();
-            CelesteScript script = RunScript("ScriptCommands\\Core\\LogWarningCmd\\TestLogWarningCmdHardCodedValues.cel");
+            CelesteScript script = RunScript("ScriptCommands\\Output\\LogCmd\\TestLogCmdHardCodedValues.cel");
 
-            Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("logWarning"));
+            Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("log"));
 
             // This should definitely exist!
             using (StreamReader reader = Cel.LogReader)
@@ -26,12 +26,12 @@ namespace TestCeleste
         }
 
         [TestMethod]
-        public void TestLogWarningCmdVariables()
+        public void TestLogCmdVariables()
         {
             Cel.ClearLog();
-            CelesteScript script = RunScript("ScriptCommands\\Core\\LogWarningCmd\\TestLogWarningCmdVariables.cel");
+            CelesteScript script = RunScript("ScriptCommands\\Output\\LogCmd\\TestLogCmdVariables.cel");
 
-            Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("logWarning"));
+            Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("log"));
 
             // This should definitely exist!
             using (StreamReader reader = Cel.LogReader)

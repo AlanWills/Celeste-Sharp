@@ -80,7 +80,7 @@ namespace TestCeleste
         /// <returns></returns>
         protected CelesteScript RunScript(string filePath)
         {
-            CelesteScript script = Celeste.Cel.CreateScript(filePath);
+            CelesteScript script = Cel.CreateScript(filePath);
             script.Compile();
             script.Run();
 

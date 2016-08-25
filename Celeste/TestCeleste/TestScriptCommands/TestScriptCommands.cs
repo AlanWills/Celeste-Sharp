@@ -12,13 +12,13 @@ namespace TestCeleste
         public void TestScriptCommandsScriptCommandReassignmentAndRestoration()
         {
             // Overwrite the file - we do not want any previous test results interacting with this
-            string outputFilePath = Cel.ScriptDirectoryPath + "\\ScriptCommands\\Core\\TestScriptCommandsScriptCommandReassignmentAndRestoration.txt";
+            string outputFilePath = Cel.ScriptDirectoryPath + "\\ScriptCommands\\Output\\TestScriptCommandsScriptCommandReassignmentAndRestoration.txt";
             CelesteScript script;
 
             using (StreamWriter writer = new StreamWriter(outputFilePath, false))
             {
                 Console.SetOut(writer);
-                script = RunScript("ScriptCommands\\Core\\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel");
+                script = RunScript("ScriptCommands\\Output\\TestScriptCommandsScriptCommandReassignmentAndRestoration.cel");
             }
 
             script.CheckLocalVariable("reassigned", "success");

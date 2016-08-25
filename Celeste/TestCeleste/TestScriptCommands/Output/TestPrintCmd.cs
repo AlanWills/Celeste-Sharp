@@ -12,11 +12,11 @@ namespace TestCeleste
         public void TestPrintCmdHardCodedValues()
         {
             // Overwrite the file - we do not want any previous test results interacting with this
-            string outputFilePath = Cel.ScriptDirectoryPath + "\\ScriptCommands\\Core\\PrintCmd\\TestPrintCmdHardCodedValues.txt";
+            string outputFilePath = Cel.ScriptDirectoryPath + "\\ScriptCommands\\Output\\PrintCmd\\TestPrintCmdHardCodedValues.txt";
             using (StreamWriter writer = new StreamWriter(outputFilePath, false))
             {
                 Console.SetOut(writer);
-                CelesteScript script = RunScript("ScriptCommands\\Core\\PrintCmd\\TestPrintCmdHardCodedValues.cel");
+                CelesteScript script = RunScript("ScriptCommands\\Output\\PrintCmd\\TestPrintCmdHardCodedValues.cel");
             }
 
             Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("print"));
@@ -35,11 +35,11 @@ namespace TestCeleste
         public void TestPrintCmdVariables()
         {
             // Overwrite the file - we do not want any previous test results interacting with this
-            string outputFilePath = Cel.ScriptDirectoryPath + "\\ScriptCommands\\Core\\PrintCmd\\TestPrintCmdVariables.txt";
+            string outputFilePath = Cel.ScriptDirectoryPath + "\\ScriptCommands\\Output\\PrintCmd\\TestPrintCmdVariables.txt";
             using (StreamWriter writer = new StreamWriter(outputFilePath, false))
             {
                 Console.SetOut(writer);
-                CelesteScript script = RunScript("ScriptCommands\\Core\\PrintCmd\\TestPrintCmdVariables.cel");
+                CelesteScript script = RunScript("ScriptCommands\\Output\\PrintCmd\\TestPrintCmdVariables.cel");
             }
 
             Assert.IsTrue(CelesteStack.GlobalScope.VariableExists("print"));

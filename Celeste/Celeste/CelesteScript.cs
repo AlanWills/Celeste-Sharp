@@ -36,6 +36,11 @@ namespace Celeste
         /// </summary>
         public bool Running { get; set; }
 
+        /// <summary>
+        /// The ScriptPath of the latest script that just ran
+        /// </summary>
+        internal static string CurrentRunningScript;
+
         #endregion
 
         internal CelesteScript(string scriptPath)
@@ -85,6 +90,7 @@ namespace Celeste
         public void Run()
         {
             Running = true;
+            CurrentRunningScript = ScriptPath;
 
             Debug.Assert(ScriptExecutable != null, "Call Compile on this script before you run it");
             ScriptExecutable.PerformOperation();

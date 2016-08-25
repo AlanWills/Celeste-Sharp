@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
+using System.Security.AccessControl;
 
 namespace Celeste
 {
@@ -50,7 +52,7 @@ namespace Celeste
             int index = 0;
             foreach (Variable var in OrderedParameterList)
             {
-                parameters[index] = var;
+                parameters[index] = new CelesteObject(var.Value as Reference);
                 index++;
             }
 
