@@ -64,21 +64,21 @@ namespace Celeste
                     int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
                     token = token.Substring(parameterStartDelimiterIndex + 1);
 
-                    List<string> inputParameterTokens = new List<string>();
+                    CompiledStatement tempContainer = new CompiledStatement();
                     while (!token.EndsWith(FunctionKeyword.parameterEndDelimiter))
                     {
-                        inputParameterTokens.Add(token);
+                        Debug.Assert(CelesteCompiler.CompileToken(token, tempContainer), "Failed to compile input parameter " + token);
                         token = CelesteCompiler.PopToken();
                     }
 
                     token = token.Substring(0, token.Length - 1);
                     if (!string.IsNullOrEmpty(token))
                     {
-                        inputParameterTokens.Add(token);
+                        Debug.Assert(CelesteCompiler.CompileToken(token, tempContainer), "Failed to compile input parameter " + token);
                     }
 
                     // Add null references first for all of the parameters we are missing
-                    for (int i = inputParameterTokens.Count; i < ParameterNames.Count; i++)
+                    for (int i = tempContainer.ChildCount; i < ParameterNames.Count; i++)
                     {
                         // This will push null onto the stack for every parameter we have not provided an input for
                         Reference refToNull = new Reference(null);
@@ -86,10 +86,10 @@ namespace Celeste
                     }
 
                     // Then add the actual parameters we have inputted
-                    for (int i = inputParameterTokens.Count - 1; i >= 0 ; i--)
+                    for (int i = tempContainer.ChildCount - 1; i >= 0; i--)
                     {
                         // Add our parameters in reverse order, so they get added to the stack in reverse order
-                        Debug.Assert(CelesteCompiler.CompileToken(inputParameterTokens[i], thisCallsParams), "Failed to compile input parameter");
+                        tempContainer.MoveChildAtIndex(i, thisCallsParams);
                     }
                 }
 

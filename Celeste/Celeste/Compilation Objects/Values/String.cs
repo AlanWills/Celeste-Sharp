@@ -67,14 +67,22 @@ namespace Celeste
 
                     if (!string.IsNullOrEmpty(currentToken))
                     {
-                        // If the next token we are moving through ends with '"' we are done finding our full string
-                        if (currentToken.EndsWith("\""))
+                        // If the next token we are moving through contains '"' we are done finding our full string
+                        if (currentToken.Contains(endDelimiter))
                         {
-                            // Checks to see if we have read a string which has more to it than just '"'
-                            if (currentToken.Length > 1)
+                            // Add the substring without the end string character to our full string
+                            int index = currentToken.IndexOf(endDelimiter);
+                            if (index > 0)
                             {
-                                // Add the substring without the end string character to our full string
-                                fullString += " " + currentToken.Substring(0, currentToken.Length - 1);
+                                // Concatenate the contents of this token if it was more than just the end delimiter
+                                fullString += " " + currentToken.Substring(0, index);   
+                            }
+
+                            if (index < currentToken.Length - 1)
+                            {
+                                // The end delimiter was in the middle of the token and we have other stuff that should be popped back into the tokens list
+                                // index + 1 because we don't want to add the end delimiter
+                                tokens.AddFirst(currentToken.Substring(index + 1));
                             }
 
                             break;

@@ -9,6 +9,7 @@ namespace TestCeleste
         [TestMethod]
         public void Test_GetLogFilePath_Cmd()
         {
+            Cel.LogOutputFilePath = Cel.ScriptDirectoryPath + "\\Log.txt";
             CelesteScript script = RunScript("ScriptCommands\\Output\\GetLogFilePathCmd\\TestGetLogFilePath.cel");
 
             script.CheckLocalVariable("logPath", Cel.ScriptDirectoryPath + "\\Log.txt");
