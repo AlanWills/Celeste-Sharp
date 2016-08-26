@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Celeste
@@ -27,6 +28,7 @@ namespace Celeste
             {
                 Debug.Assert(tokens.Count > 0, "Function name must exist");
                 string functionName = tokens.First.Value;
+                functionName = functionName.Remove(functionName.IndexOf(OpenParenthesis.scriptToken));
 
                 if (CelesteCompiler.CompileToken(rhsOfKeyword, parent))
                 {
