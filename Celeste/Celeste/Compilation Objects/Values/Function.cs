@@ -47,54 +47,54 @@ namespace Celeste
         /// <param name="lines"></param>
         public override void Compile(CompiledStatement parent, string token, LinkedList<string> tokens, LinkedList<string> lines)
         {
-            // If we have no brackets, we are trying to compile the function as a reference rather than as a call (for use in equality for example)
-            if (token.IndexOf(FunctionKeyword.parameterStartDelimiter) < 0)
+            // We have invoked this function because we have parentheses
+            if (tokens.Count > 0 && tokens.First.Value == OpenParenthesis.scriptToken)
             {
-                Reference funcRef = new Reference(this);
-                funcRef.Compile(parent, Name, tokens, lines);
-            }
-            else
-            {
+                // Group our inputs under this object so that we can store them underneath this function
+                CompiledStatement thisCallsParams = new CompiledStatement();
                 if (ParameterNames.Count > 0)
                 {
-                    // Group our inputs under this object so that we can store them underneath this function
-                    CompiledStatement thisCallsParams = new CompiledStatement();
+                    // Only add our parameters if we have any.
+                    // Otherwise this will just strip away the start and end parentheses
                     Add(thisCallsParams);
+                }
 
-                    int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
-                    token = token.Substring(parameterStartDelimiterIndex + 1);
+                string openingParenthesis = CelesteCompiler.PopToken();
+                Debug.Assert(openingParenthesis == OpenParenthesis.scriptToken, "No opening parenthesis found for function " + Name);
 
-                    CompiledStatement tempContainer = new CompiledStatement();
-                    while (!token.EndsWith(FunctionKeyword.parameterEndDelimiter))
-                    {
-                        Debug.Assert(CelesteCompiler.CompileToken(token, tempContainer), "Failed to compile input parameter " + token);
-                        token = CelesteCompiler.PopToken();
-                    }
+                string parameter = CelesteCompiler.PopToken();
 
-                    token = token.Substring(0, token.Length - 1);
-                    if (!string.IsNullOrEmpty(token))
-                    {
-                        Debug.Assert(CelesteCompiler.CompileToken(token, tempContainer), "Failed to compile input parameter " + token);
-                    }
+                CompiledStatement tempContainer = new CompiledStatement();
+                while (parameter != CloseParenthesis.scriptToken)
+                {
+                    Debug.Assert(CelesteCompiler.CompileToken(parameter, tempContainer),
+                        "Failed to compile input parameter " + parameter);
+                    parameter = CelesteCompiler.PopToken();
+                }
 
-                    // Add null references first for all of the parameters we are missing
-                    for (int i = tempContainer.ChildCount; i < ParameterNames.Count; i++)
-                    {
-                        // This will push null onto the stack for every parameter we have not provided an input for
-                        Reference refToNull = new Reference(null);
-                        refToNull.Compile(thisCallsParams, "null", tokens, lines);
-                    }
+                // Add null references first for all of the parameters we are missing
+                for (int i = tempContainer.ChildCount; i < ParameterNames.Count; i++)
+                {
+                    // This will push null onto the stack for every parameter we have not provided an input for
+                    Reference refToNull = new Reference(null);
+                    refToNull.Compile(thisCallsParams, "null", tokens, lines);
+                }
 
-                    // Then add the actual parameters we have inputted
-                    for (int i = tempContainer.ChildCount - 1; i >= 0; i--)
-                    {
-                        // Add our parameters in reverse order, so they get added to the stack in reverse order
-                        tempContainer.MoveChildAtIndex(i, thisCallsParams);
-                    }
+                // Then add the actual parameters we have inputted
+                for (int i = tempContainer.ChildCount - 1; i >= 0; i--)
+                {
+                    // Add our parameters in reverse order, so they get added to the stack in reverse order
+                    tempContainer.MoveChildAtIndex(i, thisCallsParams);
                 }
 
                 // Add a reference to this function in our compile tree after we have added all of the inputs
                 base.Compile(parent, token, tokens, lines);
+            }
+            else
+            {
+                // If we have no brackets, we are trying to compile the function as a reference rather than as a call (for use in equality for example)
+                Reference funcRef = new Reference(this);
+                funcRef.Compile(parent, Name, tokens, lines);
             }
 
             // Any local variable that is not set will be null

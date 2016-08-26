@@ -9,8 +9,8 @@ scoped function secondFunc()
 	secondVariable = false
 end
 
-firstFunc(firstVariable)
+firstFunc()
 
 firstFunc = secondFunc
 
-firstFunc(secondVariable)
+firstFunc()

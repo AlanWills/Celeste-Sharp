@@ -213,6 +213,20 @@ namespace Celeste
                     token = null;
                 }
             }
+            // Order of parenthesis does matter
+            else if (CloseParenthesis.HasDelimiter(token))
+            {
+                CloseParenthesis closeParenthesis = new CloseParenthesis();
+                closeParenthesis.Compile(RootStatement, token, Tokens, Lines);
+                token = PopToken();
+            }
+            else if (OpenParenthesis.HasDelimiter(token))
+            {
+                OpenParenthesis openParenthesis = new OpenParenthesis();
+                openParenthesis.Compile(RootStatement, token, Tokens, Lines);
+                token = PopToken();
+            }
+            // This should come after the parentheses as it acts on objects within them
             else if (Delimiter.HasDelimiter(token))
             {
                 // If we find a delimiter, inline the stored token
@@ -318,10 +332,6 @@ namespace Celeste
             {
                 return true;
             }
-            else if (CompileAsFunction(parent, token))
-            {
-                return true;
-            }
             else if (CompileAsFlowControl(parent, token))
             {
                 return true;
@@ -378,32 +388,6 @@ namespace Celeste
             CelesteStack.CurrentScope.GetLocalVariable(token).Compile(parent, token, Tokens, Lines);
 
             return true;
-        }
-
-        /// <summary>
-        /// See if this inputted token is actually a function call.
-        /// We cannot use CompileAsVariable, because to mark it as a call we use brackets and pass parameters.
-        /// </summary>
-        /// <param name="parent"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        private static bool CompileAsFunction(CompiledStatement parent, string token)
-        {
-            int parameterStartDelimiterIndex = token.IndexOf(FunctionKeyword.parameterStartDelimiter);
-            if (parameterStartDelimiterIndex > 0)
-            {
-                string functionName = token.Substring(0, parameterStartDelimiterIndex);
-
-                if (CelesteStack.CurrentScope.VariableExists(functionName, ScopeSearchOption.kUpwardsRecursive))
-                {
-                    // Call compile - this will push a reference onto the stack and add references to the variables we will use as arguments
-                    CelesteStack.CurrentScope.GetLocalVariable(functionName).Compile(parent, token, Tokens, Lines);
-
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         /// <summary>

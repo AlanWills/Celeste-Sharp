@@ -28,13 +28,9 @@ namespace Celeste
                 Debug.Assert(tokens.Count > 0, "Function name must exist");
                 string functionName = tokens.First.Value;
 
-                int parameterStartDelimiterIndex = functionName.IndexOf(FunctionKeyword.parameterStartDelimiter);
-                Debug.Assert(parameterStartDelimiterIndex >= 0, "Incorrect function formatting.");
-                functionName = functionName.Substring(0, parameterStartDelimiterIndex);
-
                 if (CelesteCompiler.CompileToken(rhsOfKeyword, parent))
                 {
-                    // If we have compiled our global function, we need to remove it from the current scope and move it to the global scope
+                    // If we have compiled our global function, we need to remove it from the current scope it is added to by default and move it to the global scope
                     Debug.Assert(CelesteStack.CurrentScope.VariableExists(functionName));
                     Variable function = CelesteStack.CurrentScope.RemoveLocalVariable(functionName);
                     CelesteStack.GlobalScope.AddLocalVariable(function);

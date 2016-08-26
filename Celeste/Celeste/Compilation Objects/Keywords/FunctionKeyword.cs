@@ -13,9 +13,6 @@ namespace Celeste
 
         internal static string scriptToken = "function";
         private static string endDelimiter = "end";
-        internal static char parameterStartDelimiter = '(';
-        internal static char parameterEndDelimiterChar = ')';
-        internal static string parameterEndDelimiter = ")";
 
         #endregion
 
@@ -26,39 +23,23 @@ namespace Celeste
             // Now check that there is another element after our keyword that we can use as the function name
             Debug.Assert(tokens.Count > 0 || lines.Count > 0, "No parameters or body found for the keyword: " + token);
 
-            // Get the next token that appears on the right hand side of this operator - this will be our function name
-            string rhsOfKeyword = CelesteCompiler.PopToken();
-
-            int bracketOpening = rhsOfKeyword.IndexOf(parameterStartDelimiter);
-            Debug.Assert(bracketOpening >= 0, "No '(' token in function declaration");
-
-            string functionName = rhsOfKeyword.Substring(0, bracketOpening);
-
+            // The first token should be the function name
+            string functionName = CelesteCompiler.PopToken();
             Debug.Assert(!CelesteStack.CurrentScope.VariableExists(functionName), "Variable with the same name already exists in this scope");
-            int currentIndex = parent.ChildCount;
+
+            // Get the next token - this should be an opening parenthesis
+            string openingParenthesis = CelesteCompiler.PopToken();
+            Debug.Assert(openingParenthesis == OpenParenthesis.scriptToken, "No opening parenthesis found for function " + functionName);
 
             // Creates a new function, but does not call Compile - Compile for function assigns a reference from the stored function in CelesteStack
             Function function = CelesteStack.CurrentScope.CreateLocalVariable<Function>(functionName);
 
             // Obtain the parameter names from the strings/tokens between the brackets
-            string parameters = rhsOfKeyword.Substring(bracketOpening + 1);
-            tokens.AddFirst(parameters);
-
-            // Cannot just analyse parameters string because we modify it as we go along
-            bool finished = false;
             List<string> paramNames = new List<string>();
+            string parameters = CelesteCompiler.PopToken();
 
-            do
+            while (parameters != CloseParenthesis.scriptToken)
             {
-                // We do this if our function arguments are separated by spaces
-                parameters = CelesteCompiler.PopToken();
-                if (parameters.EndsWith(parameterEndDelimiter))
-                {
-                    // Remove the end delimiter if needs be
-                    parameters = parameters.Substring(0, parameters.Length - 1);
-                    finished = true;
-                }
-
                 // Clean the parameter array of empty strings and remove any delimiter characters from parameter names
                 List<string> parameterList = new List<string>(parameters.Split(Delimiter.scriptTokenChar));
                 parameterList.RemoveAll(x => string.IsNullOrEmpty(x));
@@ -67,9 +48,8 @@ namespace Celeste
                 // Add any parameters which are of this form 'param1,param2'
                 paramNames.AddRange(parameterList);
 
-                // This algorithm should completely take care of any mix of parameters separated with a space or not
+                parameters = CelesteCompiler.PopToken();// This algorithm should completely take care of any mix of parameters separated with a space or not
             }
-            while (!finished);
 
             function.SetParameters(paramNames.ToArray());
 
