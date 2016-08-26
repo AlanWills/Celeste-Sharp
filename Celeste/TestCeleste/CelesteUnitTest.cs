@@ -1,4 +1,5 @@
-﻿using Celeste;
+﻿using System;
+using Celeste;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
@@ -33,16 +34,29 @@ namespace TestCeleste
         // You can use the following additional attributes as you write your tests:
         //
         // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
+        [ClassInitialize()]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+            
+        }
 
-        // Check that the state of our stack and scopes are clean
+        // Use ClassCleanup to run code after all tests in a class have run
+        [ClassCleanup()]
+        public static void MyClassCleanup()
+        {
+            
+        }
+
         [TestInitialize()]
         public void MyTestInitialize()
+        {
+            TestInitialize();
+        }
+
+        /// <summary>
+        /// Check that the state of our stack and scopes are clean
+        /// </summary>
+        protected virtual void TestInitialize()
         {
             CheckStackSize(0);
             Assert.IsTrue(CelesteStack.Scopes.Count == 1);
@@ -55,6 +69,11 @@ namespace TestCeleste
         // Our stack may have leftovers, in which case we just clear them
         [TestCleanup()]
         public void MyTestCleanup()
+        {
+            TestCleanUp();
+        }
+
+        protected virtual void TestCleanUp()
         {
             CheckStackSize(0);
             Assert.IsTrue(CelesteStack.Scopes.Count == 1);

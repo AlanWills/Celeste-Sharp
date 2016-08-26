@@ -65,13 +65,13 @@ namespace TestCeleste
             script.CheckLocalVariable("variable", "Argument with spaces");
         }
 
-        [TestMethod]
-        public void Test_FunctionKeyword_ArgumentParsingEdgeCase_SumInArgument()
-        {
-            CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingEdgeCaseSumInArgument.cel");
+        //[TestMethod]
+        //public void Test_FunctionKeyword_ArgumentParsingEdgeCase_SumInArgument()
+        //{
+        //    CelesteScript script = RunScript("Keywords\\Function\\TestFunctionKeywordArgumentParsingEdgeCaseSumInArgument.cel");
 
-            script.CheckLocalVariable("variable", 10.0f);
-        }
+        //    script.CheckLocalVariable("variable", 10.0f);
+        //}
 
         [TestMethod]
         public void Test_FunctionKeyword_ArgumentParsingEdgeCase_FunctionCallInArgument()

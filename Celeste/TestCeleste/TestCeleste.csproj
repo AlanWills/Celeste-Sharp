@@ -49,7 +49,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CelesteUnitTest.cs" />
+    <Compile Include="TestCelesteBinder.cs" />
     <Compile Include="TestCelesteLogging.cs" />
+    <Compile Include="TestExtensions\TestBindingsComparer.cs" />
     <Compile Include="TestFlowControls\TestWhileFlowControl.cs" />
     <Compile Include="TestOperators\Unary\TestIncrementOperator.cs" />
     <Compile Include="TestScriptCommands\Output\TestSetLogFilePathCmd.cs" />

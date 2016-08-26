@@ -135,6 +135,8 @@ namespace Celeste
                 }
             }
 
+            CelesteBinder.Init();
+
             InitComplete = true;
         }
 

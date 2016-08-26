@@ -48,11 +48,18 @@ namespace Celeste
 
             // Maybe we can improve this - store the array rather than create it every time we invoke the function
             object[] parameters = new object[OrderedParameterList.Count];
+            ParameterInfo[] methodParameters = Method.GetParameters();
 
             int index = 0;
             foreach (Variable var in OrderedParameterList)
             {
-                parameters[index] = new CelesteObject(var.Value as Reference);
+                object parameter = (var.Value as Reference).Value;
+                if (parameter.GetType() != methodParameters[index].ParameterType)
+                {
+                    parameter = CelesteBinder.Bind(parameter, methodParameters[index].ParameterType);
+                }
+
+                parameters[index] = parameter;//new CelesteObject(var.Value as Reference);
                 index++;
             }
 

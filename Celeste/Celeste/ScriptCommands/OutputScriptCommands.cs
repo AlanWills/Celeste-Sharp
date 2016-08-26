@@ -11,26 +11,26 @@ namespace Celeste
     internal class OutputScriptCommands
     {
         /// <summary>
-        /// Calls ToString on the inputted object and write's it out to the Console.
+        /// Writes the inputted string to the console.
         /// Divert the Console output to print objects elsewhere.
         /// </summary>
         /// <param name="input"></param>
         [ScriptCommand("print")]
-        public static void PrintCmd(CelesteObject input)
+        public static void PrintCmd(string input)
         {
-            Console.WriteLine(input.ToString());
+            Console.WriteLine(input);
         }
 
         /// <summary>
-        /// Calls ToString on the inputted object and write's it out to the log file. 
+        ///Write's out the inputted string to the log file. 
         /// </summary>
         /// <param name="message"></param>
         [ScriptCommand("log")]
-        public static void LogCmd(CelesteObject message)
+        public static void LogCmd(string message)
         {
             using (StreamWriter writer = Cel.LogWriter)
             {
-                writer.WriteLine(message.ToString());
+                writer.WriteLine(message);
             }
         }
 
@@ -39,12 +39,12 @@ namespace Celeste
         /// </summary>
         /// <param name="message"></param>
         [ScriptCommand("logWarning")]
-        public static void LogWarningCmd(CelesteObject message)
+        public static void LogWarningCmd(string message)
         {
             using (StreamWriter writer = Cel.LogWriter)
             {
                 writer.WriteLine("Warning in script " + CelesteScript.CurrentRunningScript);
-                writer.WriteLine(message.ToString());
+                writer.WriteLine(message);
             }
         }
 
@@ -53,12 +53,12 @@ namespace Celeste
         /// </summary>
         /// <param name="message"></param>
         [ScriptCommand("logError")]
-        public static void LogErrorCmd(CelesteObject message)
+        public static void LogErrorCmd(string message)
         {
             using (StreamWriter writer = Cel.LogWriter)
             {
                 writer.WriteLine("Error in script " + CelesteScript.CurrentRunningScript);
-                writer.WriteLine(message.ToString());
+                writer.WriteLine(message);
             }
         }
 
@@ -67,9 +67,9 @@ namespace Celeste
         /// </summary>
         /// <param name="fullLogOutputFilePath"></param>
         [ScriptCommand("setLogFilePath")]
-        public static void SetLogFilePath(CelesteObject fullLogOutputFilePath)
+        public static void SetLogFilePath(string fullLogOutputFilePath)
         {
-            Cel.LogOutputFilePath = fullLogOutputFilePath.ToString();
+            Cel.LogOutputFilePath = fullLogOutputFilePath;
         }
 
         /// <summary>

@@ -71,6 +71,12 @@
 
         #endregion
 
+        /// <summary>
+        /// A utility function for returning the value of this object's reference if it is a reference.
+        /// Equivalent to (T)Ref.Value and will not work unless this object is a reference;
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public T GetReferencedValue<T>()
         {
             return (T)Ref.Value;
