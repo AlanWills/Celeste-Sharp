@@ -88,7 +88,8 @@
     <Compile Include="TestOperators\Binary\TestSubtractOperator.cs" />
     <Compile Include="TestReferencing.cs" />
     <Compile Include="TestScriptCommands\TestScriptCommands.cs" />
-    <Compile Include="TestSingleLineCommenting.cs" />
+    <Compile Include="TestTokenModifiers\TestDelimiter.cs" />
+    <Compile Include="TestTokenModifiers\TestSingleLineCommenting.cs" />
     <Compile Include="TestTypes\TestBoolType.cs" />
     <Compile Include="TestTypes\TestListType.cs" />
     <Compile Include="TestTypes\TestNumberType.cs" />
@@ -366,7 +367,10 @@
     <None Include="Scripts\TestEmptyScript.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\TestSingleLineCommenting.cel">
+    <None Include="Scripts\TokenModifiers\TestSingleLineCommentingCommentInString.cel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\TokenModifiers\TestSingleLineCommenting.cel">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\Types\Bool\TestBoolParsing.cel">

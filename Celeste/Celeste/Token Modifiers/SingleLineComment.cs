@@ -11,7 +11,7 @@ namespace Celeste
 
         internal static bool IsCommented(string token)
         {
-            return token.Contains(scriptToken);
+            return token.StartsWith(scriptToken);
         }
 
         #region Virtual Functions

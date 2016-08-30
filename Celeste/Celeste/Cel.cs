@@ -58,13 +58,14 @@ namespace Celeste
                 return script;
             }
 
-            if (File.Exists(Path.Combine(scriptDirectoryPath, relativeScriptPath)))
+            string filePath = Path.Combine(scriptDirectoryPath, relativeScriptPath);
+            if (File.Exists(filePath))
             {
                 script = new CelesteScript(relativeScriptPath);
             }
             else
             {
-                Debug.Fail("Invalid filepath for script");
+                Debug.Fail("Invalid filepath " + filePath + ".  Script does not exist");
             }
 
             CompiledScripts.Add(relativeScriptPath, script);
